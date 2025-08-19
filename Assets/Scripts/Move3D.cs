@@ -9,7 +9,6 @@ public class Move3D : MonoBehaviour
     private Camera mainCamera;
     private float CameraZDistance;
 
-    public bool insideSnap;
     public GameObject snapArea;
     private bool playAnimation = false;
 
@@ -48,13 +47,16 @@ public class Move3D : MonoBehaviour
         // o movimento da peça junto do mouse quando clicar e segurar
         // um pouquinho complexo, depois me pergunta que eu passo o vídeo
 
-        Vector3 ScreenPosition =
-            new Vector3(Input.mousePosition.x, Input.mousePosition.y, CameraZDistance);
-        Vector3 NewWorldPosition =
-            mainCamera.ScreenToWorldPoint(ScreenPosition);
+        if (!playAnimation)
+        {
+            Vector3 ScreenPosition =
+                    new Vector3(Input.mousePosition.x, Input.mousePosition.y, CameraZDistance);
+            Vector3 NewWorldPosition =
+                mainCamera.ScreenToWorldPoint(ScreenPosition);
             NewWorldPosition.y = transform.position.y;
 
-        transform.position = NewWorldPosition;
+            transform.position = NewWorldPosition;
+        }
     }
 
     private void OnMouseUp()
@@ -64,15 +66,16 @@ public class Move3D : MonoBehaviour
         // se o snap estiver disponível, manda para o centro do snap
         // depois inicia o processo de animação em Update()
 
-        if (insideSnap)
+        if (snapArea)
         {
             if (snapArea.GetComponent<SnapArea>().hasObject > 1)
                 targetPosition = startPosition;
             else
                 targetPosition = snapArea.transform.position;
-
-            playAnimation = true;
         }
+        else targetPosition = startPosition;
+
+        playAnimation = true;
     }
 
 

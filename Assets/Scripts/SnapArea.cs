@@ -1,8 +1,12 @@
+using NUnit.Framework;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SnapArea : MonoBehaviour
 {
     public int hasObject = 0;
+    public GameObject currentObject = null;
 
     // este script fica de olho nas movimentações das peças
     // que entram e saem do snap. Quando uma peça entra ou sai,
@@ -13,19 +17,22 @@ public class SnapArea : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //Debug.Log(other.gameObject.name + " has entered " + gameObject.name);
-        other.GetComponent<Move3D>().insideSnap = true;
         other.GetComponent<Move3D>().snapArea = gameObject;
 
         hasObject++;
+
+        if (hasObject == 1) currentObject = other.gameObject;
     }
 
     private void OnTriggerExit(Collider other)
     {
         //Debug.Log(other.gameObject.name + " has left " + gameObject.name);
-        other.GetComponent<Move3D>().insideSnap = false;
-        other.GetComponent<Move3D>().snapArea = null;
+        if (other.GetComponent<Move3D>().snapArea == gameObject)
+            other.GetComponent<Move3D>().snapArea = null;
 
         hasObject--;
+
+        if (hasObject == 0) currentObject = null;
     }
     private void OnDrawGizmos()
     {
