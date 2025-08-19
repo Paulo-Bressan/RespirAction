@@ -516,6 +516,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f2064991bb62ee40826e9a41da1ee50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  insideSnap: 0
+  snapArea: {fileID: 0}
 --- !u!1 &511554512
 GameObject:
   m_ObjectHideFlags: 0
@@ -645,6 +647,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f2064991bb62ee40826e9a41da1ee50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  insideSnap: 0
+  snapArea: {fileID: 0}
+--- !u!1 &623282508
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 623282510}
+  - component: {fileID: 623282509}
+  m_Layer: 0
+  m_Name: RotationManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &623282509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 623282508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5a846ba40bb2964eb5d70568c19500f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 5
+--- !u!4 &623282510
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 623282508}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.21933356, y: 0.54599833, z: -0.57007694}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &646272741 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 79376d9868d259a408b8e8c75b0d0b40, type: 3}
@@ -688,6 +737,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f2064991bb62ee40826e9a41da1ee50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  insideSnap: 0
+  snapArea: {fileID: 0}
 --- !u!1001 &677294963
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -968,6 +1019,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f2064991bb62ee40826e9a41da1ee50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  insideSnap: 0
+  snapArea: {fileID: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1139,6 +1192,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f2064991bb62ee40826e9a41da1ee50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  insideSnap: 0
+  snapArea: {fileID: 0}
 --- !u!1 &1040980295
 GameObject:
   m_ObjectHideFlags: 0
@@ -1185,6 +1240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65d2cc2285b9abe4ebccfa51b9dc7a14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasObject: 0
 --- !u!65 &1040980298
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1441,6 +1497,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f2064991bb62ee40826e9a41da1ee50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  insideSnap: 0
+  snapArea: {fileID: 0}
 --- !u!1001 &1188792521
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1642,6 +1700,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f2064991bb62ee40826e9a41da1ee50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  insideSnap: 0
+  snapArea: {fileID: 0}
 --- !u!1001 &1635623960
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1892,6 +1952,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65d2cc2285b9abe4ebccfa51b9dc7a14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasObject: 0
 --- !u!65 &1667635007
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2069,6 +2130,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f2064991bb62ee40826e9a41da1ee50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  insideSnap: 0
+  snapArea: {fileID: 0}
 --- !u!1 &1831983132 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3c0fcb3d628ceef4e9254272baadcb38, type: 3}
@@ -2112,6 +2175,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f2064991bb62ee40826e9a41da1ee50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  insideSnap: 0
+  snapArea: {fileID: 0}
 --- !u!1 &1838687264 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 48ab8b16727fb8f419bca4ddbe814536, type: 3}
@@ -2129,6 +2194,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f2064991bb62ee40826e9a41da1ee50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  insideSnap: 0
+  snapArea: {fileID: 0}
 --- !u!65 &1838687266
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2289,6 +2356,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f2064991bb62ee40826e9a41da1ee50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  insideSnap: 0
+  snapArea: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2301,3 +2370,4 @@ SceneRoots:
   - {fileID: 16743748}
   - {fileID: 511554516}
   - {fileID: 1707544088}
+  - {fileID: 623282510}
