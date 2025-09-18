@@ -1,4 +1,6 @@
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
+
 
 public class LevelManager : MonoBehaviour
 {
@@ -7,6 +9,19 @@ public class LevelManager : MonoBehaviour
     public int[] piecePosStatusArray;
     public int[] pieceRotStatusArray;
     private int pieceStatusSum;
+    public Dialogue dialogue;
+    private bool dialogueEsternalLido = false;
+    private bool[] dialogueLido;
+
+    // Referência para o prefab do diafragma
+    public GameObject diafragmaPrefab;
+
+    // Variável para controlar se já substituímos as peças
+    private bool hasReplacedPieces = false;
+
+    public Transform spawnPoint;
+
+    [SerializeField] private float diafragmaDelay = 2.0f;
 
     public int gameStatus;
 
@@ -30,10 +45,10 @@ public class LevelManager : MonoBehaviour
     {
         for (int i = 0; i < 5; i++)
         {
-            if (pieceArray[i].transform.position == snapArray[i].transform.position)
+            float distance = Vector3.Distance(pieceArray[i].transform.position, snapArray[i].transform.position);
+            if (distance < 0.1f) // Se estiver muito próximo (0.1 unidades)
             {
                 piecePosStatusArray[i] = 1;
-                // trigger behavior for GUI elements here
             }
             else
                 piecePosStatusArray[i] = 0;
@@ -43,6 +58,24 @@ public class LevelManager : MonoBehaviour
         for (int i = 0; i < 5; i++)
             if (piecePosStatusArray[i] == 1) pieceStatusSum++;
     }
+
+    public bool IsPieceCorrect(GameObject piece, GameObject snap)
+    {
+        float tolerance = 0.1f;
+
+        for (int i = 0; i < pieceArray.Length; i++)
+        {
+            if (pieceArray[i] == piece && snapArray[i] == snap)
+            {
+                // Peça corresponde ao snap correto → checa distância
+                return Vector3.Distance(piece.transform.position, snap.transform.position) < tolerance;
+            }
+        }
+
+        // Se não encontrou correspondência, é snap errado
+        return false;
+    }
+
     private void Start()
     {
         findObjects();
@@ -51,16 +84,70 @@ public class LevelManager : MonoBehaviour
         for (int i = 0; i < 5; i++)
             piecePosStatusArray[i] = 0;
 
-        InvokeRepeating("checkPositions",1f,1f);
+        InvokeRepeating("checkPositions", 1f, 1f);
+
+        dialogueLido = new bool[5];
+        for (int i = 0; i < 5; i++)
+        {
+            dialogueLido[i] = false;
+        }
     }
 
     private void Update()
     {
-        if(pieceStatusSum >= 5 && gameStatus != 1)
+        if (pieceStatusSum >= 5 && gameStatus != 1)
         {
             gameStatus = 1;
             Debug.Log("All pieces correct");
             CancelInvoke();
+
+            StartCoroutine(ReplacePiecesWithDiafragmaWithDelay());
         }
+        for (int i = 0; i < 5; i++)
+        {
+            if (piecePosStatusArray[i] == 1 && !dialogueLido[i])
+            {
+                dialogue.dialogueIndex = i;
+                dialogue.readyDialogue = true;
+                dialogueLido[i] = true;
+            }
+        }
+    }
+
+    private IEnumerator ReplacePiecesWithDiafragmaWithDelay()
+    {
+        if (hasReplacedPieces || diafragmaPrefab == null)
+        {
+            yield break; // Interrompe a corrotina
+        }
+
+        Debug.Log("Todas as peças estão corretas. Aguardando o delay para a destruição.");
+
+        // Atraso para a desativação e a criação do diafragma
+        yield return new WaitForSeconds(diafragmaDelay);
+
+        // A partir daqui, as ações acontecem imediatamente após o delay
+
+        // Desativa as peças originais
+        for (int i = 0; i < 5; i++)
+        {
+            if (pieceArray[i] != null)
+            {
+                pieceArray[i].SetActive(false);
+            }
+        }
+
+        // Instancia o diafragma
+        Vector3 spawnPosition = spawnPoint != null ? spawnPoint.position : Vector3.zero;
+        Quaternion spawnRotation = spawnPoint != null ? spawnPoint.rotation : Quaternion.identity;
+
+        GameObject diafragma = Instantiate(diafragmaPrefab, spawnPosition, spawnRotation);
+
+        // Ajusta a escala e rotação do diafragma
+        diafragma.transform.localScale = new Vector3(70f, 70f, 70f);
+        diafragma.transform.rotation = Quaternion.Euler(-93.496f, 57.089f, 122.96f);
+
+        Debug.Log("Diafragma montado com sucesso!");
+        hasReplacedPieces = true;
     }
 }

@@ -41,6 +41,15 @@ public class PieceManager : MonoBehaviour
         }
     }
 
+    private void shuffleRotation(GameObject piece)
+    {
+        float randomX = (Random.Range(0, 3) * 90);
+        float randomY = (Random.Range(0, 3) * 90);
+        float randomZ = (Random.Range(0, 3) * 90);
+
+        piece.transform.Rotate(randomX, randomY, randomZ);
+    }
+
     private void Start()
     {
         pieceArray = GameObject.FindGameObjectsWithTag("Peca");
@@ -55,6 +64,7 @@ public class PieceManager : MonoBehaviour
         {
             pieceArray[i].transform.position = transformArray[i];
             pieceArray[i].GetComponent<Move3D>().startPosition = transformArray[i];
+            shuffleRotation(pieceArray[i]);
         }
     }
 }

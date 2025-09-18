@@ -62,12 +62,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Level1\Move3D.cs" />
+    <Compile Include="Assets\QuickOutline\Scripts\Outline.cs" />
     <Compile Include="Assets\Scripts\Level1\RotationManager.cs" />
     <Compile Include="Assets\Scripts\Level1\LevelManager.cs" />
+    <Compile Include="Assets\Scripts\Level1\SnapAreaParent.cs" />
     <Compile Include="Assets\Scripts\menu.cs" />
+    <Compile Include="Assets\Scripts\Level1\Dialogue.cs" />
     <Compile Include="Assets\Scripts\Level1\SnapArea.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\Level1\PieceManager.cs" />
+    <Compile Include="Assets\Scripts\Level1\OutlineSelection.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\QuickOutline\Resources\Shaders\OutlineMask.shader" />
+    <None Include="Assets\QuickOutline\Readme.txt" />
+    <None Include="Assets\QuickOutline\Resources\Shaders\OutlineFill.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
