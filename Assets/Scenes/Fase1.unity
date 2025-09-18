@@ -2456,10 +2456,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de2a60eb562970b4fa58dc1a49d0dba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue: []
+  dialogue:
+  - Esternal
+  - Esternal
+  - Esternal
+  - Esternal
+  - Esternal
   dialogueIndex: 0
   dialoguePanel: {fileID: 1915593055}
-  dialogueText: {fileID: 0}
+  dialogueText: {fileID: 2118946178}
   startDialogue: 0
   readyDialogue: 0
 --- !u!4 &1386363381
@@ -2860,7 +2865,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   piecePosStatusArray: 
   pieceRotStatusArray: 
-  dialogue: {fileID: 0}
+  dialogue: {fileID: 1386363380}
   diafragmaPrefab: {fileID: 471344677}
   spawnPoint: {fileID: 1737761513}
   diafragmaDelay: 2
