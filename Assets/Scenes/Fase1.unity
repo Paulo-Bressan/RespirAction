@@ -2457,11 +2457,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-  - Esternal
-  - Esternal
-  - Esternal
-  - Esternal
-  - Esternal
+  - "Acertou!  A por\xE7\xE3o esternal do diafragma se conecta ao processo xifoide,
+    ajudando na respira\xE7\xE3o eficiente"
+  - "Excelente! As fun\xE7\xF5es respirat\xF3rias e de barreira do diafragma s\xE3o
+    realizadas principalmente pelo m\xFAsculo costal. "
+  - "Acertou! O Tend\xE3o Central atua como ponto de ancoragem, fundamental para
+    a contra\xE7\xE3o do diafragma!"
+  - "Excelente! As fun\xE7\xF5es respirat\xF3rias e de barreira do diafragma s\xE3o
+    realizadas principalmente pelo m\xFAsculo costal. "
+  - "Boa escolha! A regi\xE3o Lombar ou tamb\xE9m denominada Crural foi capturada
+    corretamente!"
   dialogueIndex: 0
   dialoguePanel: {fileID: 1915593055}
   dialogueText: {fileID: 2118946178}
