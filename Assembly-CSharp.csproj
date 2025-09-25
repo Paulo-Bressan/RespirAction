@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Level1\Move3D.cs" />
+    <Compile Include="Assets\Scripts\Level1\OutlineManager.cs" />
     <Compile Include="Assets\QuickOutline\Scripts\Outline.cs" />
     <Compile Include="Assets\UI\Scripts\MenuFases.cs" />
     <Compile Include="Assets\Scripts\Level1\RotationManager.cs" />
@@ -69,7 +70,6 @@
     <Compile Include="Assets\Scripts\Level1\SnapAreaParent.cs" />
     <Compile Include="Assets\Scripts\menu.cs" />
     <Compile Include="Assets\Scripts\Level1\Dialogue.cs" />
-    <Compile Include="Assets\UI\Scripts\MenuFasesCreator.cs" />
     <Compile Include="Assets\Scripts\Level1\SnapArea.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\Level1\PieceManager.cs" />

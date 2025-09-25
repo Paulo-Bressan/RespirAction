@@ -1,14 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Unity.Mathematics;
 
 
 public class LevelManager : MonoBehaviour
 {
     private GameObject[] pieceArray;
     private GameObject[] snapArray;
+    private Vector3[] rotationArray;
     public int[] piecePosStatusArray;
     public int[] pieceRotStatusArray;
-    private int pieceStatusSum;
+    private int piecePosStatusSum;
+    private int pieceRotStatusSum;
     public Dialogue dialogue;
     private bool dialogueEsternalLido = false;
     private bool[] dialogueLido;
@@ -54,26 +57,15 @@ public class LevelManager : MonoBehaviour
                 piecePosStatusArray[i] = 0;
         }
 
-        pieceStatusSum = 0;
+        piecePosStatusSum = 0;
         for (int i = 0; i < 5; i++)
-            if (piecePosStatusArray[i] == 1) pieceStatusSum++;
+            if (piecePosStatusArray[i] == 1) piecePosStatusSum++;
     }
 
     public bool IsPieceCorrect(GameObject piece, GameObject snap)
     {
         float tolerance = 0.1f;
-
-        for (int i = 0; i < pieceArray.Length; i++)
-        {
-            if (pieceArray[i] == piece && snapArray[i] == snap)
-            {
-                // Peça corresponde ao snap correto → checa distância
-                return Vector3.Distance(piece.transform.position, snap.transform.position) < tolerance;
-            }
-        }
-
-        // Se não encontrou correspondência, é snap errado
-        return false;
+        return Vector3.Distance(piece.transform.position, snap.transform.position) < tolerance;
     }
 
     private void Start()
@@ -81,8 +73,19 @@ public class LevelManager : MonoBehaviour
         findObjects();
 
         piecePosStatusArray = new int[5];
+        pieceRotStatusArray = new int[5];
         for (int i = 0; i < 5; i++)
+        {
             piecePosStatusArray[i] = 0;
+            pieceRotStatusArray[i] = 0;
+        }
+        
+        rotationArray = new Vector3[5];
+        rotationArray[0] = new Vector3(34.095932f, 180f, 5.00895658e-06f);
+        rotationArray[1] = new Vector3(273.892548f, -0.000100612931f, 89.3782806f);
+        rotationArray[2] = new Vector3(300.359772f, -2.3708375e-05f, 180.000015f);
+        rotationArray[3] = new Vector3(276.527863f, 0.893019617f, 271.638153f);
+        rotationArray[4] = new Vector3(288.009247f, 358.962616f, 181.835861f);
 
         InvokeRepeating("checkPositions", 1f, 1f);
 
@@ -95,7 +98,7 @@ public class LevelManager : MonoBehaviour
 
     private void Update()
     {
-        if (pieceStatusSum >= 5 && gameStatus != 1)
+        if (piecePosStatusSum >= 5 && gameStatus != 1)
         {
             gameStatus = 1;
             Debug.Log("All pieces correct");

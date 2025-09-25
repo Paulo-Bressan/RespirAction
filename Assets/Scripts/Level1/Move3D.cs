@@ -2,7 +2,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.PlayerSettings;
 
 [RequireComponent(typeof(Collider))]
 public class Move3D : MonoBehaviour
@@ -87,35 +86,10 @@ public class Move3D : MonoBehaviour
             {
                 currentSnap.GetComponent<SnapArea>().currentObject = gameObject;
                 targetPosition = currentSnap.transform.position;
-
-                // 🔹 Verificação centralizada no LevelManager
-                LevelManager levelManager = FindObjectOfType<LevelManager>();
-
-                Outline outline = GetComponent<Outline>();
-                if (outline == null) outline = gameObject.AddComponent<Outline>();
-
-                outline.OutlineColor = Color.green;
-                outline.OutlineWidth = 7f;
-
-                if (levelManager.IsPieceCorrect(gameObject, currentSnap))
-                    outline.enabled = true;   // ✅ Peça correta → acende verde
-                else
-                    outline.enabled = false;  // ❌ Peça errada → não acende
             }
-            else
-            {
-                targetPosition = startPosition;
-                // Desliga outline se não estiver em snap
-                Outline outline = GetComponent<Outline>();
-                if (outline != null) outline.enabled = false;
-            }
+            else targetPosition = startPosition;
         }
-        else
-        {
-            targetPosition = startPosition;
-            Outline outline = GetComponent<Outline>();
-            if (outline != null) outline.enabled = false;
-        }
+        else targetPosition = startPosition;
 
         playAnimation = true;
     }
