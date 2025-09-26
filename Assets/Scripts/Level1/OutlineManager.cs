@@ -7,7 +7,6 @@ public class OutlineManager : MonoBehaviour
     private Outline outline;
 
     public GameObject correctSnap;
-    private bool insideSnap;
 
     void Start()
     {
@@ -21,25 +20,27 @@ public class OutlineManager : MonoBehaviour
 
     void Update()
     {
-        if (move3D.currentSnap) insideSnap = true; else insideSnap = false;
-    }
-
-    private void OnMouseUp()
-    {
-        if (insideSnap && outline != null)
+        if (move3D.currentSnap && outline)
         {
-            outline.OutlineColor = Color.green;
             outline.OutlineWidth = 7f;
 
-            if (levelManager.IsPieceCorrect(gameObject, correctSnap))
+            switch (levelManager.IsPieceCorrect(gameObject, correctSnap))
             {
-                Debug.Log("deu siiiiiiiiiiiim");
-                outline.enabled = true;   // ✅ Peça correta → acende verde
-            }
-            else
-            {
-                Debug.Log("n deuuuuuuuuuuu");
-                outline.enabled = false;  // ❌ Peça errada → não acende
+                case 0:
+                    // Peça errada - não acende
+                    outline.enabled = false;  
+                    break;
+                
+                case 1:
+                    // Peça torta - acende amarelo
+                    outline.OutlineColor = Color.yellow;
+                    outline.enabled = true;  
+                    break;
+                case 2:
+                    // Peça correta - acende verde
+                    outline.OutlineColor = Color.green;
+                    outline.enabled = true;   
+                    break;
             }
         }
         else

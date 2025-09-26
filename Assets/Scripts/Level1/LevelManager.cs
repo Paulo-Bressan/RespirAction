@@ -62,10 +62,18 @@ public class LevelManager : MonoBehaviour
             if (piecePosStatusArray[i] == 1) piecePosStatusSum++;
     }
 
-    public bool IsPieceCorrect(GameObject piece, GameObject snap)
+    public int IsPieceCorrect(GameObject piece, GameObject snap)
     {
         float tolerance = 0.1f;
-        return Vector3.Distance(piece.transform.position, snap.transform.position) < tolerance;
+        //Debug.Log("Piece pos = " + piece.transform.position + ", Snap pos = " + snap.transform.position);
+        if (Vector3.Distance(piece.transform.position, snap.transform.position) < tolerance)
+        {
+            if (Quaternion.Angle(piece.transform.rotation, snap.transform.rotation) < tolerance)
+                return 2;
+            else
+                return 1;
+        }
+        else return 0;
     }
 
     private void Start()
