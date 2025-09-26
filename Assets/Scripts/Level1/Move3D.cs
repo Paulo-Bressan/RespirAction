@@ -2,6 +2,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.PlayerSettings;
 
 [RequireComponent(typeof(Collider))]
 public class Move3D : MonoBehaviour
@@ -87,9 +88,15 @@ public class Move3D : MonoBehaviour
                 currentSnap.GetComponent<SnapArea>().currentObject = gameObject;
                 targetPosition = currentSnap.transform.position;
             }
-            else targetPosition = startPosition;
+            else
+            {
+                targetPosition = startPosition;
+            }
         }
-        else targetPosition = startPosition;
+        else
+        {
+            targetPosition = startPosition;
+        }
 
         playAnimation = true;
     }
