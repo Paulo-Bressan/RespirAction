@@ -6,8 +6,7 @@ public class LevelManager : MonoBehaviour
 {
     private GameObject[] pieceArray;
     private GameObject[] snapArray;
-    public int[] piecePosStatusArray;
-    public int[] pieceRotStatusArray;
+    public int[] pieceStatusArray;
     private int pieceStatusSum;
     public Dialogue dialogue;
     private bool dialogueEsternalLido = false;
@@ -45,44 +44,35 @@ public class LevelManager : MonoBehaviour
     {
         for (int i = 0; i < 5; i++)
         {
-            float distance = Vector3.Distance(pieceArray[i].transform.position, snapArray[i].transform.position);
-            if (distance < 0.1f) // Se estiver muito próximo (0.1 unidades)
-            {
-                piecePosStatusArray[i] = 1;
-            }
-            else
-                piecePosStatusArray[i] = 0;
+            pieceStatusArray[i] = IsPieceCorrect(pieceArray[i], snapArray[i]);
         }
 
         pieceStatusSum = 0;
         for (int i = 0; i < 5; i++)
-            if (piecePosStatusArray[i] == 1) pieceStatusSum++;
+            if (pieceStatusArray[i] == 2) pieceStatusSum++;
     }
 
-    public bool IsPieceCorrect(GameObject piece, GameObject snap)
+    public int IsPieceCorrect(GameObject piece, GameObject snap)
     {
-        float tolerance = 0.1f;
-
-        for (int i = 0; i < pieceArray.Length; i++)
+        float tolerance = 1f;
+        //Debug.Log("Piece pos = " + piece.transform.position + ", Snap pos = " + snap.transform.position);
+        if (Vector3.Distance(piece.transform.position, snap.transform.position) < tolerance)
         {
-            if (pieceArray[i] == piece && snapArray[i] == snap)
-            {
-                // Peça corresponde ao snap correto → checa distância
-                return Vector3.Distance(piece.transform.position, snap.transform.position) < tolerance;
-            }
+            if (Quaternion.Angle(piece.transform.rotation, snap.transform.rotation) < tolerance)
+                return 2;
+            else
+                return 1;
         }
-
-        // Se não encontrou correspondência, é snap errado
-        return false;
+        else return 0;
     }
 
     private void Start()
     {
         findObjects();
 
-        piecePosStatusArray = new int[5];
+        pieceStatusArray = new int[5];
         for (int i = 0; i < 5; i++)
-            piecePosStatusArray[i] = 0;
+            pieceStatusArray[i] = 0;
 
         InvokeRepeating("checkPositions", 1f, 1f);
 
@@ -105,7 +95,7 @@ public class LevelManager : MonoBehaviour
         }
         for (int i = 0; i < 5; i++)
         {
-            if (piecePosStatusArray[i] == 1 && !dialogueLido[i])
+            if (pieceStatusArray[i] == 2 && !dialogueLido[i])
             {
                 dialogue.dialogueIndex = i;
                 dialogue.readyDialogue = true;
