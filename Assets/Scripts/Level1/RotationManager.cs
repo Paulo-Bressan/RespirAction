@@ -5,7 +5,6 @@ public class RotationManager : MonoBehaviour
     // A velocidade da rotação
     public float rotationSpeed = 5f;
     
-    // O objeto que está selecionado
     private Transform selectedObject;
     
     // A rotação alvo do objeto selecionado
@@ -13,7 +12,7 @@ public class RotationManager : MonoBehaviour
 
     void Update()
     {
-        // Lógica de Seleção
+        // Lógica de Seleção 
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
@@ -21,7 +20,7 @@ public class RotationManager : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                // A gente verifica se o objeto clicado tem a tag "Peca"
+                // verifica se o objeto clicado tem a tag "Peca"
                 if (hit.transform.CompareTag("Peca"))
                 {
                     // Se sim, ele se torna o objeto selecionado
@@ -32,31 +31,44 @@ public class RotationManager : MonoBehaviour
             }
         }
         
-        //  Lógica de Rotação
+        // Lógica de Rotação 
         if (selectedObject != null)
         {
-            // Verifica a entrada do teclado para as rotações
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                targetRotation *= Quaternion.Euler(90, 0, 0);
-            }
-            if (Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                targetRotation *= Quaternion.Euler(-90, 0, 0);
-            }
+            // armazenar o incremento da rotação em um único frame
+            Quaternion rotationDelta = Quaternion.identity;
+
+            // Rotação Horizontal 
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                targetRotation *= Quaternion.Euler(0, 90, 0);
+                // Gira 90 graus em torno do eixo Y (Vector3.up)
+                rotationDelta = Quaternion.AngleAxis(90, Vector3.up);
             }
-            if (Input.GetKeyDown(KeyCode.RightArrow))
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                targetRotation *= Quaternion.Euler(0, -90, 0);
+                // Gira -90 graus em torno do eixo Y (Vector3.up)
+                rotationDelta = Quaternion.AngleAxis(-90, Vector3.up);
             }
-
-            //Eixos X e Y estão sendo rotacionados : Observando a execução vejo que ha uma alteração no eixo Z em alguns momentos, creio que
-            // Seja devido a profundidade do objeto alterar em algumas rotações 
+            // Rotação Vertical 
+            else if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                // Gira 90 graus em torno do eixo X 
+                rotationDelta = Quaternion.AngleAxis(90, Vector3.right);
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                // Gira -90 graus em torno do eixo X
+                rotationDelta = Quaternion.AngleAxis(-90, Vector3.right);
+            }
+            
+            // Aplica a rotação de "Mundo" à rotação alvo atual.
+            // A ordem é importante: (Nova Rotação) * (Rotação Atual)
+            if (rotationDelta != Quaternion.identity)
+            {
+                targetRotation = rotationDelta * targetRotation;
+            }
 
             // Interpolação suave para a rotação alvo
+            // O objeto só se move quando a rotação alvo é diferente da rotação atual.
             selectedObject.rotation = Quaternion.Slerp(selectedObject.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
     }

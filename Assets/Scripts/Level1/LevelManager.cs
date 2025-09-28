@@ -5,7 +5,7 @@ using System.Collections;
 public class LevelManager : MonoBehaviour
 {
     private GameObject[] pieceArray;
-    private GameObject[] snapArray;
+    public GameObject[] snapArray;
     public int[] pieceStatusArray;
     private int pieceStatusSum;
     public Dialogue dialogue;
@@ -44,7 +44,7 @@ public class LevelManager : MonoBehaviour
     {
         for (int i = 0; i < 5; i++)
         {
-            pieceStatusArray[i] = IsPieceCorrect(pieceArray[i], snapArray[i]);
+            pieceStatusArray[i] = IsPieceCorrect(pieceArray[i], snapArray[i], 0.1f, 5f);
         }
 
         pieceStatusSum = 0;
@@ -52,13 +52,12 @@ public class LevelManager : MonoBehaviour
             if (pieceStatusArray[i] == 2) pieceStatusSum++;
     }
 
-    public int IsPieceCorrect(GameObject piece, GameObject snap)
+    public int IsPieceCorrect(GameObject piece, GameObject snap, float posTolerance, float rotTolerance)
     {
-        float tolerance = 1f;
         //Debug.Log("Piece pos = " + piece.transform.position + ", Snap pos = " + snap.transform.position);
-        if (Vector3.Distance(piece.transform.position, snap.transform.position) < tolerance)
+        if (Vector3.Distance(piece.transform.position, snap.transform.position) < posTolerance)
         {
-            if (Quaternion.Angle(piece.transform.rotation, snap.transform.rotation) < tolerance)
+            if (Quaternion.Angle(piece.transform.rotation, snap.transform.rotation) < rotTolerance)
                 return 2;
             else
                 return 1;
