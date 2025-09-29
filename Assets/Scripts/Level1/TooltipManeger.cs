@@ -3,7 +3,7 @@ using TMPro;
 
 public class TooltipManager : MonoBehaviour
 {
-    // Referência para os elementos de UI que criamos no Editor
+    // Referï¿½ncia para os elementos de UI que criamos no Editor
     public GameObject tooltipPanel;
     public TextMeshProUGUI tooltipText;
 
@@ -21,7 +21,7 @@ public class TooltipManager : MonoBehaviour
 
     void Update()
     {
-        // Cria um raio a partir da posição do mouse na tela
+        // Cria um raio a partir da posiï¿½ï¿½o do mouse na tela
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
@@ -34,8 +34,8 @@ public class TooltipManager : MonoBehaviour
                 // Ativa o painel do tooltip
                 tooltipPanel.SetActive(true);
 
-                // Atualiza a posição do painel para seguir o mouse
-                // Adicionamos um pequeno deslocamento (offset) para que o cursor não fique sobre o tooltip
+                // Atualiza a posiï¿½ï¿½o do painel para seguir o mouse
+                // Adicionamos um pequeno deslocamento (offset) para que o cursor nï¿½o fique sobre o tooltip
                 tooltipPanel.transform.position = Input.mousePosition + new Vector3(200, -75, 0);
 
                 // Define o texto do tooltip com base no nome do objeto atingido
@@ -43,42 +43,63 @@ public class TooltipManager : MonoBehaviour
             }
             else
             {
-                // Se o raio atingiu algo que não é uma peça, esconde o tooltip
+                // Se o raio atingiu algo que nï¿½o ï¿½ uma peï¿½a, esconde o tooltip
                 tooltipPanel.SetActive(false);
             }
         }
         else
         {
-            // Se o raio não atingiu nada, esconde o tooltip
+            // Se o raio nï¿½o atingiu nada, esconde o tooltip
             tooltipPanel.SetActive(false);
         }
     }
 
-    // Define o texto da descrição baseado no nome da peça
+    // Define o texto da descriï¿½ï¿½o baseado no nome da peï¿½a
     private void SetTooltipText(string pieceName)
     {
         string description = "";
 
-        // O switch-case que você sugeriu para mapear nomes para descrições
+        // O switch-case que vocï¿½ sugeriu para mapear nomes para descriï¿½ï¿½es
         switch (pieceName)
         {
-            case "Esternal":
-                description = "Parte esternal";
+            case "Tendao":
+                description = "TendÃ£o Central";
                 break;
-            case "CostalEsq":
-                description = "Parte costal esquerda";
+            case "Trapezio":
+                description = "TrapÃ©zio";
                 break;
             case "CostalDir":
-                description = "Parte costal direita";
+                description = "Costal Direito";
                 break;
-            case "Tendao":
-                description = "Centro tendíneo";
+            case "CostalEsq":
+                description = "Costal Esquerdo";
+                break;
+            case "Esternal":
+                description = "Esternal";
+                break;
+            case "EsternoCleidoM1":
+                description = "EsternocleidomastÃ³ideo";
+                break;
+            case "EsternoCleidoM2":
+                description = "EsternocleidomastÃ³ideo";
+                break;
+            case "Intercostais":
+                description = "Intercostais Externos";
                 break;
             case "Lombar":
-                description = "Parte lombar";
+                description = "Lombar";
+                break;
+            case "OblExterno":
+                description = "OblÃ­quo Externo";
+                break;
+            case "PsoasMaior":
+                description = "Psoas Maior";
+                break;
+            case "QuadLombar":
+                description = "Quadrado Lombar";
                 break;
             default:
-                // Um texto padrão caso a peça não seja encontrada no switch
+                // Um texto padrï¿½o caso a peï¿½a nï¿½o seja encontrada no switch
                 description = "";
                 break;
         }
