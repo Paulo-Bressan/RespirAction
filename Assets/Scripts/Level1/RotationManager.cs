@@ -38,26 +38,26 @@ public class RotationManager : MonoBehaviour
             Quaternion rotationDelta = Quaternion.identity;
 
             // Rotação Horizontal 
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            if (Input.GetKey(KeyCode.LeftArrow))
             {
                 // Gira 90 graus em torno do eixo Y (Vector3.up)
-                rotationDelta = Quaternion.AngleAxis(90, Vector3.up);
+                rotationDelta = Quaternion.AngleAxis(5, Vector3.up);
             }
-            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            else if (Input.GetKey(KeyCode.RightArrow))
             {
                 // Gira -90 graus em torno do eixo Y (Vector3.up)
-                rotationDelta = Quaternion.AngleAxis(-90, Vector3.up);
+                rotationDelta = Quaternion.AngleAxis(-5, Vector3.up);
             }
             // Rotação Vertical 
-            else if (Input.GetKeyDown(KeyCode.UpArrow))
+            else if (Input.GetKey(KeyCode.UpArrow))
             {
                 // Gira 90 graus em torno do eixo X 
-                rotationDelta = Quaternion.AngleAxis(90, Vector3.right);
+                rotationDelta = Quaternion.AngleAxis(5, Vector3.right);
             }
-            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            else if (Input.GetKey(KeyCode.DownArrow))
             {
                 // Gira -90 graus em torno do eixo X
-                rotationDelta = Quaternion.AngleAxis(-90, Vector3.right);
+                rotationDelta = Quaternion.AngleAxis(-5, Vector3.right);
             }
             
             // Aplica a rotação de "Mundo" à rotação alvo atual.

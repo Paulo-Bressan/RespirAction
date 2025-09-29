@@ -44,7 +44,7 @@ public class LevelManager : MonoBehaviour
     {
         for (int i = 0; i < 5; i++)
         {
-            pieceStatusArray[i] = IsPieceCorrect(pieceArray[i], snapArray[i], 0.1f, 5f);
+            pieceStatusArray[i] = IsPieceCorrect(pieceArray[i], snapArray[i], 0.1f, 25f);
         }
 
         pieceStatusSum = 0;

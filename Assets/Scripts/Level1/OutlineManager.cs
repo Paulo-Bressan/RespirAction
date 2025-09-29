@@ -24,7 +24,7 @@ public class OutlineManager : MonoBehaviour
         {
             outline.OutlineWidth = 7f;
 
-            switch (levelManager.IsPieceCorrect(gameObject, correctSnap, 0.1f, 5f))
+            switch (levelManager.IsPieceCorrect(gameObject, correctSnap, 0.1f, 25f))
             {
                 case 0:
                     // Peça errada - não acende
