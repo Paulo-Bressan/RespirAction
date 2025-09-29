@@ -4,7 +4,7 @@ public class menu : MonoBehaviour
 {
     public void Jogar()
     {
-        SceneManager.LoadScene("Fase1");
+        SceneManager.LoadScene("MenuFases");
 
 
     }
@@ -21,5 +21,12 @@ public class menu : MonoBehaviour
     {
         Debug.Log("Saiu do jogo");
         Application.Quit();
+    }
+     
+    public void Voltar()
+    {
+        SceneManager.LoadScene("Menu");
+
+
     }
 }
