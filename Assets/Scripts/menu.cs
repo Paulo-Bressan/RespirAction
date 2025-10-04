@@ -8,6 +8,14 @@ public class menu : MonoBehaviour
 
 
     }
+ 
+    public void fase1()
+    {
+        SceneManager.LoadScene("Fase1");
+
+
+    }
+
     public void Abrir_opcao()
     {
 

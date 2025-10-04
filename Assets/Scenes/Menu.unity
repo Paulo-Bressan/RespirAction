@@ -536,7 +536,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 558306766}
-  - component: {fileID: 558306765}
+  - component: {fileID: 558306767}
   m_Layer: 0
   m_Name: Menu manager
   m_TagString: Untagged
@@ -544,18 +544,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &558306765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 558306764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 848c2d2059f94504085bb7dae20ae82b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &558306766
 Transform:
   m_ObjectHideFlags: 0
@@ -571,6 +559,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &558306767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558306764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848c2d2059f94504085bb7dae20ae82b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &675712640
 GameObject:
   m_ObjectHideFlags: 0
@@ -1345,7 +1345,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 558306765}
+      - m_Target: {fileID: 558306767}
         m_TargetAssemblyTypeName: menu, Assembly-CSharp
         m_MethodName: Jogar
         m_Mode: 1
@@ -1480,6 +1480,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1477211875}
   - component: {fileID: 1477211874}
+  - component: {fileID: 1477211876}
   m_Layer: 0
   m_Name: Audio Source
   m_TagString: Untagged
@@ -1600,6 +1601,18 @@ Transform:
   - {fileID: 777627396}
   m_Father: {fileID: 1045311700}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1477211876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477211873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27ceb2f07c7e96d459cf091ce1c49b7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1503146506
 GameObject:
   m_ObjectHideFlags: 0
@@ -1683,7 +1696,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 558306765}
+      - m_Target: {fileID: 558306767}
         m_TargetAssemblyTypeName: menu, Assembly-CSharp
         m_MethodName: Fechar_jogo
         m_Mode: 1
@@ -1949,6 +1962,23 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1 &1823608157 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7205748980501938588, guid: d93c0825f2ef3ff4ba39be32cf646d61, type: 3}
+  m_PrefabInstance: {fileID: 5668601897105138330}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1823608158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823608157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27ceb2f07c7e96d459cf091ce1c49b7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5668601897105138330
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2016,7 +2046,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7205748980501938588, guid: d93c0825f2ef3ff4ba39be32cf646d61, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1823608158}
   m_SourcePrefab: {fileID: 100100000, guid: d93c0825f2ef3ff4ba39be32cf646d61, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\Level1\RotationManager.cs" />
     <Compile Include="Assets\Scripts\Level1\LevelManager.cs" />
     <Compile Include="Assets\Scripts\Level1\SnapAreaParent.cs" />
+    <Compile Include="Assets\Scripts\descrições.cs" />
     <Compile Include="Assets\Scripts\menu.cs" />
     <Compile Include="Assets\Scripts\Level1\Dialogue.cs" />
     <Compile Include="Assets\UI\Scripts\MenuFasesCreator.cs" />
