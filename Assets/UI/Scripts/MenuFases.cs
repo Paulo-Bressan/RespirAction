@@ -25,7 +25,9 @@ public class MenuFases : MonoBehaviour
         fase3Button.interactable = (faseDesbloqueada >= 3);
 
         // Adiciona eventos aos botões
-        fase1Button.onClick.AddListener(() => CarregarFase("Fase1"));
+        // ALTERAÇÃO AQUI: Fase 1 agora carrega a cena do vídeo, que por sua vez carregará a Fase 1.
+        fase1Button.onClick.AddListener(() => CarregarFase("Cutscene1")); 
+        
         fase2Button.onClick.AddListener(() => CarregarFase("Fase2"));
         fase3Button.onClick.AddListener(() => CarregarFase("Fase3"));
         creditosButton.onClick.AddListener(() => CarregarFase("Creditos"));

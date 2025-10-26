@@ -12,7 +12,7 @@ public class MenuScript : MonoBehaviour
     public void AbrirFase1()
     {
         Debug.Log("Carregando Fase1");
-        SceneManager.LoadScene("Fase1");
+        SceneManager.LoadScene("Cutscene1");
     }
 
     public void Opcoes()
