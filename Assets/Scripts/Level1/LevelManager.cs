@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Audio;
 
 
 public class LevelManager : MonoBehaviour
 {
     private GameObject[] pieceArray;
     public GameObject[] snapArray;
+    public GameObject audioManager;
     public int[] pieceStatusArray;
     private int pieceStatusSum;
     public Dialogue dialogue;
@@ -44,7 +46,7 @@ public class LevelManager : MonoBehaviour
     {
         for (int i = 0; i < 5; i++)
         {
-            pieceStatusArray[i] = IsPieceCorrect(pieceArray[i], snapArray[i], 0.1f, 25f);
+            pieceStatusArray[i] = IsPieceCorrect(pieceArray[i], snapArray[i], 0.1f, 45f);
         }
 
         pieceStatusSum = 0;
@@ -99,6 +101,8 @@ public class LevelManager : MonoBehaviour
                 dialogue.dialogueIndex = i;
                 dialogue.readyDialogue = true;
                 dialogueLido[i] = true;
+
+                audioManager.GetComponent<AudioManager>().PlayCorrectSound();
             }
         }
     }

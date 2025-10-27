@@ -2,7 +2,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.PlayerSettings;
 
 [RequireComponent(typeof(Collider))]
 public class Move3D : MonoBehaviour
@@ -17,6 +16,8 @@ public class Move3D : MonoBehaviour
 
     public Vector3 startPosition;
     private Vector3 targetPosition;
+
+    public GameObject audioManager;
 
     void Start()
     {
@@ -71,6 +72,8 @@ public class Move3D : MonoBehaviour
             currentSnap.GetComponent<SnapArea>().currentObject = null;
             currentSnap = null;
         }
+
+        audioManager.GetComponent<AudioManager>().PlayGrabSound();
     }
 
     private void OnMouseUp()
@@ -98,6 +101,7 @@ public class Move3D : MonoBehaviour
             targetPosition = startPosition;
         }
 
+        audioManager.GetComponent<AudioManager>().PlayReleaseSound();
         playAnimation = true;
     }
 
