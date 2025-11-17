@@ -5,6 +5,9 @@ public class MenuScript : MonoBehaviour
 {
     private AudioManagerMenu audioManagerMenu;
 
+    public string cenaPosterior;
+    public string cenaAnterior;
+
     public void Start()
     {
         audioManagerMenu = FindFirstObjectByType<AudioManagerMenu>();
@@ -34,26 +37,25 @@ public class MenuScript : MonoBehaviour
         Debug.Log("Saiu do jogo");
         Application.Quit();
     }
-     
+    
+    public void Continuar()
+    {
+        audioManagerMenu.PlaySelectSound();
+
+        Scene currentScene = SceneManager.GetActiveScene();
+        Debug.Log("Avancando de " + currentScene.name + " para " + cenaAnterior);
+
+        SceneManager.LoadScene(cenaPosterior);
+    }
+
     public void Voltar()
     {
         audioManagerMenu.PlaySelectSound();
 
-        Scene scene = SceneManager.GetActiveScene();
-        Debug.Log("Voltando de " + scene.name);
+        Scene currentScene = SceneManager.GetActiveScene();
+        Debug.Log("Voltando de " + currentScene.name + " para " + cenaAnterior);
 
-        
-        switch (scene.name)
-        {
-            case "Fase1":
-                Debug.Log("para Menu");
-                SceneManager.LoadScene("Menu");
-            break;
+        SceneManager.LoadScene(cenaAnterior);
 
-            case "Fase2":
-                // fase 2, etc
-            break;
-        }
-        
     }
 }

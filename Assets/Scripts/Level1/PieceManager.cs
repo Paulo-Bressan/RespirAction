@@ -43,11 +43,19 @@ public class PieceManager : MonoBehaviour
 
     private void shuffleRotation(GameObject piece)
     {
+        /*
         float randomX = (Random.Range(0, 3) * 90);
         float randomY = (Random.Range(0, 3) * 90);
         float randomZ = (Random.Range(0, 3) * 90);
 
         piece.transform.Rotate(randomX, randomY, randomZ);
+        */
+
+        float RandomY = (Random.Range(0, 3) * 90);
+
+        Quaternion targetRotation = Quaternion.AngleAxis(RandomY, Vector3.up) * piece.transform.rotation;
+
+        piece.transform.rotation = targetRotation;
     }
 
     private void Start()
