@@ -8,34 +8,13 @@ public class MenuScript : MonoBehaviour
     public string cenaPosterior;
     public string cenaAnterior;
 
+    public string cenaBotao1;
+    public string cenaBotao2;
+    public string cenaBotao3;
+
     public void Start()
     {
         audioManagerMenu = FindFirstObjectByType<AudioManagerMenu>();
-    }
-    public void Jogar()
-    {
-        audioManagerMenu.PlaySelectSound();
-        Debug.Log("Carregando MenuFases");
-        SceneManager.LoadScene("MenuFases");
-    }
- 
-    public void AbrirFase1()
-    {
-        audioManagerMenu.PlaySelectSound();
-        Debug.Log("Carregando Fase1");
-        SceneManager.LoadScene("Cutscene1");
-    }
-
-    public void Opcoes()
-    {
-
-    }
-    
-    public void Sair()
-    {
-        audioManagerMenu.PlaySelectSound();
-        Debug.Log("Saiu do jogo");
-        Application.Quit();
     }
     
     public void Continuar()
@@ -57,5 +36,36 @@ public class MenuScript : MonoBehaviour
 
         SceneManager.LoadScene(cenaAnterior);
 
+    }
+
+    public void Botao1()
+    {
+        audioManagerMenu.PlaySelectSound();
+        Debug.Log("Carregando cena " + cenaBotao1);
+
+        SceneManager.LoadScene(cenaBotao1);
+    }
+
+    public void Botao2()
+    {
+        audioManagerMenu.PlaySelectSound();
+        Debug.Log("Carregando cena " + cenaBotao2);
+
+        SceneManager.LoadScene(cenaBotao2);
+    }
+
+    public void Botao3()
+    {
+        audioManagerMenu.PlaySelectSound();
+        Debug.Log("Carregando cena " + cenaBotao3);
+
+        SceneManager.LoadScene(cenaBotao3);
+    }
+
+    public void Sair()
+    {
+        audioManagerMenu.PlaySelectSound();
+        Debug.Log("Saiu do jogo");
+        Application.Quit();
     }
 }

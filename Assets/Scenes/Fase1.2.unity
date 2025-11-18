@@ -965,8 +965,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294442886
-  m_fontColor: {r: 0.5235849, g: 1, b: 0.96705645, a: 1}
+    rgba: 4294827965
+  m_fontColor: {r: 0.7429245, g: 0.8736742, b: 0.990566, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1444,7 +1444,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cenaPosterior: 
-  cenaAnterior: Menu
+  cenaAnterior: MenuFases
+  cenaBotao1: 
+  cenaBotao2: 
+  cenaBotao3: 
 --- !u!1 &1661628915
 GameObject:
   m_ObjectHideFlags: 0
@@ -1922,8 +1925,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294442886
-  m_fontColor: {r: 0.5254902, g: 1, b: 0.96862745, a: 1}
+    rgba: 4294827966
+  m_fontColor: {r: 0.74509805, g: 0.8745098, b: 0.99215686, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
