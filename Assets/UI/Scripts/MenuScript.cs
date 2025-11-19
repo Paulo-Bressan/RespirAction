@@ -41,6 +41,7 @@ public class MenuScript : MonoBehaviour
     public void Botao1()
     {
         audioManagerMenu.PlaySelectSound();
+
         Debug.Log("Carregando cena " + cenaBotao1);
 
         SceneManager.LoadScene(cenaBotao1);
@@ -49,6 +50,7 @@ public class MenuScript : MonoBehaviour
     public void Botao2()
     {
         audioManagerMenu.PlaySelectSound();
+
         Debug.Log("Carregando cena " + cenaBotao2);
 
         SceneManager.LoadScene(cenaBotao2);
@@ -57,6 +59,7 @@ public class MenuScript : MonoBehaviour
     public void Botao3()
     {
         audioManagerMenu.PlaySelectSound();
+
         Debug.Log("Carregando cena " + cenaBotao3);
 
         SceneManager.LoadScene(cenaBotao3);
@@ -65,6 +68,7 @@ public class MenuScript : MonoBehaviour
     public void Sair()
     {
         audioManagerMenu.PlaySelectSound();
+
         Debug.Log("Saiu do jogo");
         Application.Quit();
     }

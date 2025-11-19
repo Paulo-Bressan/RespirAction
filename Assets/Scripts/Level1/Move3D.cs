@@ -73,7 +73,10 @@ public class Move3D : MonoBehaviour
             currentSnap = null;
         }
 
-        audioManager.GetComponent<AudioManager>().PlayGrabSound();
+        if (audioManager)
+            audioManager.GetComponent<AudioManagerScene>().PlaySound(0);
+        else
+            Debug.Log("MISSING AUDIO MANAGER");
     }
 
     private void OnMouseUp()
@@ -101,7 +104,11 @@ public class Move3D : MonoBehaviour
             targetPosition = startPosition;
         }
 
-        audioManager.GetComponent<AudioManager>().PlayReleaseSound();
+        if (audioManager)
+            audioManager.GetComponent<AudioManagerScene>().PlaySound(1);
+        else
+            Debug.Log("MISSING AUDIO MANAGER");
+
         playAnimation = true;
     }
 

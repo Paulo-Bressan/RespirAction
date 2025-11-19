@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Peca
   - Snap
+  - MusicPlayer
   layers:
   - Default
   - TransparentFX

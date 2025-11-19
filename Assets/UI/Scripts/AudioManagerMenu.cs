@@ -13,18 +13,16 @@ public class AudioManagerMenu : MonoBehaviour
     private void Awake()
     {
         // Configuração do Singleton
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
+        if (instance != null)
+            Destroy(gameObject);
         else
         {
-            Destroy(gameObject);
-        }
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
 
-        // Pega o componente AudioSource anexado a este GameObject
-        audioSource = GetComponent<AudioSource>();
+            // Pega o componente AudioSource anexado a este GameObject
+            audioSource = GetComponent<AudioSource>();
+        }
     }
 
     // Métodos públicos para tocar cada som

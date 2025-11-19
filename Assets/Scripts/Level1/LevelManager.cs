@@ -103,7 +103,10 @@ public class LevelManager : MonoBehaviour
                 dialogue.readyDialogue = true;
                 dialogueLido[i] = true;
 
-                audioManager.GetComponent<AudioManager>().PlayCorrectSound();
+                if (audioManager)
+                    audioManager.GetComponent<AudioManagerScene>().PlaySound(2);
+                else
+                    Debug.Log("MISSING AUDIO MANAGER");
             }
         }
     }
