@@ -7,6 +7,8 @@ TagManager:
   - Peca
   - Snap
   - MusicPlayer
+  - checkpoint
+  - death
   layers:
   - Default
   - TransparentFX
@@ -14,7 +16,7 @@ TagManager:
   - Object
   - Water
   - UI
-  - 
+  - Ground
   - 
   - 
   - 
