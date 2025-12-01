@@ -74,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         // LEITURA DE INPUT
-        moveInput = Input.GetAxisRaw("Horizontal") * -1f;
+        moveInput = Input.GetAxisRaw("Horizontal");
 
         // ATUALIZAÇÃO DE ANIMAÇÃO
         // Define se está correndo se houver input diferente de zero
@@ -87,14 +87,14 @@ public class PlayerMovement : MonoBehaviour
         if (isUpsideDown)
         {
             // Quando invertido, a lógica de virar o sprite também se inverte
-            if (moveInput > 0) spriteRenderer.flipX = true;
-            else if (moveInput < 0) spriteRenderer.flipX = false;
+            if (moveInput < 0) spriteRenderer.flipX = true;
+            else if (moveInput > 0) spriteRenderer.flipX = false;
         }
         else
         {
             // Comportamento padrão
-            if (moveInput > 0) spriteRenderer.flipX = false;
-            else if (moveInput < 0) spriteRenderer.flipX = true;
+            if (moveInput < 0) spriteRenderer.flipX = false;
+            else if (moveInput > 0) spriteRenderer.flipX = true;
         }
 
         // LÓGICA DO TIMER DE GRAVIDADE
