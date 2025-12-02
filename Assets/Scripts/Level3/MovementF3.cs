@@ -12,7 +12,8 @@ public class PlayerMovement : MonoBehaviour
     // VARIÁVEIS DE CONFIGURAÇÃO DE FÍSICA E MOVIMENTO
     // =================================================================
 
-    private static InteractiveTile[] allInteractiveTiles; 
+    private List<InteractiveTile> allInteractiveTiles = new List<InteractiveTile>(); 
+    
     private InteractiveTile currentTargetTile = null;
 
     [Header("Movimento")]
@@ -81,40 +82,75 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        // Obtém as referências dos componentes
+        // --- 1. Inicialização de Componentes ---
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>(); 
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        // Inicializa os timers e estados
+        // Timers e Gravidade
         gravityFlipTimer = timeUntilFlip;
         defaultGravityScale = rb.gravityScale;
         
-        // Define o ponto de respawn inicial e salva o sprite padrão
+        // Respawn e Sprite
         respawnPoint = transform.position;
-        if (spriteRenderer != null)
-        {
-            defaultSprite = spriteRenderer.sprite;
-        }
+        if (spriteRenderer != null) defaultSprite = spriteRenderer.sprite;
 
-        // Obtém a referência ao braço rotativo e garante que ele comece desligado
+        // Braço Mecânico
         if (armObject != null)
         {
             armRotator = armObject.GetComponent<ArmRotator>();
             armObject.SetActive(false); 
         }
 
-        // Encontra todos os tiles interativos na cena
-        allInteractiveTiles = FindObjectsOfType<InteractiveTile>();
-        if (allInteractiveTiles.Length > 0)
+        // --- 2. Configuração dos Tiles Interativos ---
+
+        // Converte o array encontrado para uma Lista manipulável
+        allInteractiveTiles = new List<InteractiveTile>(FindObjectsByType<InteractiveTile>(FindObjectsSortMode.None));
+
+        // [IMPORTANTE] Força TODOS os tiles a ficarem TRAVADOS (não interativos) inicialmente.
+        // Isso resolve o problema de tiles ficarem ativos indevidamente.
+        foreach (var tile in allInteractiveTiles)
         {
-            // Escolhe um índice aleatório dentro do tamanho do array
-            int randomIndex = Random.Range(0, allInteractiveTiles.Length); 
-            
-            currentTargetTile = allInteractiveTiles[randomIndex];
+            tile.SetAsTarget(false);
+        }
+
+        // Log de conferência
+        Debug.Log($"[Start] Tiles encontrados e resetados: {allInteractiveTiles.Count}");
+
+        if (allInteractiveTiles.Count > 0)
+        {
+            InteractiveTile startingTile = null;
+
+            // Busca especificamente pelo tile chamado "tileHurt (1)"
+            foreach (var tile in allInteractiveTiles)
+            {
+                // .Trim() remove espaços invisíveis que podem causar erro na busca
+                if (tile.name.Trim().Equals("tileHurt (1)")) 
+                {
+                    startingTile = tile;
+                    break; 
+                }
+            }
+
+            // Define quem será o alvo ativo
+            if (startingTile != null)
+            {
+                currentTargetTile = startingTile;
+                Debug.Log("🎯 Alvo Inicial Definido: " + currentTargetTile.name);
+            }
+            else
+            {
+                // Fallback: Se não achar o nome exato, pega o primeiro da lista
+                Debug.LogWarning("⚠️ 'tileHurt (1)' não encontrado. Usando o primeiro da lista.");
+                currentTargetTile = allInteractiveTiles[0];
+            }
+
+            // [IMPORTANTE] Só agora ativamos o tile escolhido
             currentTargetTile.SetAsTarget(true);
-            
-            Debug.Log("Tile Inicial escolhido aleatoriamente: " + currentTargetTile.name);
+        }
+        else
+        {
+            Debug.LogError("⛔ ERRO: Nenhum InteractiveTile encontrado na cena!");
         }
     }
 
@@ -266,73 +302,50 @@ public class PlayerMovement : MonoBehaviour
     /// <summary>
     /// Encontra um Tile Interativo aleatório (que não seja o destruído) e move a câmera para pre-visualizá-lo.
     /// </summary>
-    public void TeleportToRandomCheckpoint(GameObject destroyedTile)
-{
-    if (allInteractiveTiles == null || allInteractiveTiles.Length == 0 || cameraTargetOverride == null)
+    public void TeleportToRandomCheckpoint(GameObject destroyedTileObj)
     {
-        Debug.LogWarning("Configuração de foco incompleta ou Tiles Interativos insuficientes.");
-        return; 
-    }
-    
-    // 1. Desabilita o tile que estava sendo interagido (se ainda não foi desabilitado por outra lógica)
-    if (currentTargetTile != null)
-    {
-        currentTargetTile.SetAsTarget(false);
+        // Verifica se a lista existe
+        if (allInteractiveTiles == null || allInteractiveTiles.Count == 0)
+        {
+            Debug.Log("🎉 Todos os tiles já foram finalizados.");
+            return;
+        }
+
+        // =================================================================
+        // LÓGICA DE REMOÇÃO (Substitui a função RemoveDestroyedTile)
+        // =================================================================
+        // Como 'allInteractiveTiles' agora é uma List<>, podemos remover direto.
+        // O RemoveAll procura na lista quem tem o mesmo GameObject e remove.
+        allInteractiveTiles.RemoveAll(tile => tile.gameObject == destroyedTileObj);
+
+        // =================================================================
+        // LÓGICA DE SORTEIO DO PRÓXIMO
+        // =================================================================
+        if (allInteractiveTiles.Count > 0)
+        {
+            // Sorteia um índice com base no tamanho atual da lista
+            int randomIndex = Random.Range(0, allInteractiveTiles.Count);
+            InteractiveTile nextTileTarget = allInteractiveTiles[randomIndex];
+
+            if (nextTileTarget != null)
+            {
+                currentTargetTile = nextTileTarget;
+                currentTargetTile.SetAsTarget(true);
+                
+                Debug.Log("🎲 Novo Alvo Sorteado: " + currentTargetTile.name);
+
+                // Foca a câmera
+                //StartCoroutine(FocusCameraOnCheckpoint(currentTargetTile.transform.position));
+            }
+        }
+        else
+        {
+            Debug.Log("🏆 Fase Concluída! Lista vazia.");
+        }
     }
 
-    // 2. Remove o tile destruído da lista de tiles disponíveis
-    RemoveDestroyedTile(destroyedTile);
-    
-    InteractiveTile nextTileTarget = null;
-    int maxAttempts = 10;
-    int attempts = 0;
-    
-    // Se não houver mais tiles
-    if (allInteractiveTiles.Length == 0)
-    {
-        Debug.Log("Todos os tiles interativos foram destruídos!");
-        return;
-    }
 
-    // Escolhe um novo alvo aleatório dos que restaram
-    while (nextTileTarget == null && attempts < maxAttempts)
-    {
-        int randomIndex = Random.Range(0, allInteractiveTiles.Length);
-        nextTileTarget = allInteractiveTiles[randomIndex];
-        attempts++;
-    }
     
-    if (nextTileTarget != null)
-    {
-        // 3. Define o novo tile como o ÚNICO alvo quebrável
-        nextTileTarget.SetAsTarget(true);
-        currentTargetTile = nextTileTarget; // Armazena para ser desativado na próxima vez
-        Debug.Log("--- PROGRESSO DO JOGO --- Novo Tile Alvo Liberado: " + nextTileTarget.name);
-        Debug.Log("Novo Tile Alvo Definido: " + nextTileTarget.name);
-
-        // 4. Inicia a rotina para focar a câmera no novo tile
-        StartCoroutine(FocusCameraOnCheckpoint(nextTileTarget.transform.position));
-    }
-    else
-    {
-        Debug.LogError("Não foi possível selecionar um novo tile alvo válido.");
-    }
-}
-
-    /// <summary>
-    /// Remove o tile destruído da lista de tiles interativos disponíveis.
-    /// </summary>
-    private void RemoveDestroyedTile(GameObject tileToRemove)
-    {
-        // Converte o array estático para uma Lista temporária
-        var tileList = new List<InteractiveTile>(allInteractiveTiles);
-        
-        // Encontrar e remover o tile com base na referência do GameObject
-        tileList.RemoveAll(tile => tile.gameObject == tileToRemove);
-        
-        // Reverter para o array estático
-        allInteractiveTiles = tileList.ToArray();
-    }
 
     /// <summary>
     /// Coroutine para focar a câmera no novo checkpoint e retornar.
