@@ -3,7 +3,7 @@ using UnityEngine;
 public class RotationManager : MonoBehaviour
 {
     // A velocidade da rotação
-    public float rotationSpeed = 5f;
+    public float rotationSpeed = 1f;
     
     private Transform selectedObject;
     

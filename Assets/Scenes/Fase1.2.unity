@@ -235,11 +235,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tooltipName: "Hiato A\xF3rtico"
-  description: "Por fim, temos o hiato a\xF3rtico, onde passa a aorta, a maior art\xE9ria
-    do corpo, que distribui sangue oxigenado para os \xF3rg\xE3os abdominais. Esses
-    tr\xEAs hiatos permitem que estruturas vitais atravessem o diafragma com seguran\xE7a.
-    Sua posi\xE7\xE3o precisa, \xE9 essencial para a integra\xE7\xE3o entre os sistemas
-    respirat\xF3rio, cardiovascular e digestivo."
+  description: "Aqui se encontra o hiato a\xF3rtico, onde passa a aorta, a maior
+    art\xE9ria do corpo, que distribui sangue oxigenado para os \xF3rg\xE3os abdominais."
 --- !u!1 &235885384
 GameObject:
   m_ObjectHideFlags: 0
@@ -1081,7 +1078,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractablePart
   tooltipName: "Hiato Esof\xE1gico"
-  description: "Aqui est\xE1 o hiato esof\xE1gico onde o es\xF4fago atravessa o diafragma.
+  description: "Este \xE9 o hiato esof\xE1gico onde o es\xF4fago atravessa o diafragma.
     Essa abertura \xE9 envolvida por fibras musculares, que auxiliam no controle
     do refluxo g\xE1strico. Aqui tamb\xE9m passam os nervos vagos, respons\xE1veis
     pela regula\xE7\xE3o auton\xF4mica da digest\xE3o.\r\n"
@@ -2042,8 +2039,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InteractablePart
   tooltipName: Hiato da Veia Cava
   description: "Este \xE9 o hiato da veia cava inferior, permite que sangue venoso
-    volte ao \xE1trio direito do cora\xE7\xE3o. Sua fun\xE7\xE3o \xE9 conduzir o
-    sangue venoso de volta ao \xE1trio direito do cora\xE7\xE3o."
+    volte ao \xE1trio direito do cora\xE7\xE3o."
 --- !u!135 &1884756922
 SphereCollider:
   m_ObjectHideFlags: 0

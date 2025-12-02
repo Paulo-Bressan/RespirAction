@@ -1641,7 +1641,7 @@ GameObject:
   - component: {fileID: 925348389}
   - component: {fileID: 925348388}
   m_Layer: 0
-  m_Name: AudioManager
+  m_Name: AudioManagerScene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1756,9 +1756,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54531321d3f0c1c44aba3a9800279233, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabSound: {fileID: 8300000, guid: 4453aa66a27c5ef4b8ca6778827d20e6, type: 3}
-  releaseSound: {fileID: 8300000, guid: adfcd8fe8b331ba4888e298b6e5c3d44, type: 3}
-  correctSound: {fileID: 8300000, guid: d409d43995024064698ac3bf8c85cef6, type: 3}
+  clip0: {fileID: 8300000, guid: 4453aa66a27c5ef4b8ca6778827d20e6, type: 3}
+  clip1: {fileID: 8300000, guid: adfcd8fe8b331ba4888e298b6e5c3d44, type: 3}
+  clip2: {fileID: 8300000, guid: d409d43995024064698ac3bf8c85cef6, type: 3}
+  clip3: {fileID: 0}
+  clip4: {fileID: 0}
+  clip5: {fileID: 0}
 --- !u!4 &925348390
 Transform:
   m_ObjectHideFlags: 0

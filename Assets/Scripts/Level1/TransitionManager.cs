@@ -1,12 +1,23 @@
+using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TransitionManager : MonoBehaviour
 {
     public GameObject diafragma;
     //public GameObject bgUI;
     //private SpriteRenderer bgUIRender;
+
+    public GameObject firstDialogue;
+    public GameObject secondDialogue;
+
+    public GameObject continueButton1;
+    public GameObject continueButton2;
+
+    public GameObject audioManager;
 
 
     public bool playAnimation;
@@ -19,6 +30,11 @@ public class TransitionManager : MonoBehaviour
         playAnimation = true;
         targetPosition = new Vector3(0.1f, 3, -0.3f);
         targetRotation = Quaternion.AngleAxis(5, Vector3.up) * diafragma.transform.rotation;
+
+        secondDialogue.SetActive (false);
+        continueButton2.SetActive(false);
+
+        audioManager.GetComponent<AudioManagerScene>().PlaySound(0);
 
         //bgUIRender = bgUI.GetComponent<SpriteRenderer>();
     }
@@ -39,4 +55,26 @@ public class TransitionManager : MonoBehaviour
             }
         }
     }
+
+    public void openSecondDialogue()
+    {
+        firstDialogue.SetActive(false);
+        secondDialogue.SetActive(true);
+
+        continueButton1.SetActive(false);
+        continueButton2.SetActive (true);
+        //StartCoroutine(loadButtonWithDelay());
+
+        audioManager.GetComponent<AudioManagerScene>().PlaySound(1);
+
+    }
+
+    /*
+    private IEnumerator loadButtonWithDelay()
+    {
+        yield return new WaitForSeconds(2.0f);
+        continueButton1.SetActive(false);
+        continueButton2.SetActive(true);
+    }
+    */
 }

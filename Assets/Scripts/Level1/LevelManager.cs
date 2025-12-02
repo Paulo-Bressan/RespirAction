@@ -13,12 +13,12 @@ public class LevelManager : MonoBehaviour
     public int[] pieceStatusArray;
     private int pieceStatusSum;
     public Dialogue dialogue;
-    private bool dialogueEsternalLido = false;
+    //private bool dialogueEsternalLido = false;
     private bool[] dialogueLido;
 
     public GameObject diafragma;
     public Transform spawnPoint;
-    private bool hasReplacedPieces = false;
+    //private bool hasReplacedPieces = false;
 
 
     [SerializeField] private float diafragmaDelay = 2.0f;
@@ -45,7 +45,7 @@ public class LevelManager : MonoBehaviour
     {
         for (int i = 0; i < 5; i++)
         {
-            pieceStatusArray[i] = IsPieceCorrect(pieceArray[i], snapArray[i], 0.1f, 45f);
+            pieceStatusArray[i] = IsPieceCorrect(pieceArray[i], snapArray[i], 0.1f, 30f);
         }
 
         pieceStatusSum = 0;
