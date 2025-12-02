@@ -9,6 +9,7 @@ TagManager:
   - MusicPlayer
   - checkpoint
   - death
+  - player
   layers:
   - Default
   - TransparentFX
