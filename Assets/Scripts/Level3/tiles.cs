@@ -183,16 +183,5 @@ public class InteractiveTile : MonoBehaviour
     // MARCADORES TEMPORÁRIOS (GIZMOS - APENAS EDITOR)
     // =================================================================
     
-    private void OnDrawGizmos()
-    {
-        // Se este tile é o alvo atual, desenhamos um Gizmo brilhante.
-        if (isTarget)
-        {
-            Gizmos.color = Color.red; 
-            Gizmos.DrawCube(transform.position, new Vector3(1f, 1f, 0.1f)); 
 
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawWireCube(transform.position, new Vector3(1.1f, 1.1f, 0.1f));
-        }
-    }
 }

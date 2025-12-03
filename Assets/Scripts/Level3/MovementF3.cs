@@ -11,8 +11,11 @@ public class PlayerMovement : MonoBehaviour
     // =================================================================
     // VARIÁVEIS DE CONFIGURAÇÃO DE FÍSICA E MOVIMENTO
     // =================================================================
-
-    private static InteractiveTile[] allInteractiveTiles; 
+    private float horizontalInput;
+    //public event Action levelFinish;
+    private bool jumpRequest;
+    private List<InteractiveTile> allInteractiveTiles = new List<InteractiveTile>(); 
+    
     private InteractiveTile currentTargetTile = null;
 
     [Header("Movimento")]
@@ -36,9 +39,9 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Mecânica de Gravidade")]
     [Tooltip("Tempo em segundos até a gravidade inverter automaticamente.")]
-    [SerializeField] private float timeUntilFlip = 10f;
     
-    private float gravityFlipTimer;
+    
+    
     private bool isUpsideDown = false;
     private float defaultGravityScale;
 
@@ -81,40 +84,74 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        // Obtém as referências dos componentes
+        // --- 1. Inicialização de Componentes ---
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>(); 
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        // Inicializa os timers e estados
-        gravityFlipTimer = timeUntilFlip;
+        // Timers e Gravidade;
         defaultGravityScale = rb.gravityScale;
         
-        // Define o ponto de respawn inicial e salva o sprite padrão
+        // Respawn e Sprite
         respawnPoint = transform.position;
-        if (spriteRenderer != null)
-        {
-            defaultSprite = spriteRenderer.sprite;
-        }
+        if (spriteRenderer != null) defaultSprite = spriteRenderer.sprite;
 
-        // Obtém a referência ao braço rotativo e garante que ele comece desligado
+        // Braço Mecânico
         if (armObject != null)
         {
             armRotator = armObject.GetComponent<ArmRotator>();
             armObject.SetActive(false); 
         }
 
-        // Encontra todos os tiles interativos na cena
-        allInteractiveTiles = FindObjectsOfType<InteractiveTile>();
-        if (allInteractiveTiles.Length > 0)
+        // --- 2. Configuração dos Tiles Interativos ---
+
+        // Converte o array encontrado para uma Lista manipulável
+        allInteractiveTiles = new List<InteractiveTile>(FindObjectsByType<InteractiveTile>(FindObjectsSortMode.None));
+
+        // [IMPORTANTE] Força TODOS os tiles a ficarem TRAVADOS (não interativos) inicialmente.
+        // Isso resolve o problema de tiles ficarem ativos indevidamente.
+        foreach (var tile in allInteractiveTiles)
         {
-            // Escolhe um índice aleatório dentro do tamanho do array
-            int randomIndex = Random.Range(0, allInteractiveTiles.Length); 
-            
-            currentTargetTile = allInteractiveTiles[randomIndex];
+            tile.SetAsTarget(false);
+        }
+
+        // Log de conferência
+        Debug.Log($"[Start] Tiles encontrados e resetados: {allInteractiveTiles.Count}");
+
+        if (allInteractiveTiles.Count > 0)
+        {
+            InteractiveTile startingTile = null;
+
+            // Busca especificamente pelo tile chamado "tileHurt (1)"
+            foreach (var tile in allInteractiveTiles)
+            {
+                // .Trim() remove espaços invisíveis que podem causar erro na busca
+                if (tile.name.Trim().Equals("tileHurt (1)")) 
+                {
+                    startingTile = tile;
+                    break; 
+                }
+            }
+
+            // Define quem será o alvo ativo
+            if (startingTile != null)
+            {
+                currentTargetTile = startingTile;
+                Debug.Log("🎯 Alvo Inicial Definido: " + currentTargetTile.name);
+            }
+            else
+            {
+                // Fallback: Se não achar o nome exato, pega o primeiro da lista
+                Debug.LogWarning("⚠️ 'tileHurt (1)' não encontrado. Usando o primeiro da lista.");
+                currentTargetTile = allInteractiveTiles[0];
+            }
+
+            // [IMPORTANTE] Só agora ativamos o tile escolhido
             currentTargetTile.SetAsTarget(true);
-            
-            Debug.Log("Tile Inicial escolhido aleatoriamente: " + currentTargetTile.name);
+        }
+        else
+        {
+            Debug.LogError("⛔ ERRO: Nenhum InteractiveTile encontrado na cena!");
         }
     }
 
@@ -124,55 +161,115 @@ public class PlayerMovement : MonoBehaviour
         if (!isMovementLocked)
         {
             moveInput = Input.GetAxisRaw("Horizontal");
+
+            // DEBUG 1: Verifica se o teclado está funcionando e se o jogo não está travado
+            if (moveInput != 0) 
+            {
+                Debug.Log($"[INPUT] Tecla detectada! Valor: {moveInput}");
+            }
+
+            // Captura o pulo
+            if (Input.GetButtonDown("Jump") && isGrounded)
+            {
+                jumpRequest = true;
+                Debug.Log("[INPUT] Botão de Pulo pressionado!");
+            }
         }
         else
         {
-            moveInput = 0f; 
+            moveInput = 0f;
+            jumpRequest = false;
+            // DEBUG 2: Avisa se o movimento estiver bloqueado por interação
+            Debug.LogWarning("[STATUS] O movimento está BLOQUEADO (isMovementLocked = true)");
         }
 
         // --- 2. CONTROLE DE DIREÇÃO DO SPRITE (FLIP) ---
         if (moveInput != 0)
         {
-            // Vira para a esquerda se o input for negativo (assumindo que o sprite padrão olha para a direita)
-            if (moveInput < 0) spriteRenderer.flipX = true; 
-            else if (moveInput > 0) spriteRenderer.flipX = false;
+            if (moveInput > 0)
+            {
+                // Movendo para DIREITA (World)
+                // Se normal: flipX false. Se invertido: flipX true (para desinverter a rotação).
+                spriteRenderer.flipX = isUpsideDown;
+            }
+            else if (moveInput < 0)
+            {
+                // Movendo para ESQUERDA (World)
+                // Se normal: flipX true. Se invertido: flipX false.
+                spriteRenderer.flipX = !isUpsideDown;
+            }
         }
         
         // --- 3. ATUALIZAÇÃO DE ANIMAÇÃO ---
         if (animator != null && animator.enabled)
         {
             animator.SetBool("isRunning", moveInput != 0);
-            animator.SetFloat("yVelocity", rb.linearVelocity.y); 
+
+            // TRUQUE: Calculamos a velocidade local relativa
+            // Se estiver de cabeça para baixo (gravidade invertida), invertemos o sinal da velocidade
+            float relativeYVelocity = rb.linearVelocity.y;
+
+            if (isUpsideDown) // Ou use: if (rb.gravityScale < 0)
+            {
+                relativeYVelocity *= -1; 
+            }
+
+            animator.SetFloat("yVelocity", relativeYVelocity); 
         }
 
         // --- 4. LÓGICA DO TIMER DE GRAVIDADE ---
-        gravityFlipTimer -= Time.deltaTime;
-        if (gravityFlipTimer <= 0f)
+        if (TimeManager.instance != null)
         {
-            FlipGravity();
-            gravityFlipTimer = timeUntilFlip; 
-        }
+            // Pega o valor atual da senoide (-1 a 1)
+            float waveValue = TimeManager.instance.timeSineWave;
 
-        // --- 5. LÓGICA DE PULO ---
-        if (Input.GetButtonDown("Jump") && isGrounded && !isMovementLocked)
-        {
-            float jumpVelocity = isUpsideDown ? -jumpForce : jumpForce;
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpVelocity); 
+            // CASO 1: Onda ficou NEGATIVA, mas eu ainda estou NORMAL
+            // Hora de inverter (ficar de ponta cabeça)
+            if (waveValue < 0 && !isUpsideDown)
+            {
+                FlipGravity();
+            }
+            // CASO 2: Onda ficou POSITIVA, mas eu estou INVERTIDO
+            // Hora de voltar ao normal
+            else if (waveValue >= 0 && isUpsideDown)
+            {
+                FlipGravity();
+            }
         }
+        
     }
 
     void FixedUpdate()
     {
-        // --- 1. VERIFICAÇÃO DO CHÃO (FÍSICA) ---
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
         
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
+
+        // Atualiza o Animator para ele saber se está voando ou no chão
         if (animator != null && animator.enabled)
         {
             animator.SetBool("isGrounded", isGrounded);
         }
-        
-        // --- 2. MOVIMENTAÇÃO ---
-        rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y); 
+
+        // =================================================================
+        // 2. APLICAÇÃO DE MOVIMENTO FÍSICO
+        // =================================================================
+
+        // Aplica o movimento horizontal
+        rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
+
+        // Aplica o pulo (se solicitado no Update)
+        if (jumpRequest)
+        {
+            float jumpVel = isUpsideDown ? -jumpForce : jumpForce;
+            
+            // Mantém o X, muda o Y
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpVel);
+            
+            Debug.Log($"[FÍSICA] Pulo executado! Força: {jumpVel}");
+            
+            jumpRequest = false; // Consome o input
+        }
+    
     }
 
     /// <summary>
@@ -214,7 +311,7 @@ public class PlayerMovement : MonoBehaviour
         rb.gravityScale = defaultGravityScale;
         isUpsideDown = false;
         
-        gravityFlipTimer = timeUntilFlip; 
+        
     }
 
     // =================================================================
@@ -266,73 +363,51 @@ public class PlayerMovement : MonoBehaviour
     /// <summary>
     /// Encontra um Tile Interativo aleatório (que não seja o destruído) e move a câmera para pre-visualizá-lo.
     /// </summary>
-    public void TeleportToRandomCheckpoint(GameObject destroyedTile)
-{
-    if (allInteractiveTiles == null || allInteractiveTiles.Length == 0 || cameraTargetOverride == null)
+    public void TeleportToRandomCheckpoint(GameObject destroyedTileObj)
     {
-        Debug.LogWarning("Configuração de foco incompleta ou Tiles Interativos insuficientes.");
-        return; 
-    }
-    
-    // 1. Desabilita o tile que estava sendo interagido (se ainda não foi desabilitado por outra lógica)
-    if (currentTargetTile != null)
-    {
-        currentTargetTile.SetAsTarget(false);
+        // Verifica se a lista existe
+        if (allInteractiveTiles == null || allInteractiveTiles.Count == 0)
+        {
+            Debug.Log("🎉 Todos os tiles já foram finalizados.");
+            return;
+        }
+
+        // =================================================================
+        // LÓGICA DE REMOÇÃO (Substitui a função RemoveDestroyedTile)
+        // =================================================================
+        // Como 'allInteractiveTiles' agora é uma List<>, podemos remover direto.
+        // O RemoveAll procura na lista quem tem o mesmo GameObject e remove.
+        allInteractiveTiles.RemoveAll(tile => tile.gameObject == destroyedTileObj);
+
+        // =================================================================
+        // LÓGICA DE SORTEIO DO PRÓXIMO
+        // =================================================================
+        if (allInteractiveTiles.Count > 0)
+        {
+            // Sorteia um índice com base no tamanho atual da lista
+            int randomIndex = Random.Range(0, allInteractiveTiles.Count);
+            InteractiveTile nextTileTarget = allInteractiveTiles[randomIndex];
+
+            if (nextTileTarget != null)
+            {
+                currentTargetTile = nextTileTarget;
+                currentTargetTile.SetAsTarget(true);
+                
+                Debug.Log("🎲 Novo Alvo Sorteado: " + currentTargetTile.name);
+
+                // Foca a câmera
+                //StartCoroutine(FocusCameraOnCheckpoint(currentTargetTile.transform.position));
+            }
+        }
+        else
+        {
+            Debug.Log("🏆 Fase Concluída! Lista vazia.");
+            //levelFinish?.Invoke();
+        }
     }
 
-    // 2. Remove o tile destruído da lista de tiles disponíveis
-    RemoveDestroyedTile(destroyedTile);
-    
-    InteractiveTile nextTileTarget = null;
-    int maxAttempts = 10;
-    int attempts = 0;
-    
-    // Se não houver mais tiles
-    if (allInteractiveTiles.Length == 0)
-    {
-        Debug.Log("Todos os tiles interativos foram destruídos!");
-        return;
-    }
 
-    // Escolhe um novo alvo aleatório dos que restaram
-    while (nextTileTarget == null && attempts < maxAttempts)
-    {
-        int randomIndex = Random.Range(0, allInteractiveTiles.Length);
-        nextTileTarget = allInteractiveTiles[randomIndex];
-        attempts++;
-    }
     
-    if (nextTileTarget != null)
-    {
-        // 3. Define o novo tile como o ÚNICO alvo quebrável
-        nextTileTarget.SetAsTarget(true);
-        currentTargetTile = nextTileTarget; // Armazena para ser desativado na próxima vez
-        Debug.Log("--- PROGRESSO DO JOGO --- Novo Tile Alvo Liberado: " + nextTileTarget.name);
-        Debug.Log("Novo Tile Alvo Definido: " + nextTileTarget.name);
-
-        // 4. Inicia a rotina para focar a câmera no novo tile
-        StartCoroutine(FocusCameraOnCheckpoint(nextTileTarget.transform.position));
-    }
-    else
-    {
-        Debug.LogError("Não foi possível selecionar um novo tile alvo válido.");
-    }
-}
-
-    /// <summary>
-    /// Remove o tile destruído da lista de tiles interativos disponíveis.
-    /// </summary>
-    private void RemoveDestroyedTile(GameObject tileToRemove)
-    {
-        // Converte o array estático para uma Lista temporária
-        var tileList = new List<InteractiveTile>(allInteractiveTiles);
-        
-        // Encontrar e remover o tile com base na referência do GameObject
-        tileList.RemoveAll(tile => tile.gameObject == tileToRemove);
-        
-        // Reverter para o array estático
-        allInteractiveTiles = tileList.ToArray();
-    }
 
     /// <summary>
     /// Coroutine para focar a câmera no novo checkpoint e retornar.
