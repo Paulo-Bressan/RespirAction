@@ -21,16 +21,16 @@ public class ScalePulsator : MonoBehaviour
         if (TimeManager.instance != null)
         {
             // 1. Pega a onda do TimeManager
-            float rawSine = TimeManager.instance.timeSineWave;
+            float rawSine = TimeManager.instance.timeSineWave * -1;
 
             // 2. Aplica Mathf.Abs para garantir que o objeto SÓ CRESÇA (dilatação)
             // Se tirar o Abs, ele vai encolher quando a onda for negativa.
-            float positiveWave = Mathf.Abs(rawSine);
+            //float positiveWave = Mathf.Abs(rawSine);
 
             // 3. Calcula o aumento específico para cada eixo
             // (Tamanho Original * Porcentagem de Força * Valor da Onda)
-            float extraSizeX = initialScale.x * pulseStrengthX * positiveWave;
-            float extraSizeY = initialScale.y * pulseStrengthY * positiveWave;
+            float extraSizeX = initialScale.x * pulseStrengthX * rawSine;
+            float extraSizeY = initialScale.y * pulseStrengthY * rawSine;
 
             // 4. Aplica a nova escala final
             transform.localScale = new Vector3(

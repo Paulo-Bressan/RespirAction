@@ -221,17 +221,17 @@ public class PlayerMovement : MonoBehaviour
         if (TimeManager.instance != null)
         {
             // Pega o valor atual da senoide (-1 a 1)
-            float waveValue = TimeManager.instance.timeSineWave;
+            float waveValue = (TimeManager.instance.timeSineWave + 1)/2;
 
             // CASO 1: Onda ficou NEGATIVA, mas eu ainda estou NORMAL
             // Hora de inverter (ficar de ponta cabeça)
-            if (waveValue < 0 && !isUpsideDown)
+            if (waveValue < 0.01 && !isUpsideDown)
             {
                 FlipGravity();
             }
             // CASO 2: Onda ficou POSITIVA, mas eu estou INVERTIDO
             // Hora de voltar ao normal
-            else if (waveValue >= 0 && isUpsideDown)
+            else if (waveValue > 0.99 && isUpsideDown)
             {
                 FlipGravity();
             }
