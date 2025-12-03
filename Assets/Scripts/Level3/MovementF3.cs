@@ -169,16 +169,35 @@ public class PlayerMovement : MonoBehaviour
         // --- 2. CONTROLE DE DIREÇÃO DO SPRITE (FLIP) ---
         if (moveInput != 0)
         {
-            // Vira para a esquerda se o input for negativo (assumindo que o sprite padrão olha para a direita)
-            if (moveInput < 0) spriteRenderer.flipX = true; 
-            else if (moveInput > 0) spriteRenderer.flipX = false;
+            if (moveInput > 0)
+            {
+                // Movendo para DIREITA (World)
+                // Se normal: flipX false. Se invertido: flipX true (para desinverter a rotação).
+                spriteRenderer.flipX = isUpsideDown;
+            }
+            else if (moveInput < 0)
+            {
+                // Movendo para ESQUERDA (World)
+                // Se normal: flipX true. Se invertido: flipX false.
+                spriteRenderer.flipX = !isUpsideDown;
+            }
         }
         
         // --- 3. ATUALIZAÇÃO DE ANIMAÇÃO ---
         if (animator != null && animator.enabled)
         {
             animator.SetBool("isRunning", moveInput != 0);
-            animator.SetFloat("yVelocity", rb.linearVelocity.y); 
+
+            // TRUQUE: Calculamos a velocidade local relativa
+            // Se estiver de cabeça para baixo (gravidade invertida), invertemos o sinal da velocidade
+            float relativeYVelocity = rb.linearVelocity.y;
+
+            if (isUpsideDown) // Ou use: if (rb.gravityScale < 0)
+            {
+                relativeYVelocity *= -1; 
+            }
+
+            animator.SetFloat("yVelocity", relativeYVelocity); 
         }
 
         // --- 4. LÓGICA DO TIMER DE GRAVIDADE ---
