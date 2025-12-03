@@ -11,7 +11,9 @@ public class PlayerMovement : MonoBehaviour
     // =================================================================
     // VARIÁVEIS DE CONFIGURAÇÃO DE FÍSICA E MOVIMENTO
     // =================================================================
-
+    private float horizontalInput;
+    //public event Action levelFinish;
+    private bool jumpRequest;
     private List<InteractiveTile> allInteractiveTiles = new List<InteractiveTile>(); 
     
     private InteractiveTile currentTargetTile = null;
@@ -37,9 +39,9 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Mecânica de Gravidade")]
     [Tooltip("Tempo em segundos até a gravidade inverter automaticamente.")]
-    [SerializeField] private float timeUntilFlip = 10f;
     
-    private float gravityFlipTimer;
+    
+    
     private bool isUpsideDown = false;
     private float defaultGravityScale;
 
@@ -87,8 +89,7 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>(); 
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        // Timers e Gravidade
-        gravityFlipTimer = timeUntilFlip;
+        // Timers e Gravidade;
         defaultGravityScale = rb.gravityScale;
         
         // Respawn e Sprite
@@ -160,10 +161,26 @@ public class PlayerMovement : MonoBehaviour
         if (!isMovementLocked)
         {
             moveInput = Input.GetAxisRaw("Horizontal");
+
+            // DEBUG 1: Verifica se o teclado está funcionando e se o jogo não está travado
+            if (moveInput != 0) 
+            {
+                Debug.Log($"[INPUT] Tecla detectada! Valor: {moveInput}");
+            }
+
+            // Captura o pulo
+            if (Input.GetButtonDown("Jump") && isGrounded)
+            {
+                jumpRequest = true;
+                Debug.Log("[INPUT] Botão de Pulo pressionado!");
+            }
         }
         else
         {
-            moveInput = 0f; 
+            moveInput = 0f;
+            jumpRequest = false;
+            // DEBUG 2: Avisa se o movimento estiver bloqueado por interação
+            Debug.LogWarning("[STATUS] O movimento está BLOQUEADO (isMovementLocked = true)");
         }
 
         // --- 2. CONTROLE DE DIREÇÃO DO SPRITE (FLIP) ---
@@ -201,33 +218,58 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // --- 4. LÓGICA DO TIMER DE GRAVIDADE ---
-        gravityFlipTimer -= Time.deltaTime;
-        if (gravityFlipTimer <= 0f)
+        if (TimeManager.instance != null)
         {
-            FlipGravity();
-            gravityFlipTimer = timeUntilFlip; 
-        }
+            // Pega o valor atual da senoide (-1 a 1)
+            float waveValue = TimeManager.instance.timeSineWave;
 
-        // --- 5. LÓGICA DE PULO ---
-        if (Input.GetButtonDown("Jump") && isGrounded && !isMovementLocked)
-        {
-            float jumpVelocity = isUpsideDown ? -jumpForce : jumpForce;
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpVelocity); 
+            // CASO 1: Onda ficou NEGATIVA, mas eu ainda estou NORMAL
+            // Hora de inverter (ficar de ponta cabeça)
+            if (waveValue < 0 && !isUpsideDown)
+            {
+                FlipGravity();
+            }
+            // CASO 2: Onda ficou POSITIVA, mas eu estou INVERTIDO
+            // Hora de voltar ao normal
+            else if (waveValue >= 0 && isUpsideDown)
+            {
+                FlipGravity();
+            }
         }
+        
     }
 
     void FixedUpdate()
     {
-        // --- 1. VERIFICAÇÃO DO CHÃO (FÍSICA) ---
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
         
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
+
+        // Atualiza o Animator para ele saber se está voando ou no chão
         if (animator != null && animator.enabled)
         {
             animator.SetBool("isGrounded", isGrounded);
         }
-        
-        // --- 2. MOVIMENTAÇÃO ---
-        rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y); 
+
+        // =================================================================
+        // 2. APLICAÇÃO DE MOVIMENTO FÍSICO
+        // =================================================================
+
+        // Aplica o movimento horizontal
+        rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
+
+        // Aplica o pulo (se solicitado no Update)
+        if (jumpRequest)
+        {
+            float jumpVel = isUpsideDown ? -jumpForce : jumpForce;
+            
+            // Mantém o X, muda o Y
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpVel);
+            
+            Debug.Log($"[FÍSICA] Pulo executado! Força: {jumpVel}");
+            
+            jumpRequest = false; // Consome o input
+        }
+    
     }
 
     /// <summary>
@@ -269,7 +311,7 @@ public class PlayerMovement : MonoBehaviour
         rb.gravityScale = defaultGravityScale;
         isUpsideDown = false;
         
-        gravityFlipTimer = timeUntilFlip; 
+        
     }
 
     // =================================================================
@@ -360,6 +402,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             Debug.Log("🏆 Fase Concluída! Lista vazia.");
+            //levelFinish?.Invoke();
         }
     }
 
