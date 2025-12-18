@@ -2,18 +2,25 @@ using UnityEngine;
 
 public class MusicManager : MonoBehaviour
 {
-    private static MusicManager instance;
-
-    void Awake()
+    private GameObject MusicPlayer;
+    private MusicPlayerScript MusicPlayerScript;
+    public AudioClip track;
+    void Start()
     {
-        if (instance == null)
+        MusicPlayer = GameObject.FindGameObjectWithTag("MusicPlayer");
+
+        if(MusicPlayer)
         {
-            instance = this;
-            DontDestroyOnLoad(gameObject); // não destrói ao trocar de cena
-        }
-        else
-        {
-            Destroy(gameObject); // evita duplicatas
+            if(MusicPlayer.GetComponent<AudioSource>().resource != track)
+            {
+                MusicPlayer.GetComponent<MusicPlayerScript>().StopMusic();
+
+                if(track != null)
+                {
+                    MusicPlayer.GetComponent<AudioSource>().resource = track;
+                    MusicPlayer.GetComponent<MusicPlayerScript>().PlayMusic();
+                }
+            }      
         }
     }
 }

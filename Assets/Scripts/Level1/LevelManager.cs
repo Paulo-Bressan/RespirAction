@@ -1,24 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Audio;
+using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 
 public class LevelManager : MonoBehaviour
 {
     private GameObject[] pieceArray;
     public GameObject[] snapArray;
+    public GameObject audioManager;
     public int[] pieceStatusArray;
     private int pieceStatusSum;
     public Dialogue dialogue;
-    private bool dialogueEsternalLido = false;
+    //private bool dialogueEsternalLido = false;
     private bool[] dialogueLido;
 
-    // Referência para o prefab do diafragma
-    public GameObject diafragmaPrefab;
-
-    // Variável para controlar se já substituímos as peças
-    private bool hasReplacedPieces = false;
-
+    public GameObject diafragma;
     public Transform spawnPoint;
+    //private bool hasReplacedPieces = false;
+
 
     [SerializeField] private float diafragmaDelay = 2.0f;
 
@@ -44,7 +45,7 @@ public class LevelManager : MonoBehaviour
     {
         for (int i = 0; i < 5; i++)
         {
-            pieceStatusArray[i] = IsPieceCorrect(pieceArray[i], snapArray[i], 0.1f, 25f);
+            pieceStatusArray[i] = IsPieceCorrect(pieceArray[i], snapArray[i], 0.1f, 30f);
         }
 
         pieceStatusSum = 0;
@@ -90,7 +91,9 @@ public class LevelManager : MonoBehaviour
             Debug.Log("All pieces correct");
             CancelInvoke();
 
-            StartCoroutine(ReplacePiecesWithDiafragmaWithDelay());
+            //StartCoroutine(ReplacePiecesWithDiafragmaWithDelay());
+
+            StartCoroutine(LoadSceneWithDelay());
         }
         for (int i = 0; i < 5; i++)
         {
@@ -99,13 +102,19 @@ public class LevelManager : MonoBehaviour
                 dialogue.dialogueIndex = i;
                 dialogue.readyDialogue = true;
                 dialogueLido[i] = true;
+
+                if (audioManager)
+                    audioManager.GetComponent<AudioManagerScene>().PlaySound(2);
+                else
+                    Debug.Log("MISSING AUDIO MANAGER");
             }
         }
     }
 
+    /*
     private IEnumerator ReplacePiecesWithDiafragmaWithDelay()
     {
-        if (hasReplacedPieces || diafragmaPrefab == null)
+        if (hasReplacedPieces)
         {
             yield break; // Interrompe a corrotina
         }
@@ -126,17 +135,19 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        // Instancia o diafragma
-        Vector3 spawnPosition = spawnPoint != null ? spawnPoint.position : Vector3.zero;
-        Quaternion spawnRotation = spawnPoint != null ? spawnPoint.rotation : Quaternion.identity;
-
-        GameObject diafragma = Instantiate(diafragmaPrefab, spawnPosition, spawnRotation);
-
         // Ajusta a escala e rotação do diafragma
         diafragma.transform.localScale = new Vector3(70f, 70f, 70f);
+        diafragma.transform.position = spawnPoint != null ? spawnPoint.position : Vector3.zero;
         diafragma.transform.rotation = Quaternion.Euler(-93.496f, 57.089f, 122.96f);
 
         Debug.Log("Diafragma montado com sucesso!");
         hasReplacedPieces = true;
+    }
+    */
+
+    private IEnumerator LoadSceneWithDelay()
+    {
+        yield return new WaitForSeconds(5.0f);
+        SceneManager.LoadScene("Fase1.1");
     }
 }

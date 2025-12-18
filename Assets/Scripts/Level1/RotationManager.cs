@@ -3,7 +3,7 @@ using UnityEngine;
 public class RotationManager : MonoBehaviour
 {
     // A velocidade da rotação
-    public float rotationSpeed = 5f;
+    public float rotationSpeed = 1f;
     
     private Transform selectedObject;
     
@@ -41,20 +41,21 @@ public class RotationManager : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftArrow))
             {
                 // Gira 90 graus em torno do eixo Y (Vector3.up)
-                rotationDelta = Quaternion.AngleAxis(5, Vector3.up);
+                rotationDelta = Quaternion.AngleAxis(-5, Vector3.up);
             }
             else if (Input.GetKey(KeyCode.RightArrow))
             {
                 // Gira -90 graus em torno do eixo Y (Vector3.up)
-                rotationDelta = Quaternion.AngleAxis(-5, Vector3.up);
+                rotationDelta = Quaternion.AngleAxis(5, Vector3.up);
             }
-            // Rotação Vertical 
-            else if (Input.GetKey(KeyCode.UpArrow))
+            // Rotação Vertical
+            // DESABILITADO POR DIFICULDADE
+            else if (Input.GetKey(KeyCode.UpArrow) && false)
             {
                 // Gira 90 graus em torno do eixo X 
                 rotationDelta = Quaternion.AngleAxis(5, Vector3.right);
             }
-            else if (Input.GetKey(KeyCode.DownArrow))
+            else if (Input.GetKey(KeyCode.DownArrow) && false)
             {
                 // Gira -90 graus em torno do eixo X
                 rotationDelta = Quaternion.AngleAxis(-5, Vector3.right);

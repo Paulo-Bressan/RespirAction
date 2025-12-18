@@ -36,7 +36,7 @@ public class TooltipManager : MonoBehaviour
 
                 // Atualiza a posi��o do painel para seguir o mouse
                 // Adicionamos um pequeno deslocamento (offset) para que o cursor n�o fique sobre o tooltip
-                tooltipPanel.transform.position = Input.mousePosition + new Vector3(200, -75, 0);
+                tooltipPanel.transform.position = Input.mousePosition + new Vector3(-200, -75, 0);
 
                 // Define o texto do tooltip com base no nome do objeto atingido
                 SetTooltipText(hit.collider.gameObject.name);
