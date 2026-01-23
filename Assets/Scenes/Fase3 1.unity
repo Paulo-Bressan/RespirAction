@@ -6790,7 +6790,7 @@ MonoBehaviour:
   wallCheckDistance: 0.05
   interactionSprite: {fileID: 21300000, guid: f7060284be28c3e4bad9d7f5b1d05712, type: 3}
   armObject: {fileID: 338785245}
-  cameraTargetOverride: {fileID: 0}
+  cameraTargetOverride: {fileID: 394099443}
   cameraFocusTime: 2
 --- !u!95 &877825236
 Animator:

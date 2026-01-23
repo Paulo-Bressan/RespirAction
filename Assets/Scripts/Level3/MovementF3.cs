@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private CameraController camController;
     private float horizontalInput;
     private bool jumpRequest;
     private List<InteractiveTile> allInteractiveTiles = new List<InteractiveTile>(); 
@@ -50,7 +51,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isMovementLocked = false;
 
     void Start()
-    {
+    {   
+        camController = Camera.main.GetComponent<CameraController>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>(); 
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -301,6 +303,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 currentTargetTile = nextTileTarget;
                 currentTargetTile.SetAsTarget(true);
+                if (camController != null)
+                {
+                    // A câmera vai viajar suavemente até o alvo, ficar lá 2s, e voltar suavemente
+                    camController.LookAtTarget(nextTileTarget.transform, 2.0f);
+                }
             }
         }
     }
