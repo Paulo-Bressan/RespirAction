@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private float horizontalInput;
     private bool jumpRequest;
     private List<InteractiveTile> allInteractiveTiles = new List<InteractiveTile>(); 
+
     
     private InteractiveTile currentTargetTile = null;
 
@@ -49,6 +50,13 @@ public class PlayerMovement : MonoBehaviour
 
     private float moveInput;    
     private bool isMovementLocked = false;
+
+    // --- PROPRIEDADES EXPOSTAS PARA O SOUND MANAGER ---
+    public bool IsGrounded => isGrounded;
+    public bool IsMoving => Mathf.Abs(rb.linearVelocity.x) > 0.1f && !isMovementLocked;
+    public bool IsInteracting => isMovementLocked;
+    public bool IsJumping => !isGrounded && (isUpsideDown ? rb.linearVelocity.y < -0.1f : rb.linearVelocity.y > 0.1f);
+    public bool IsFalling => !isGrounded && (isUpsideDown ? rb.linearVelocity.y > 0.1f : rb.linearVelocity.y < -0.1f);
 
     void Start()
     {   

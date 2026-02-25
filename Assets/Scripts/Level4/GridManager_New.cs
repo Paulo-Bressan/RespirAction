@@ -90,6 +90,25 @@ public class GridManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Destrói fisicamente o bloco e remove-o do grid.
+    /// Os vizinhos serão notificados pelo UnregisterBlock para atualizarem seus sprites.
+    /// </summary>
+    public void DestroyBlock(int x, int y)
+    {
+        if (!IsInsideGrid(x, y)) return;
+
+        BlockController block = GetBlockController(x, y);
+        if (block != null)
+        {
+            // Remove do grid (isto notifica os vizinhos para fechar "pontas soltas")
+            UnregisterBlock(x, y);
+            
+            // Destrói o GameObject
+            Destroy(block.gameObject);
+        }
+    }
+
+    /// <summary>
     /// Notifica os 4 vizinhos ortogonais para atualizarem seus sprites.
     /// </summary>
     private void NotifyNeighbors(int x, int y)

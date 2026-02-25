@@ -36,6 +36,14 @@ public class BlockController : MonoBehaviour
             spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
         }
 
+        // Adiciona BoxCollider2D para permitir interação de clique do mouse
+        BoxCollider2D collider = GetComponent<BoxCollider2D>();
+        if (collider == null)
+        {
+            collider = gameObject.AddComponent<BoxCollider2D>();
+            collider.size = Vector2.one; // Assume tamanho padrão 1x1
+        }
+
         // Encontra o GridManager
         gridManager = FindObjectOfType<GridManager>();
 
@@ -98,6 +106,18 @@ public class BlockController : MonoBehaviour
         if (spriteRenderer != null)
         {
             spriteRenderer.sortingOrder = order;
+        }
+    }
+
+    /// <summary>
+    /// Detecta o clique do mouse e destrói o bloco no grid.
+    /// Exige que haja um Collider (adicionado no Initialize) e que a câmera consiga disparar Raycasts.
+    /// </summary>
+    private void OnMouseDown()
+    {
+        if (gridManager != null)
+        {
+            gridManager.DestroyBlock(GridPosition.x, GridPosition.y);
         }
     }
 
