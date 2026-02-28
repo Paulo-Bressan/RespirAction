@@ -790,7 +790,7 @@ MonoBehaviour:
   cenaAnterior: Menu
   cenaBotao1: Cutscene1
   cenaBotao2: 
-  cenaBotao3: Fase3
+  cenaBotao3: Fase3 1
 --- !u!1 &1233396535
 GameObject:
   m_ObjectHideFlags: 0
