@@ -6108,7 +6108,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fb625ad65bcfaec43baad8db44e1d549, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7af2c6f66cd1f0149aad3e0cbc919bb5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -9719,50 +9719,6 @@ PolygonCollider2D:
       - {x: -6.6099997, y: -0.875}
       - {x: -6.3199997, y: -0.755}
   m_UseDelaunayMesh: 0
---- !u!1 &1580287315
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1580287317}
-  - component: {fileID: 1580287316}
-  m_Layer: 0
-  m_Name: TimeManager (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1580287316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1580287315}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 280b20af1e287344ab340559d8d749e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1580287317
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1580287315}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 953.16034, y: 518.143, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1616731793
 GameObject:
   m_ObjectHideFlags: 0
@@ -11609,13 +11565,8 @@ Transform:
   m_GameObject: {fileID: 1891115402}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-<<<<<<< HEAD
-  m_LocalPosition: {x: 9.045672, y: -13.79, z: 0}
-  m_LocalScale: {x: 1.01, y: 0.7, z: 1.01}
-=======
-  m_LocalPosition: {x: 9.045672, y: -16.59, z: 0}
-  m_LocalScale: {x: 4.8385363, y: 3.2730749, z: 1}
->>>>>>> c017497b2c19d97e3927017c623aadec823e3f1f
+  m_LocalPosition: {x: 9.0457, y: -17.01, z: 0}
+  m_LocalScale: {x: 1.1135623, y: 0.75328004, z: 0.23014444}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -12925,7 +12876,6 @@ SceneRoots:
   - {fileID: 1203975170}
   - {fileID: 1189380999}
   - {fileID: 840819437}
-  - {fileID: 1580287317}
   - {fileID: 1630277954}
   - {fileID: 1094080926}
   - {fileID: 394099443}
