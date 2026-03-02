@@ -29,6 +29,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Fase3 1.unity
     guid: af0a4b31d3c62fb439b1cc9b03b01383
+  - enabled: 1
+    path: Assets/Scenes/Fase3 2.unity
+    guid: 201a190ccc6c378458332bdbd0a18cba
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

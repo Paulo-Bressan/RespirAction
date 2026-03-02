@@ -1,131 +1,100 @@
 using UnityEngine;
 using System.Collections;
-using System.Collections.Generic; // Necessário para usar List<T>
+using System.Collections.Generic;
 
-/// <summary>
-/// Controla a movimentação do jogador, incluindo andar, pular e a mecânica de inversão de gravidade.
-/// Gerencia também o sistema de respawn, checkpoints e o estado de interação.
-/// </summary>
 public class PlayerMovement : MonoBehaviour
 {
-    // =================================================================
-    // VARIÁVEIS DE CONFIGURAÇÃO DE FÍSICA E MOVIMENTO
-    // =================================================================
+    private CameraController camController;
     private float horizontalInput;
-    //public event Action levelFinish;
     private bool jumpRequest;
     private List<InteractiveTile> allInteractiveTiles = new List<InteractiveTile>(); 
+
     
     private InteractiveTile currentTargetTile = null;
 
     [Header("Movimento")]
-    [Tooltip("Velocidade horizontal do personagem.")]
     [SerializeField] private float moveSpeed = 5f;
 
     [Header("Pulo & Detecção de Chão")]
-    [Tooltip("Força aplicada ao pular.")]
     [SerializeField] private float jumpForce = 10f;
-    
-    [Tooltip("Objeto vazio (filho do player) posicionado nos pés para detectar o chão.")]
     [SerializeField] private Transform groundCheck;
-    
-    [Tooltip("Define quais layers são consideradas 'chão' (ex: Ground, Plataformas).")]
     [SerializeField] private LayerMask whatIsGround;
-    
-    [Tooltip("Raio do círculo de colisão para verificar o chão.")]
     [SerializeField] private float groundRadius = 0.2f;
+
+    [Header("Detecção de Parede (Anti-Flick)")]
+    [Tooltip("Distância do raio a partir da borda do collider.")]
+    [SerializeField] private float wallCheckDistance = 0.05f;
     
     private bool isGrounded;
 
     [Header("Mecânica de Gravidade")]
-    [Tooltip("Tempo em segundos até a gravidade inverter automaticamente.")]
-    
-    
-    
     private bool isUpsideDown = false;
     private float defaultGravityScale;
 
-    // =================================================================
-    // VARIÁVEIS DE RESPawn / CHECKPOINT / INTERAÇÃO
-    // =================================================================
     [Header("Respawn & Interação")]
-    [Tooltip("Sprite estático do player a ser usado durante a interação (Atribua no Inspector).")]
     [SerializeField] private Sprite interactionSprite; 
-    
-    [Tooltip("Referência ao objeto do braço que deve rotacionar (Atribua no Inspector).")]
     [SerializeField] private GameObject armObject;
 
     [Header("Controle de Câmera")]
-    [Tooltip("Objeto vazio que a câmera deve seguir para pre-visualizar o checkpoint.")]
     [SerializeField] private Transform cameraTargetOverride;
-
-    [Tooltip("Tempo em segundos que a câmera deve permanecer no novo checkpoint.")]
     [SerializeField] private float cameraFocusTime = 2.0f;
     
     private Vector3 respawnPoint; 
     private Sprite defaultSprite;
     
-    // Lista estática para todos os tiles interativos na cena
-    
-    
-    // =================================================================
-    // REFERÊNCIAS DE COMPONENTES
-    // =================================================================
     private Rigidbody2D rb;
+    private CapsuleCollider2D capsuleCollider; 
     private Animator animator;
     private SpriteRenderer spriteRenderer;
     private ArmRotator armRotator;
 
-    // =================================================================
-    // VARIÁVEIS DE ESTADO
-    // =================================================================
     private float moveInput;    
     private bool isMovementLocked = false;
 
+    // --- PROPRIEDADES EXPOSTAS PARA O SOUND MANAGER ---
+    public bool IsGrounded => isGrounded;
+    public bool IsMoving => Mathf.Abs(rb.linearVelocity.x) > 0.1f && !isMovementLocked;
+    public bool IsInteracting => isMovementLocked;
+    public bool IsJumping => !isGrounded && (isUpsideDown ? rb.linearVelocity.y < -0.1f : rb.linearVelocity.y > 0.1f);
+    public bool IsFalling => !isGrounded && (isUpsideDown ? rb.linearVelocity.y > 0.1f : rb.linearVelocity.y < -0.1f);
+
     void Start()
-    {
-        // --- 1. Inicialização de Componentes ---
+    {   
+        camController = Camera.main.GetComponent<CameraController>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>(); 
         spriteRenderer = GetComponent<SpriteRenderer>();
+        
+        capsuleCollider = GetComponent<CapsuleCollider2D>();
+        if (capsuleCollider == null)
+        {
+            Debug.LogError("PlayerMovement precisa de um CapsuleCollider2D!");
+        }
 
-        // Timers e Gravidade;
         defaultGravityScale = rb.gravityScale;
         
-        // Respawn e Sprite
         respawnPoint = transform.position;
         if (spriteRenderer != null) defaultSprite = spriteRenderer.sprite;
 
-        // Braço Mecânico
         if (armObject != null)
         {
             armRotator = armObject.GetComponent<ArmRotator>();
             armObject.SetActive(false); 
         }
 
-        // --- 2. Configuração dos Tiles Interativos ---
-
-        // Converte o array encontrado para uma Lista manipulável
         allInteractiveTiles = new List<InteractiveTile>(FindObjectsByType<InteractiveTile>(FindObjectsSortMode.None));
 
-        // [IMPORTANTE] Força TODOS os tiles a ficarem TRAVADOS (não interativos) inicialmente.
-        // Isso resolve o problema de tiles ficarem ativos indevidamente.
         foreach (var tile in allInteractiveTiles)
         {
             tile.SetAsTarget(false);
         }
 
-        // Log de conferência
-        Debug.Log($"[Start] Tiles encontrados e resetados: {allInteractiveTiles.Count}");
-
         if (allInteractiveTiles.Count > 0)
         {
             InteractiveTile startingTile = null;
 
-            // Busca especificamente pelo tile chamado "tileHurt (1)"
             foreach (var tile in allInteractiveTiles)
             {
-                // .Trim() remove espaços invisíveis que podem causar erro na busca
                 if (tile.name.Trim().Equals("tileHurt (1)")) 
                 {
                     startingTile = tile;
@@ -133,83 +102,55 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
 
-            // Define quem será o alvo ativo
             if (startingTile != null)
             {
                 currentTargetTile = startingTile;
-                Debug.Log("🎯 Alvo Inicial Definido: " + currentTargetTile.name);
             }
             else
             {
-                // Fallback: Se não achar o nome exato, pega o primeiro da lista
-                Debug.LogWarning("⚠️ 'tileHurt (1)' não encontrado. Usando o primeiro da lista.");
                 currentTargetTile = allInteractiveTiles[0];
             }
 
-            // [IMPORTANTE] Só agora ativamos o tile escolhido
             currentTargetTile.SetAsTarget(true);
-        }
-        else
-        {
-            Debug.LogError("⛔ ERRO: Nenhum InteractiveTile encontrado na cena!");
         }
     }
 
     void Update()
     {
-        // --- 1. LEITURA DE INPUT ---
         if (!isMovementLocked)
         {
             moveInput = Input.GetAxisRaw("Horizontal");
 
-            // DEBUG 1: Verifica se o teclado está funcionando e se o jogo não está travado
-            if (moveInput != 0) 
-            {
-                Debug.Log($"[INPUT] Tecla detectada! Valor: {moveInput}");
-            }
-
-            // Captura o pulo
             if (Input.GetButtonDown("Jump") && isGrounded)
             {
                 jumpRequest = true;
-                Debug.Log("[INPUT] Botão de Pulo pressionado!");
             }
         }
         else
         {
             moveInput = 0f;
             jumpRequest = false;
-            // DEBUG 2: Avisa se o movimento estiver bloqueado por interação
-            Debug.LogWarning("[STATUS] O movimento está BLOQUEADO (isMovementLocked = true)");
         }
 
-        // --- 2. CONTROLE DE DIREÇÃO DO SPRITE (FLIP) ---
         if (moveInput != 0)
         {
             if (moveInput > 0)
             {
-                // Movendo para DIREITA (World)
-                // Se normal: flipX false. Se invertido: flipX true (para desinverter a rotação).
                 spriteRenderer.flipX = isUpsideDown;
             }
             else if (moveInput < 0)
             {
-                // Movendo para ESQUERDA (World)
-                // Se normal: flipX true. Se invertido: flipX false.
                 spriteRenderer.flipX = !isUpsideDown;
             }
         }
         
-        // --- 3. ATUALIZAÇÃO DE ANIMAÇÃO ---
         if (animator != null && animator.enabled)
         {
             animator.SetBool("isRunning", moveInput != 0);
 
-            // TRUQUE: Calculamos a velocidade local relativa
-            // Se estiver de cabeça para baixo (gravidade invertida), invertemos o sinal da velocidade
             float relativeYVelocity = rb.linearVelocity.y;
 
-            if (isUpsideDown) // Ou use: if (rb.gravityScale < 0)
+            if (isUpsideDown) 
             {
                 relativeYVelocity *= -1; 
             }
@@ -217,86 +158,94 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("yVelocity", relativeYVelocity); 
         }
 
-        // --- 4. LÓGICA DO TIMER DE GRAVIDADE ---
         if (TimeManager.instance != null)
         {
-            // Pega o valor atual da senoide (-1 a 1)
-            float waveValue = (TimeManager.instance.timeSineWave + 1)/2;
+            float sineValue = TimeManager.instance.timeSineWave;
 
-            // CASO 1: Onda ficou NEGATIVA, mas eu ainda estou NORMAL
-            // Hora de inverter (ficar de ponta cabeça)
-            if (waveValue < 0.01 && !isUpsideDown)
+            rb.gravityScale = defaultGravityScale * sineValue;
+
+            if (sineValue < 0 && !isUpsideDown)
             {
-                FlipGravity();
+                FlipOrientation();
             }
-            // CASO 2: Onda ficou POSITIVA, mas eu estou INVERTIDO
-            // Hora de voltar ao normal
-            else if (waveValue > 0.99 && isUpsideDown)
+            else if (sineValue > 0 && isUpsideDown)
             {
-                FlipGravity();
+                FlipOrientation();
             }
         }
-        
     }
 
     void FixedUpdate()
     {
-        
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
 
-        // Atualiza o Animator para ele saber se está voando ou no chão
         if (animator != null && animator.enabled)
         {
             animator.SetBool("isGrounded", isGrounded);
         }
 
-        // =================================================================
-        // 2. APLICAÇÃO DE MOVIMENTO FÍSICO
-        // =================================================================
+        float finalXVelocity = moveInput * moveSpeed;
+        
+        // --- LÓGICA DE DETECÇÃO DE PAREDE (CORRIGIDA COM ESCALA) ---
+        if (moveInput != 0 && capsuleCollider != null)
+        {
+            // 1. Calcula o tamanho REAL no mundo (Tamanho Local * Escala do Objeto)
+            Vector2 worldScale = transform.lossyScale;
+            Vector2 worldSize = capsuleCollider.size * new Vector2(Mathf.Abs(worldScale.x), Mathf.Abs(worldScale.y));
 
-        // Aplica o movimento horizontal
-        rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
+            // 2. Reduz levemente para evitar colisão com chão e teto
+            worldSize.x *= 0.9f;  // Mais estreito
+            worldSize.y *= 0.85f; // Mais baixo (crucial para terreno irregular)
 
-        // Aplica o pulo (se solicitado no Update)
+            // 3. Calcula o centro REAL no mundo (considerando rotação e offset)
+            Vector2 worldCenter = transform.TransformPoint(capsuleCollider.offset);
+
+            // 4. Define direção baseada no input (ignora rotação do personagem para ser consistente)
+            Vector2 direction = moveInput > 0 ? Vector2.right : Vector2.left;
+
+            RaycastHit2D wallHit = Physics2D.CapsuleCast(
+                worldCenter, 
+                worldSize, 
+                capsuleCollider.direction, 
+                0f, 
+                direction, 
+                wallCheckDistance, 
+                whatIsGround
+            );
+
+            if (wallHit.collider != null)
+            {
+                // Verifica se a colisão é uma parede vertical (ignora rampas suaves)
+                if (!isGrounded || Mathf.Abs(wallHit.normal.x) > 0.5f)
+                {
+                    finalXVelocity = 0f;
+                }
+            }
+        }
+
+        rb.linearVelocity = new Vector2(finalXVelocity, rb.linearVelocity.y);
+
         if (jumpRequest)
         {
             float jumpVel = isUpsideDown ? -jumpForce : jumpForce;
             
-            // Mantém o X, muda o Y
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpVel);
             
-            Debug.Log($"[FÍSICA] Pulo executado! Força: {jumpVel}");
-            
-            jumpRequest = false; // Consome o input
+            jumpRequest = false; 
         }
-    
     }
 
-    /// <summary>
-    /// Inverte a gravidade do personagem e rotaciona o sprite visualmente.
-    /// </summary>
-    void FlipGravity()
+    void FlipOrientation()
     {
         isUpsideDown = !isUpsideDown;
-        rb.gravityScale *= -1;
         transform.Rotate(0, 0, 180f);
     }
     
-    // =================================================================
-    // MÉTODOS DE CHECKPOINT E RESPAWN
-    // =================================================================
-
-    /// <summary>
-    /// Atualiza o ponto de respawn para a posição fornecida.
-    /// </summary>
     public void UpdateCheckpoint(Vector3 newPosition)
     {
         respawnPoint = newPosition;
     }
     
-    /// <summary>
-    /// Reseta o jogador para o último ponto seguro e restaura a gravidade ao normal.
-    /// </summary>
     public void Respawn()
     {
         transform.position = respawnPoint;
@@ -304,54 +253,38 @@ public class PlayerMovement : MonoBehaviour
 
         if (isUpsideDown)
         {
-            FlipGravity(); 
+            FlipOrientation(); 
         }
 
         transform.rotation = Quaternion.identity;
-        rb.gravityScale = defaultGravityScale;
         isUpsideDown = false;
-        
-        
     }
 
-    // =================================================================
-    // GESTÃO DE INTERAÇÃO E CÂMERA
-    // =================================================================
-
-    /// <summary>
-    /// Controla o estado de interação do jogador (troca de sprite/animação e braço).
-    /// </summary>
     public void SetInteractingState(bool isInteracting, Transform targetTile)
     {
         if (isInteracting)
         {
-            // 1. BLOQUEIA O MOVIMENTO
             isMovementLocked = true;
             rb.linearVelocity = Vector2.zero;
             
-            // 2. Desativa o Animator e troca para o sprite estático
             if (animator != null) animator.enabled = false; 
             if (spriteRenderer != null && interactionSprite != null)
                 spriteRenderer.sprite = interactionSprite;
             
-            // 3. Ativa o Braço e seta o alvo
             if (armObject != null && armRotator != null)
             {
                 armObject.SetActive(true);
-                armRotator.SetTarget(targetTile); // O braço trava a rotação para o tile
+                armRotator.SetTarget(targetTile);
             }
         }
         else
         {
-            // 1. DESBLOQUEIA O MOVIMENTO
             isMovementLocked = false;
             
-            // 2. Ativa o Animator e volta para o sprite padrão
             if (animator != null) animator.enabled = true; 
             if (spriteRenderer != null)
                 spriteRenderer.sprite = defaultSprite; 
             
-            // 3. Desativa o Braço e remove o alvo
             if (armObject != null && armRotator != null)
             {
                 armObject.SetActive(false);
@@ -360,31 +293,17 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Encontra um Tile Interativo aleatório (que não seja o destruído) e move a câmera para pre-visualizá-lo.
-    /// </summary>
     public void TeleportToRandomCheckpoint(GameObject destroyedTileObj)
     {
-        // Verifica se a lista existe
         if (allInteractiveTiles == null || allInteractiveTiles.Count == 0)
         {
-            Debug.Log("🎉 Todos os tiles já foram finalizados.");
             return;
         }
 
-        // =================================================================
-        // LÓGICA DE REMOÇÃO (Substitui a função RemoveDestroyedTile)
-        // =================================================================
-        // Como 'allInteractiveTiles' agora é uma List<>, podemos remover direto.
-        // O RemoveAll procura na lista quem tem o mesmo GameObject e remove.
         allInteractiveTiles.RemoveAll(tile => tile.gameObject == destroyedTileObj);
 
-        // =================================================================
-        // LÓGICA DE SORTEIO DO PRÓXIMO
-        // =================================================================
         if (allInteractiveTiles.Count > 0)
         {
-            // Sorteia um índice com base no tamanho atual da lista
             int randomIndex = Random.Range(0, allInteractiveTiles.Count);
             InteractiveTile nextTileTarget = allInteractiveTiles[randomIndex];
 
@@ -392,40 +311,47 @@ public class PlayerMovement : MonoBehaviour
             {
                 currentTargetTile = nextTileTarget;
                 currentTargetTile.SetAsTarget(true);
-                
-                Debug.Log("🎲 Novo Alvo Sorteado: " + currentTargetTile.name);
-
-                // Foca a câmera
-                //StartCoroutine(FocusCameraOnCheckpoint(currentTargetTile.transform.position));
+                if (camController != null)
+                {
+                    // A câmera vai viajar suavemente até o alvo, ficar lá 2s, e voltar suavemente
+                    camController.LookAtTarget(nextTileTarget.transform, 2.0f);
+                }
             }
-        }
-        else
-        {
-            Debug.Log("🏆 Fase Concluída! Lista vazia.");
-            //levelFinish?.Invoke();
         }
     }
 
-
-    
-
-    /// <summary>
-    /// Coroutine para focar a câmera no novo checkpoint e retornar.
-    /// </summary>
     private IEnumerator FocusCameraOnCheckpoint(Vector3 targetPosition)
     {
-        // 1. Mover o alvo de override para a nova posição
         cameraTargetOverride.position = targetPosition;
-        
-        // TODO: Aqui você deve adicionar a lógica do seu script de Câmera para seguir o cameraTargetOverride
-        // Ex: CameraFollowScript.Instance.SetTarget(cameraTargetOverride); 
-        
         yield return new WaitForSeconds(cameraFocusTime);
+    }
 
-        // TODO: Retornar o alvo da câmera para o Jogador (transform)
-        // Ex: CameraFollowScript.Instance.SetTarget(transform); 
+    // GIZMOS CORRIGIDOS PARA REFLETIR O TAMANHO REAL NO MUNDO
+    private void OnDrawGizmos()
+    {
+        if (capsuleCollider == null) capsuleCollider = GetComponent<CapsuleCollider2D>();
+        
+        if (capsuleCollider != null)
+        {
+            Gizmos.color = Color.magenta;
 
-        // Opcional: Para evitar NullReference se o player foi movido/destruído
-        if(this != null) Debug.Log("Câmera retornando ao Jogador.");
+            // 1. Recalcula o tamanho baseando-se na escala global do objeto
+            Vector2 worldScale = transform.lossyScale;
+            Vector2 worldSize = capsuleCollider.size * new Vector2(Mathf.Abs(worldScale.x), Mathf.Abs(worldScale.y));
+            
+            // Aplica as reduções usadas na lógica física
+            worldSize.x *= 0.9f;
+            worldSize.y *= 0.85f;
+
+            // 2. Calcula o centro em coordenadas de mundo
+            Vector3 worldCenter = transform.TransformPoint(capsuleCollider.offset);
+
+            // 3. Define a posição de desenho baseada na direção que o player olharia (direita por padrão para debug)
+            // Nota: No gizmo desenhamos estático à direita para visualização, 
+            // mas em jogo ele muda com o input.
+            Vector3 drawCenter = worldCenter + (Vector3.right * wallCheckDistance);
+
+            Gizmos.DrawWireCube(drawCenter, new Vector3(worldSize.x, worldSize.y, 1));
+        }
     }
 }
