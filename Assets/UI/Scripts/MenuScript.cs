@@ -5,13 +5,21 @@ public class MenuScript : MonoBehaviour
 {
     private AudioManagerMenu audioManagerMenu;
 
-    public string cenaPosterior;
-    public string cenaAnterior;
+    [Tooltip("Nome da cena que deve ser carregada ao precionar retorno")]
+    [SerializeField] private string cenaPosterior;
+    [Tooltip("Nome da cena que deve ser carregada ao precionar continuar")]
+    [SerializeField] private string cenaAnterior;
 
-    public string cenaBotao1;
-    public string cenaBotao2;
-    public string cenaBotao3;
-
+    [Tooltip("Nome da cena que deve ser carregada ao precionar o botão 1")]
+    [SerializeField] private string cenaBotao1;
+    [Tooltip("Nome da cena que deve ser carregada ao precionar o botão 2")]
+    [SerializeField] private string cenaBotao2;
+    [Tooltip("Nome da cena que deve ser carregada ao precionar o botão 3")]
+    [SerializeField] private string cenaBotao3;
+    [Tooltip("Nome da cena que deve ser carregada ao precionar o botão 4")]
+    [SerializeField] private string cenaBotao4;
+    [Tooltip("Nome da cena que deve ser carregada ao precionar o botão 5")]
+    [SerializeField] private string cenaBotao5;
     public void Start()
     {
         audioManagerMenu = FindFirstObjectByType<AudioManagerMenu>();
@@ -63,6 +71,24 @@ public class MenuScript : MonoBehaviour
         Debug.Log("Carregando cena " + cenaBotao3);
 
         SceneManager.LoadScene(cenaBotao3);
+    }
+
+    public void Botao4()
+    {
+        audioManagerMenu.PlaySelectSound();
+
+        Debug.Log("Carregando cena " + cenaBotao4);
+
+        SceneManager.LoadScene(cenaBotao4);
+    }
+
+    public void Botao5()
+    {
+        audioManagerMenu.PlaySelectSound();
+
+        Debug.Log("Carregando cena " + cenaBotao5);
+
+        SceneManager.LoadScene(cenaBotao5);
     }
 
     public void Sair()

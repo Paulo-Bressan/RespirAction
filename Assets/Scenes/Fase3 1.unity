@@ -11494,7 +11494,7 @@ GameObject:
   - component: {fileID: 1891115405}
   - component: {fileID: 1891115407}
   - component: {fileID: 1891115406}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Diafragma
   m_TagString: Untagged
   m_Icon: {fileID: 0}

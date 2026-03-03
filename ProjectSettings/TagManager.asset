@@ -10,7 +10,6 @@ TagManager:
   - checkpoint
   - death
   - player
-  - node
   layers:
   - Default
   - TransparentFX
