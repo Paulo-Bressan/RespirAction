@@ -7814,6 +7814,8 @@ MonoBehaviour:
   cenaBotao1: 
   cenaBotao2: 
   cenaBotao3: 
+  cenaBotao4: 
+  cenaBotao5: 
 --- !u!4 &1203975170
 Transform:
   m_ObjectHideFlags: 0
@@ -7862,6 +7864,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _objectsToMonitor:
   - {fileID: 654573146}
+  - {fileID: 749188940}
+  - {fileID: 360446820}
+  - {fileID: 201688346}
+  - {fileID: 217119729}
+  - {fileID: 1530682172}
+  - {fileID: 1017423974}
+  - {fileID: 118391541}
   _transitionCamera: {fileID: 394099442}
   _zoomTarget: {fileID: 965925232}
   _zoomDuration: 2

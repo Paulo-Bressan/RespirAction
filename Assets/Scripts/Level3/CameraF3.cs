@@ -102,7 +102,7 @@ public class CameraController : MonoBehaviour
 
         // 2. Força o Aspect Ratio da câmera ser idêntico ao do Mapa.
         // Isso causará a distorção (esticamento) visual se a tela for diferente do mapa.
-        mainCamera.aspect = bounds.size.x / bounds.size.y;
+        //mainCamera.aspect = bounds.size.x / bounds.size.y;
     }
 
     void LateUpdate()

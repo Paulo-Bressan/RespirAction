@@ -8,6 +8,9 @@ public class PieceSpawner : MonoBehaviour
     public GridManager grid;
     public List<PieceShape> availableShapes;
     public GameObject piecePrefab;
+    
+    [Tooltip("Gestor que roda o cronômetro desta fase.")]
+    public Level4Manager levelManager;
 
     [Header("Visual Configuration")]
     [Tooltip("SpriteSet padrão para todas as peças. Pode ser sobrescrito por PieceShape.spriteSet")]
@@ -28,6 +31,12 @@ public class PieceSpawner : MonoBehaviour
     void Start()
     {
         currentDelay = startSpawnDelay;
+        
+        if (levelManager == null) 
+        {
+            levelManager = FindObjectOfType<Level4Manager>();
+        }
+
         StartCoroutine(SpawnLoop());
     }
 
@@ -43,6 +52,8 @@ public class PieceSpawner : MonoBehaviour
 
     void TrySpawnPiece()
     {
+        if (availableShapes == null || availableShapes.Count == 0) return;
+
         PieceShape shape = availableShapes[Random.Range(0, availableShapes.Count)];
 
         for (int attempt = 0; attempt < maxPlacementAttempts; attempt++)
@@ -58,7 +69,13 @@ public class PieceSpawner : MonoBehaviour
             }
         }
 
-        Debug.Log("⚠️ Sem espaço pra spawnar peça!");
+        Debug.Log("⚠️ Sem espaço pra spawnar peça! Grid entupido.");
+        
+        // Dispara o Game Over real no gerente da fase 4
+        if (levelManager != null)
+        {
+            levelManager.TriggerGameOver();
+        }
     }
 
     int FindValidHeight(PieceShape shape, int originX)
@@ -91,9 +108,6 @@ public class PieceSpawner : MonoBehaviour
     {
         // Determina qual spriteSet usar (do shape ou default)
         BlockSpriteSet spriteSetToUse = shape.spriteSet != null ? shape.spriteSet : defaultSpriteSet;
-
-        // Marca as células no grid (agora feito pelo PieceInstance via RegisterBlock)
-        // Não precisamos mais chamar grid.SetCell aqui
 
         // Instancia a peça
         GameObject pieceObj = Instantiate(piecePrefab);

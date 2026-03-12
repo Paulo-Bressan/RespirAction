@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6242550508479071452}
   - component: {fileID: 647472562841760107}
   - component: {fileID: 6121213600713156528}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,4 +101,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteSet: {fileID: 0}
+  maxInteractionDistance: 3.5
   showDebugInfo: 0

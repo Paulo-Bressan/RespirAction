@@ -54,6 +54,14 @@ public class PieceInstance : MonoBehaviour
             Debug.LogWarning("PieceInstance: Nenhum BlockSpriteSet definido. Os blocos ficarão sem sprite!");
         }
 
+        // Remove possiveis colliders ou corpos do objeto "Pai" para ele ser apenas uma pasta vazia e não causar explosões de física
+        Collider2D parentCol = GetComponent<Collider2D>();
+        if (parentCol != null) Destroy(parentCol);
+        Rigidbody2D parentRb = GetComponent<Rigidbody2D>();
+        if (parentRb != null) Destroy(parentRb);
+
+        int tetrisLayer = LayerMask.NameToLayer("TetrisBlocks");
+
         foreach (var cell in shape.cells)
         {
             int x = origin.x + cell.x;
@@ -63,6 +71,11 @@ public class PieceInstance : MonoBehaviour
             GameObject blockObj = new GameObject($"Block_{x}_{y}");
             blockObj.transform.parent = transform;
             blockObj.transform.localPosition = new Vector3(cell.x, cell.y, 0);
+            
+            if (tetrisLayer != -1) 
+            {
+                blockObj.layer = tetrisLayer;
+            }
 
             // Adiciona o BlockController
             BlockController block = blockObj.AddComponent<BlockController>();
