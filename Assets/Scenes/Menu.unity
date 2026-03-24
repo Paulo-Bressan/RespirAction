@@ -301,9 +301,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cenaPosterior: 
   cenaAnterior: 
-  cenaBotao1: MenuFases
+  cenaBotao1: MenuFasesAlt
   cenaBotao2: 
   cenaBotao3: 
+  cenaBotao4: 
+  cenaBotao5: 
 --- !u!1 &675712640
 GameObject:
   m_ObjectHideFlags: 0

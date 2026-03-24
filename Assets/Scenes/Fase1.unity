@@ -4645,10 +4645,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cenaPosterior: Fase1.1
-  cenaAnterior: MenuFases
+  cenaAnterior: MenuFasesAlt
   cenaBotao1: 
   cenaBotao2: 
   cenaBotao3: 
+  cenaBotao4: 
+  cenaBotao5: 
 --- !u!1001 &1943505006
 PrefabInstance:
   m_ObjectHideFlags: 0

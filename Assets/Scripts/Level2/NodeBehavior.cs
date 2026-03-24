@@ -47,7 +47,17 @@ public class NodeBehavior : MonoBehaviour
         if (!ignoreSprite)
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
-            if (!nodeSprites.ElementAt(0) && !nodeSprites.ElementAt(1)) Debug.Log("[NÓ] Faltando sprites na lista de sprites de " + name);
+            if (!spriteRenderer) Debug.Log("[NÓ] Faltando spriteRenderer");
+
+            // checa se todos sprites estão presentes com um contador
+            bool checkList = true;
+            for (int i = 0; i < connectionSize; i++)
+            {
+                checkList = checkList && nodeSprites.ElementAt(i);
+            }
+
+            if (!checkList) 
+                Debug.Log("[NÓ] Faltando sprites na lista de sprites de " + name);
         }
         
 
@@ -60,7 +70,7 @@ public class NodeBehavior : MonoBehaviour
 
     void Update()
     {
- 
+        
     }
 
     public void updateCables(int cableID)
@@ -71,22 +81,20 @@ public class NodeBehavior : MonoBehaviour
             Debug.Log("[NÓ] UpdateCables foi chamado para " + cableID + " mas este cabo não existe");
     }
 
-    public void updateSprite()
+    public void updateSprite(int conexAtivas)
     {
-        if (!ignoreSprite)
-        {
-            if (nodeSprites[0] && nodeSprites[1])
-            {
-                if (spriteRenderer.sprite != nodeSprites[1])
-                    spriteRenderer.sprite = nodeSprites[1];
-            }
-        }
+        // muda comportamento dependendo de quantas conexoes tem
+        if (connectionSize == 1)
+            spriteRenderer.sprite = nodeSprites[1]; // so atualiza para o final
+        else
+            spriteRenderer.sprite = nodeSprites[conexAtivas];
+        // idealmente o tamanho de nodeSprites segue connectionSize
+        // o ultimo nodeSprites deve ser o final para assim seguir a ideia de "enchimento"
     }
 
     public void handleConnection(int connectionID)
     {
         Debug.Log("[NÓ] Fazendo conexão em " + name + " na linha " + connectionID);
-        updateCables(connectionID);
 
         if (positiveConnectionList.Length >= connectionID)
             positiveConnectionList[connectionID] = true;
@@ -95,14 +103,17 @@ public class NodeBehavior : MonoBehaviour
 
         int n = 0; // contador de cabos ativos;
         for (int i = 0; i < connectionSize; i++)
-        {
             if (positiveConnectionList[i]) n++;
-            if (n == connectionSize)
-            {
-                Debug.Log("[NÓ] Com todas conexões ativas, o nó " + name + " agora está ligado");
-                isPositive = true;
-                updateSprite();
-            }
+
+        // se todas conexoes ativas, liga  
+        if (n == connectionSize)
+        {
+            Debug.Log("[NÓ] Com todas conexões ativas, o nó " + name + " agora está ligado");
+            isPositive = true;
         }
+
+        // updates visuais
+        updateCables(connectionID);
+        if (!ignoreSprite) updateSprite(n);
     }
 }

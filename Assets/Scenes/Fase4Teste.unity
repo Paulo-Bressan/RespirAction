@@ -1740,8 +1740,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3452f7d2375c554ab816f3bdc108848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cenaPosterior: MenuFases
-  cenaAnterior: MenuFases
+  cenaPosterior: MenuFasesAlt
+  cenaAnterior: MenuFasesAlt
   cenaBotao1: 
   cenaBotao2: 
   cenaBotao3: 
