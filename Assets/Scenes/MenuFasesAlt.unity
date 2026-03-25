@@ -1110,7 +1110,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a65df41e1a017db489dddd02551a7e60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MusicPlayer: {fileID: 0}
   track: {fileID: 8300000, guid: 0d7f2bb8dc189974c828d697f448aa03, type: 3}
+  volume: 0
 --- !u!4 &387358430
 Transform:
   m_ObjectHideFlags: 0
@@ -2518,7 +2520,7 @@ MonoBehaviour:
   cenaPosterior: 
   cenaAnterior: Menu
   cenaBotao1: Cutscene1
-  cenaBotao2: Fase2Experimental
+  cenaBotao2: Fase2
   cenaBotao3: Fase3 1
   cenaBotao4: Fase4Teste
   cenaBotao5: QuizScene
@@ -3664,6 +3666,7 @@ MonoBehaviour:
   armObject: {fileID: 640718567}
   cameraTargetOverride: {fileID: 0}
   cameraFocusTime: 2
+  audioManagerScene: {fileID: 0}
 --- !u!70 &1777975373
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

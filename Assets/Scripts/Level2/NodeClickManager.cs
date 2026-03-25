@@ -10,11 +10,16 @@ public class NodeClickManager : MonoBehaviour
     [Tooltip("Objeto do jogador")]
     public GameObject player = null;
 
+    [Tooltip("Script do AudioManagerScene")]
+    public AudioManagerScene audioManagerScene = null;
+
     [Tooltip("Qual nó o mouse está em cima (null se nenhum)")]
     public GameObject hoverNode = null;
 
     [Tooltip("Qual nó está sendo puxado (null se nenhum)")]
     public GameObject pulledNode = null;
+
+    
 
     void Start()
     {
@@ -22,6 +27,9 @@ public class NodeClickManager : MonoBehaviour
             playerMovement = player.GetComponent<PlayerMovementF2>();
         else
             Debug.Log("[MANAGER DE NÓ] JOGADOR FALTANDO");
+
+        if (!audioManagerScene)
+            Debug.Log("[MANAGER DE NÓ] AUDIOMANAGER FALTANDO");
     }
 
     void Update()
@@ -42,6 +50,7 @@ public class NodeClickManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            audioManagerScene.PlaySound(0);
             // ao clicar o mouse, se existe um hovernode E ainda não existe um pullednode,
             // o pullednode vai ser igual ao hovernode
             if (hoverNode)
@@ -67,12 +76,22 @@ public class NodeClickManager : MonoBehaviour
                     if (checkConnection(hoverBehavior, pulledBehavior))
                     {
                         Debug.Log("[MANAGER DE NÓ] Puxando para nó correto");
+                        audioManagerScene.PlaySound(2);
                         hoverBehavior.handleConnection(pulledBehavior.connectionID);
                     }
-                    else Debug.Log("[MANAGER DE NÓ] Puxando para nó errado");
+                    else
+                    {
+                        Debug.Log("[MANAGER DE NÓ] Puxando para nó errado");
+                        audioManagerScene.PlaySound(3);
+                    }
                 }
-                else Debug.Log("[MANAGER DE NÓ] Puxando de um nó desligado");
+                else 
+                {
+                    Debug.Log("[MANAGER DE NÓ] Puxando de um nó desligado");
+                    audioManagerScene.PlaySound(3);
+                }
             }
+            else audioManagerScene.PlaySound(1);
 
             pulledNode = null;
             playerMovement.SetInteractingState(false);

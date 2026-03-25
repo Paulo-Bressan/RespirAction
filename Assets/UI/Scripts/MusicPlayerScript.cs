@@ -37,4 +37,10 @@ public class MusicPlayerScript : MonoBehaviour
         Debug.Log("Parando musica");
         audioSource.Stop();
     }
+
+    public void AdjustVolume(float volume)
+    {
+        Debug.Log("Alterando volume para" + volume);
+        audioSource.volume = volume;
+    }
 }

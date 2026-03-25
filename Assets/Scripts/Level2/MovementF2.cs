@@ -53,13 +53,14 @@ public class PlayerMovementF2 : MonoBehaviour
     
     private Vector3 respawnPoint; 
     private Sprite defaultSprite;
-    
-    // Lista estática para todos os tiles interativos na cena
-    
-    
+
+
     // =================================================================
     // REFERÊNCIAS DE COMPONENTES
     // =================================================================
+    [Header("Referencias de componentes")]
+    [SerializeField] private AudioManagerScene audioManagerScene = null;
+
     private Rigidbody2D rb;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
@@ -86,6 +87,10 @@ public class PlayerMovementF2 : MonoBehaviour
         {
             armObject.SetActive(false); 
         }
+
+        // Checagem de receferncia de audiomanager
+        if (!audioManagerScene)
+            Debug.Log("[PLAYER] Audiomanager faltando!");
     }
 
     void Update()
@@ -106,6 +111,7 @@ public class PlayerMovementF2 : MonoBehaviour
             {
                 jumpRequest = true;
                 Debug.Log("[INPUT] Botão de Pulo pressionado!");
+                audioManagerScene.PlaySound(4);
             }
         }
         else
