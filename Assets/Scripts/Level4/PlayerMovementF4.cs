@@ -8,6 +8,16 @@ public class PlayerMovementF4 : MonoBehaviour
     [Header("Movimento Básico (Sem Física)")]
     [SerializeField] private float moveSpeed = 8f;
 
+    [Header("Jetpack e Gravidade (Hardcoded)")]
+    [SerializeField] private float jetpackAcceleration = 30f;
+    [SerializeField] private float gravityAcceleration = 35f;
+    [SerializeField] private float maxAscendSpeed = 10f;
+    [SerializeField] private float maxFallSpeed = 15f;
+
+    [Header("Limites de Altura (Eixo Y)")]
+    [SerializeField] private float maxYPosition = 6f;
+    [SerializeField] private float minYPosition = -4f;
+
     [Header("Limites do Mapa")]
     [Tooltip("Colisor estático que define a área onde o jogador DEVE FICAR dentro.")]
     [SerializeField] private BoxCollider2D mapBounds;
@@ -29,6 +39,7 @@ public class PlayerMovementF4 : MonoBehaviour
 
     private Vector2 moveInput;
     private bool isInteracting;
+    private float currentYVelocity = 0f;
 
     void Awake()
     {
@@ -93,16 +104,48 @@ public class PlayerMovementF4 : MonoBehaviour
             return; // Se estiver socando, bloqueia o fluxo de movimento
         }
 
-        // 1. Pega os botões pressionados e "espreme" para valer no máximo 1
-        moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+        // 1. Pega o input horizontal
+        moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), 0f);
 
-        // 2. Modifica a posição da imagem puramente pelo código e relógio do jogo (Sem Físicas)
-        transform.position += (Vector3)(moveInput * moveSpeed * Time.deltaTime);
+        // 2. Lógica de Aceleração Jetpack/Gravidade (Direto pelo código)
+        bool isJumping = Input.GetButton("Jump") || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
 
-        // 3. Checa a trava de paredes matemáticas
+        if (isJumping)
+        {
+            // Acelera para cima
+            currentYVelocity += jetpackAcceleration * Time.deltaTime;
+            currentYVelocity = Mathf.Min(currentYVelocity, maxAscendSpeed);
+        }
+        else
+        {
+            // Acelera para baixo (Gravidade)
+            currentYVelocity -= gravityAcceleration * Time.deltaTime;
+            currentYVelocity = Mathf.Max(currentYVelocity, -maxFallSpeed);
+        }
+
+        // 3. Aplica o movimento na posição
+        Vector3 newPos = transform.position;
+        newPos.x += moveInput.x * moveSpeed * Time.deltaTime;
+        newPos.y += currentYVelocity * Time.deltaTime;
+
+        // 4. Trava Hardcoded de Altura Y
+        if (newPos.y > maxYPosition)
+        {
+            newPos.y = maxYPosition;
+            if (currentYVelocity > 0) currentYVelocity = 0f; // Bateu no teto
+        }
+        else if (newPos.y < minYPosition)
+        {
+            newPos.y = minYPosition;
+            if (currentYVelocity < 0) currentYVelocity = 0f; // Bateu no chão
+        }
+
+        transform.position = newPos;
+
+        // 5. Checa a trava de paredes matemáticas (BoxCollider original, mantém X restrito)
         ApplyMapBounds();
 
-        // 4. Desenha as Animações
+        // 6. Desenha as Animações
         HandleSpriteFlip();
         HandleAnimations();
     }
@@ -179,10 +222,10 @@ public class PlayerMovementF4 : MonoBehaviour
     {
         if (animator != null && animator.enabled)
         {
-            // Garante que o painel Animator antigo receba dados limpos sem dar Crash por falta do Rigidbody
-            animator.SetBool("isRunning", moveInput.magnitude > 0);
-            animator.SetBool("isGrounded", true); 
-            animator.SetFloat("yVelocity", 0f);   
+            // Atualiza estados das animações compatíveis com as novas físicas jetpack
+            animator.SetBool("isRunning", Mathf.Abs(moveInput.x) > 0);
+            animator.SetBool("isGrounded", transform.position.y <= minYPosition + 0.05f); 
+            animator.SetFloat("yVelocity", currentYVelocity);   
         }
     }
 }

@@ -460,6 +460,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  jetpackAcceleration: 30
+  gravityAcceleration: 35
+  maxAscendSpeed: 10
+  maxFallSpeed: 10
+  maxYPosition: 6
+  minYPosition: -1
   mapBounds: {fileID: 1012013439}
   maxInteractionDistance: 3.5
   armRotator: {fileID: 333513529}
@@ -630,6 +636,7 @@ GameObject:
   m_Component:
   - component: {fileID: 633715766}
   - component: {fileID: 633715765}
+  - component: {fileID: 633715767}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -667,6 +674,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &633715767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633715764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac74061c0f3211745a849d07fe468a80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elapsedTime: 0
+  timeSineWave: 0
+  sineSpeedDiv: 1.5707964
 --- !u!1 &754755676
 GameObject:
   m_ObjectHideFlags: 0
@@ -1056,6 +1078,7 @@ GameObject:
   - component: {fileID: 1084616137}
   - component: {fileID: 1084616136}
   - component: {fileID: 1084616135}
+  - component: {fileID: 1084616140}
   m_Layer: 6
   m_Name: Diafragma
   m_TagString: Untagged
@@ -1711,6 +1734,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1084616140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084616134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48744e463c7778143816f69ed257691f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pulseStrengthX: 0.5
+  pulseStrengthY: 0.1
 --- !u!1 &1194973401
 GameObject:
   m_ObjectHideFlags: 0
