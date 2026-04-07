@@ -1657,6 +1657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectSound: {fileID: 8300000, guid: b70d4d843874f1943ad225f57039fe40, type: 3}
+  effectSound: {fileID: 0}
 --- !u!4 &1391532280
 Transform:
   m_ObjectHideFlags: 0
@@ -2805,7 +2806,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cenaPosterior: Fase1.2
-  cenaAnterior: MenuFasesAlt
+  cenaAnterior: MenuFases
   cenaBotao1: 
   cenaBotao2: 
   cenaBotao3: 

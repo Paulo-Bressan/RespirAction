@@ -30,7 +30,7 @@ public class MenuScript : MonoBehaviour
         audioManagerMenu.PlaySelectSound();
 
         Scene currentScene = SceneManager.GetActiveScene();
-        Debug.Log("Avancando de " + currentScene.name + " para " + cenaAnterior);
+        Debug.Log("[MENU] Avancando de " + currentScene.name + " para " + cenaAnterior);
 
         SceneManager.LoadScene(cenaPosterior);
     }
@@ -40,7 +40,7 @@ public class MenuScript : MonoBehaviour
         audioManagerMenu.PlaySelectSound();
 
         Scene currentScene = SceneManager.GetActiveScene();
-        Debug.Log("Voltando de " + currentScene.name + " para " + cenaAnterior);
+        Debug.Log("[MENU] Voltando de " + currentScene.name + " para " + cenaAnterior);
 
         SceneManager.LoadScene(cenaAnterior);
 
@@ -50,7 +50,7 @@ public class MenuScript : MonoBehaviour
     {
         audioManagerMenu.PlaySelectSound();
 
-        Debug.Log("Carregando cena " + cenaBotao1);
+        Debug.Log("[MENU] Carregando cena " + cenaBotao1);
 
         SceneManager.LoadScene(cenaBotao1);
     }
@@ -59,7 +59,7 @@ public class MenuScript : MonoBehaviour
     {
         audioManagerMenu.PlaySelectSound();
 
-        Debug.Log("Carregando cena " + cenaBotao2);
+        Debug.Log("[MENU] Carregando cena " + cenaBotao2);
 
         SceneManager.LoadScene(cenaBotao2);
     }
@@ -68,7 +68,7 @@ public class MenuScript : MonoBehaviour
     {
         audioManagerMenu.PlaySelectSound();
 
-        Debug.Log("Carregando cena " + cenaBotao3);
+        Debug.Log("[MENU] Carregando cena " + cenaBotao3);
 
         SceneManager.LoadScene(cenaBotao3);
     }
@@ -77,7 +77,7 @@ public class MenuScript : MonoBehaviour
     {
         audioManagerMenu.PlaySelectSound();
 
-        Debug.Log("Carregando cena " + cenaBotao4);
+        Debug.Log("[MENU] Carregando cena " + cenaBotao4);
 
         SceneManager.LoadScene(cenaBotao4);
     }
@@ -86,7 +86,7 @@ public class MenuScript : MonoBehaviour
     {
         audioManagerMenu.PlaySelectSound();
 
-        Debug.Log("Carregando cena " + cenaBotao5);
+        Debug.Log("[MENU] Carregando cena " + cenaBotao5);
 
         SceneManager.LoadScene(cenaBotao5);
     }
@@ -95,7 +95,7 @@ public class MenuScript : MonoBehaviour
     {
         audioManagerMenu.PlaySelectSound();
 
-        Debug.Log("Saiu do jogo");
+        Debug.Log("[MENU] Saiu do jogo");
         Application.Quit();
     }
 }

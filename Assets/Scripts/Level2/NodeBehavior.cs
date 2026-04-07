@@ -47,7 +47,7 @@ public class NodeBehavior : MonoBehaviour
         if (!ignoreSprite)
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
-            if (!spriteRenderer) Debug.Log("[NÓ] Faltando spriteRenderer");
+            if (!spriteRenderer) Debug.LogWarning("[NÓ] Faltando spriteRenderer");
 
             // checa se todos sprites estão presentes com um contador
             bool checkList = true;
@@ -57,7 +57,7 @@ public class NodeBehavior : MonoBehaviour
             }
 
             if (!checkList) 
-                Debug.Log("[NÓ] Faltando sprites na lista de sprites de " + name);
+                Debug.LogWarning("[NÓ] Faltando sprites na lista de sprites de " + name);
         }
         
 
@@ -78,7 +78,7 @@ public class NodeBehavior : MonoBehaviour
         if (CableList.Length >= cableID)
             CableList[cableID].SetActive(true);
         else
-            Debug.Log("[NÓ] UpdateCables foi chamado para " + cableID + " mas este cabo não existe");
+            Debug.LogWarning("[NÓ] UpdateCables foi chamado para " + cableID + " mas este cabo não existe");
     }
 
     public void updateSprite(int conexAtivas)
@@ -94,12 +94,24 @@ public class NodeBehavior : MonoBehaviour
 
     public void handleConnection(int connectionID)
     {
+        // primeiro resolve o caso especifico para nos c4 e c5
+        // o codigo faz mais sentido no caso geral, que fica fora do if
+        if (nodeID == 3 || nodeID == 4)
+        {
+            Debug.Log("[NÓ] Fazendo conexão em " + name + ", resolvendo caso especial");
+            isPositive = true;
+            updateCables(0);
+            if (!ignoreSprite) updateSprite(1);
+            return;
+        }
+        
+        // funcionamento para os demais nos
         Debug.Log("[NÓ] Fazendo conexão em " + name + " na linha " + connectionID);
 
         if (positiveConnectionList.Length >= connectionID)
             positiveConnectionList[connectionID] = true;
         else
-            Debug.Log("[NÓ] handleConnection foi chamado para " + connectionID + " mas esta conexão não existe");
+            Debug.LogWarning("[NÓ] handleConnection foi chamado para " + connectionID + " mas esta conexão não existe");
 
         int n = 0; // contador de cabos ativos;
         for (int i = 0; i < connectionSize; i++)

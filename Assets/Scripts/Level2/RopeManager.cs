@@ -14,8 +14,12 @@ public class RopeManager : MonoBehaviour
     [Tooltip("Transform destino da corda")]
     [SerializeField] private Transform ropeB;
 
+    // referencias
     private NodeClickManager nodeClickManager;
     private RopeDoubleAnchor ropeDoubleAnchor;
+
+    // uso interno
+    private GameObject pulledNode;
 
     void Start()
     {
@@ -31,12 +35,14 @@ public class RopeManager : MonoBehaviour
 
     void Update()
     {
-        if (nodeClickManager.pulledNode)
+        pulledNode = nodeClickManager.getPulledNode();
+
+        if (pulledNode)
         {
             ropeRaw.GetComponent<LineRenderer>().enabled = true;
             ropeA.position = new Vector3
-                (nodeClickManager.pulledNode.transform.position.x,
-                nodeClickManager.pulledNode.transform.position.y,
+                (pulledNode.transform.position.x,
+                pulledNode.transform.position.y,
                 -0.15f);
         }
         else

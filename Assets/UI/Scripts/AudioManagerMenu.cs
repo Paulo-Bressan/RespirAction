@@ -8,7 +8,8 @@ public class AudioManagerMenu : MonoBehaviour
     // Referência para o componente AudioSource
     private AudioSource audioSource;
 
-    public AudioClip selectSound;
+    [SerializeField] private AudioClip selectSound;
+    [SerializeField] private AudioClip effectSound;
 
     private void Awake()
     {
@@ -28,10 +29,15 @@ public class AudioManagerMenu : MonoBehaviour
     // Métodos públicos para tocar cada som
     public void PlaySelectSound()
     {
-        if (selectSound != null)
-        {
+        if (selectSound)
             audioSource.PlayOneShot(selectSound);
-        }
+        else Debug.LogWarning("[AUDIO] SelectSound faltando");
     }
 
+    public void PlayEffectSound()
+    {
+        if (effectSound)
+            audioSource.PlayOneShot(effectSound);
+        else Debug.LogWarning("[AUDIO] EffectSound faltando");
+    }
 }

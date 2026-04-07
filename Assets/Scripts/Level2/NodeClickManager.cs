@@ -7,17 +7,27 @@ public class NodeClickManager : MonoBehaviour
     private GameObject foundNode;
     private PlayerMovementF2 playerMovement;
 
+    [Header("Referências")]
+
     [Tooltip("Objeto do jogador")]
-    public GameObject player = null;
+    [SerializeField] private GameObject player = null;
 
     [Tooltip("Script do AudioManagerScene")]
-    public AudioManagerScene audioManagerScene = null;
+    [SerializeField] private AudioManagerScene audioManagerScene = null;
+
+    [Tooltip("Script do menu de pausa")]
+    [SerializeField] private PauseMenu pauseMenu = null;
+
+    [Tooltip("Script do movimento do diafragma")]
+    [SerializeField] private ScalePulsator scalePulsator = null;
+
+    [Header("Interação de nós")]
 
     [Tooltip("Qual nó o mouse está em cima (null se nenhum)")]
-    public GameObject hoverNode = null;
+    [SerializeField] private GameObject hoverNode = null;
 
     [Tooltip("Qual nó está sendo puxado (null se nenhum)")]
-    public GameObject pulledNode = null;
+    [SerializeField] private GameObject pulledNode = null;
 
     
 
@@ -26,10 +36,14 @@ public class NodeClickManager : MonoBehaviour
         if (player)
             playerMovement = player.GetComponent<PlayerMovementF2>();
         else
-            Debug.Log("[MANAGER DE NÓ] JOGADOR FALTANDO");
+            Debug.LogWarning("[MANAGER DE NÓ] JOGADOR FALTANDO");
 
         if (!audioManagerScene)
-            Debug.Log("[MANAGER DE NÓ] AUDIOMANAGER FALTANDO");
+            Debug.LogWarning("[MANAGER DE NÓ] AUDIOMANAGER FALTANDO");
+        if (!pauseMenu)
+            Debug.LogWarning("[MANAGER DE NÓ] MENU DE PAUSA FALTANDO");
+        if (!scalePulsator)
+            Debug.LogWarning("[MANAGER DE NÓ] SCRIPT DO DIAFRAGMA FALTANDO");
     }
 
     void Update()
@@ -40,9 +54,10 @@ public class NodeClickManager : MonoBehaviour
 
         raycasthit2D = Physics2D.Raycast(mouseRay.origin, mouseRay.direction);
         
-        if (raycasthit2D)
+        if (raycasthit2D && !pauseMenu.isPaused)
         {
             // se o raycast acertou algo, verifica se é do tag node. se sim, este é o hovernode
+            // tambem so faz isto se o jogo nao esta pausado para evitar comportamentos estranhos
             foundNode = raycasthit2D.collider.gameObject;
             hoverNode = (foundNode.tag == "node") ? foundNode : null;
         }
@@ -78,6 +93,8 @@ public class NodeClickManager : MonoBehaviour
                         Debug.Log("[MANAGER DE NÓ] Puxando para nó correto");
                         audioManagerScene.PlaySound(2);
                         hoverBehavior.handleConnection(pulledBehavior.connectionID);
+                        if (hoverBehavior.nodeID == 13) // no final
+                            scalePulsator.toggleConnection();
                     }
                     else
                     {
@@ -104,6 +121,11 @@ public class NodeClickManager : MonoBehaviour
         // verifica se o hovernode está em sequencia do pullednode
         bool isSequence = pulledBehavior.nodeID == (hoverBehavior.nodeID - 1);
 
+        // caso especifico dos nos esq_1 e dir_1 que possuem 3 conexoes em sequencia
+        if (hoverBehavior.nodeID == 5)
+            if (pulledBehavior.nodeID == 2 || pulledBehavior.nodeID == 3 || pulledBehavior.nodeID == 4)
+                isSequence = true;
+
         // verifica alinhamento (para evitar cruzar esquerda e direita)
         // se algum dos nós a serem conectados é do tipo 0 (central), aprova imediato
         // senao, verifica se o tipo do hovernode é igual ao tipo do pullednode
@@ -113,5 +135,14 @@ public class NodeClickManager : MonoBehaviour
         // se passar nas duas verificacoes, retorna true
         if (isSequence && isAligned) return true;
         return false;
+    }
+
+    // getter para pullednode
+    // pode ser criado um para hovernode se precisar tbm
+    public GameObject getPulledNode()
+    {
+        if (pulledNode)
+            return pulledNode;
+        else return null;
     }
 }
