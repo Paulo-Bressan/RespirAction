@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Respawn & Interação")]
     [SerializeField] private Sprite interactionSprite; 
     [SerializeField] private GameObject armObject;
+    [SerializeField] private AudioManagerScene audioManagerScene;
 
     [Header("Controle de Câmera")]
     [SerializeField] private Transform cameraTargetOverride;
@@ -97,6 +98,7 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetButtonDown("Jump") && IsGrounded)
             {
                 jumpRequest = true;
+                audioManagerScene.PlaySound(4);
             }
         }
         else

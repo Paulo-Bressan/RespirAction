@@ -63,18 +63,8 @@ public class TransitionManager : MonoBehaviour
 
         continueButton1.SetActive(false);
         continueButton2.SetActive (true);
-        //StartCoroutine(loadButtonWithDelay());
 
         audioManager.GetComponent<AudioManagerScene>().PlaySound(1);
 
     }
-
-    /*
-    private IEnumerator loadButtonWithDelay()
-    {
-        yield return new WaitForSeconds(2.0f);
-        continueButton1.SetActive(false);
-        continueButton2.SetActive(true);
-    }
-    */
 }

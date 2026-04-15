@@ -23,24 +23,24 @@ public class MusicPlayerScript : MonoBehaviour
 
     public void PlayMusic()
     {
-        Debug.Log("Tocando musica");
+        Debug.Log("[MUSICA] Tocando musica");
         audioSource.Play();
     }
 
     public void PauseMusic()
     {
-        Debug.Log("Pausando musica");
+        Debug.Log("[MUSICA] Pausando musica");
         audioSource.Play();
     }
     public void StopMusic()
     {
-        Debug.Log("Parando musica");
+        Debug.Log("[MUSICA] Parando musica");
         audioSource.Stop();
     }
 
     public void AdjustVolume(float volume)
     {
-        Debug.Log("Alterando volume para" + volume);
+        Debug.Log("[MUSICA] Alterando volume para" + volume);
         audioSource.volume = volume;
     }
 }

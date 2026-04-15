@@ -12,6 +12,7 @@ public class TimeManager : MonoBehaviour
     public event Action<float> OnMinutePassed;      // evento para cada minuto
 
     private float minuteCheck;
+
     private void Awake()
     {
         // Configuração do Singleton

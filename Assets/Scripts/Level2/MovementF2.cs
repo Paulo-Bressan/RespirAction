@@ -8,11 +8,6 @@ using System.Collections.Generic; // Necessário para usar List<T>
 /// </summary>
 public class PlayerMovementF2 : MonoBehaviour
 {
-    // =================================================================
-    // VARIÁVEIS DE CONFIGURAÇÃO DE FÍSICA E MOVIMENTO
-    // =================================================================
-    private float horizontalInput;
-    //public event Action levelFinish;
     private bool jumpRequest;
 
     [Header("Movimento")]
@@ -34,9 +29,6 @@ public class PlayerMovementF2 : MonoBehaviour
     
     private bool isGrounded;
 
-    // =================================================================
-    // VARIÁVEIS DE RESPawn / CHECKPOINT / INTERAÇÃO
-    // =================================================================
     [Header("Respawn & Interação")]
     [Tooltip("Sprite estático do player a ser usado durante a interação (Atribua no Inspector).")]
     [SerializeField] private Sprite interactionSprite; 
@@ -54,10 +46,6 @@ public class PlayerMovementF2 : MonoBehaviour
     private Vector3 respawnPoint; 
     private Sprite defaultSprite;
 
-
-    // =================================================================
-    // REFERÊNCIAS DE COMPONENTES
-    // =================================================================
     [Header("Referencias de componentes")]
     [SerializeField] private AudioManagerScene audioManagerScene = null;
 
@@ -65,9 +53,6 @@ public class PlayerMovementF2 : MonoBehaviour
     private Animator animator;
     private SpriteRenderer spriteRenderer;
 
-    // =================================================================
-    // VARIÁVEIS DE ESTADO
-    // =================================================================
     private float moveInput;    
     private bool isMovementLocked = false;
 

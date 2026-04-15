@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: b32d4bbe797d8c44ebbc2b9f32a177bb
   - enabled: 1
+    path: Assets/Scenes/Opcoes.unity
+    guid: ab39e2477578cc54281a51d28ebf656e
+  - enabled: 1
+    path: Assets/Scenes/Creditos.unity
+    guid: cd2962821b5842b4b89a4daa702d5d83
+  - enabled: 1
     path: Assets/Scenes/MenuFases.unity
     guid: 01f4981811b44e043a00ddc48b58dcc3
   - enabled: 1
@@ -38,12 +44,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/QuizScene.unity
     guid: f188f9a46b0332a46aace537a706fd81
-  - enabled: 0
-    path: Assets/Scenes/MenuFasesAlt.unity
-    guid: f1b74a7f782381243a9c84b1746c9e15
   - enabled: 1
-    path: Assets/Scenes/Opcoes.unity
-    guid: cd2962821b5842b4b89a4daa702d5d83
+    path: Assets/Scenes/Controle Respiracao.unity
+    guid: 039113d17890e3b40a3586e9b6a0d2bf
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

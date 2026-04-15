@@ -1,46 +1,38 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PressaoManagerScript : MonoBehaviour
 {
-    public Slider slider1;
-    public Slider slider2;
+    [Tooltip("Objeto do slider da alveolar")]
+    [SerializeField] private Slider slider1;
+    [Tooltip("Objeto do slider da intrapleural")]
+    [SerializeField] private Slider slider2;
 
-    /*
-    private Vector3 fixedScale;
-    private float localHeight;
-    public float heightRatio;
-    */
+    // flag se todas referencias estão ok no start
+    // para evitar check constante no update
+    private bool statusOk = false;
 
     private void Start()
     {
-        /*
-        fixedScale = medidor.transform.localScale;
-        localHeight = fixedScale.z;
-
-        if (heightRatio == 0) heightRatio = 0.5f;
-        */
+        if (TimeManager.instance)
+        { 
+            if (slider1 && slider2) statusOk = true;
+            else Debug.LogWarning("[UI] Sliders faltando");
+        }
+        else Debug.LogWarning("[UI] Falha ao encontar Timer");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (TimeManager.instance)
+        if (statusOk)
         {
-            /*
-            localHeight = (fixedScale.z *  (1 - heightRatio)) + 
-                          (fixedScale.z * ((TimeManager.instance.timeSineWave + 1) / 2) * heightRatio);
-
-            medidor.transform.localScale = 
-                new Vector3(fixedScale.x, fixedScale.y, localHeight);
-            */
-
-            if (slider1 && slider2)
-            {
-                slider1.value = (TimeManager.instance.timeSineWave + 1) / 2;
-                slider2.value = (TimeManager.instance.timeSineWave + 1) / 2;
-            }
-            else Debug.Log("Sliders faltando");
+            // Para inverter o ritmo do slider, só trocar o sinal do
+            // timemanager.instance.timesizewave
+            slider1.value = (-TimeManager.instance.timeSineWave + 1) / 2;
+            slider2.value = 
+                MathF.Min(0.5f, (-TimeManager.instance.timeSineWave + 1) / 2);
         }
     }
 }

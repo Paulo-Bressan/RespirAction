@@ -16,6 +16,8 @@ public class ScalePulsator : MonoBehaviour
 
     void Start()
     {
+        if (TimeManager.instance == null)
+            Debug.LogWarning("[DIAFRAGMA] Time manager faltando");
         initialScale = transform.localScale;
     }
 

@@ -13,17 +13,17 @@ public class VolumeSlider : MonoBehaviour
 
     void Start()
     {
-        if (!myMixer)
-            Debug.LogWarning("[AUDIO] Mixer faltando");
-        if (!musicVolSlider || !soundVolSlider)
-            Debug.LogWarning("[AUDIO] Sliders faltando");
-
         if (!PlayerPrefs.HasKey("musicVolume"))
             PlayerPrefs.SetFloat("musicVolume", 0f);
         if (!PlayerPrefs.HasKey("soundVolume"))
             PlayerPrefs.SetFloat("soundVolume", 0f);
 
-        LoadPrefs();
+        if (!myMixer)
+            Debug.LogWarning("[AUDIO] Mixer faltando");
+        if (!musicVolSlider || !soundVolSlider)
+            Debug.LogWarning("[AUDIO] Sliders faltando");
+        else
+            LoadPrefs();
     }
 
     public void ChangeMusicVolume()
