@@ -1,32 +1,40 @@
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.UI; 
 using TMPro;
 using System.Collections;
-using System.Collections.Generic; // Necess·rio para usar Listas
+using System.Collections.Generic;
 
 public class LogicaQuiz : MonoBehaviour
 {
     // --- ESTRUTURA DOS DADOS ---
-    [System.Serializable] // Isso faz aparecer bonitinho no Inspector
+    [System.Serializable]
     public class Questao
     {
-        [TextArea] public string enunciado; // O texto da pergunta
-        public string[] alternativas;       // As 4 opÁıes de resposta
-        public int indiceCorreta;           // 0, 1, 2 ou 3
-        [TextArea] public string explicacao; // Texto da explicaÁ„o final
+        [TextArea] public string enunciado;
+        public string[] alternativas;
+        public int indiceCorreta;
+        [TextArea] public string explicacao;
+        public Sprite imagemDaPergunta; 
     }
 
-    // --- VARI¡VEIS DO INSPECTOR ---
-    public List<Questao> listaDeQuestoes;   // Lista onde vocÍ vai cadastrar as perguntas
+    // --- VARI√ÅVEIS DO INSPECTOR ---
+    public List<Questao> listaDeQuestoes;
 
-    [Header("ReferÍncias da UI")]
-    public TextMeshProUGUI textoEnunciado;  // Arraste o texto da pergunta aqui
-    public TextMeshProUGUI textoExplicacao; // Arraste o texto do painel de explicaÁ„o
-    public TextMeshProUGUI[] textosBotoes;  // Arraste os TEXTOS que est„o dentro dos botıes
-    public Button[] botoes;                 // Os botıes (j· existia)
-    public GameObject painelExplicacao;     // O painel (j· existia)
+    [Header("Refer√™ncias da UI")]
+    public TextMeshProUGUI textoEnunciado;
+    public TextMeshProUGUI textoExplicacao;
+    public TextMeshProUGUI[] textosBotoes;
+    public Button[] botoes;
+    public GameObject painelExplicacao;
 
-    // --- VARI¡VEIS DE CONTROLE ---
+    [Header("Configura√ß√£o do Quadro")]
+    public GameObject objetoQuadroImagem;  // O GameObject inteiro do Quadro/Moldura
+    public Image imagemDentroDoQuadro;     // O componente Image onde a foto vai aparecer
+
+    [Header("Bot√µes do Painel de Explica√ß√£o")]
+    public GameObject botaoProxima;
+    public GameObject botaoMenu;
+
     private int indicePerguntaAtual = 0;
 
     void Start()
@@ -41,35 +49,40 @@ public class LogicaQuiz : MonoBehaviour
         {
             Questao q = listaDeQuestoes[indicePerguntaAtual];
 
-            // 1. Atualiza os textos da tela
             textoEnunciado.text = q.enunciado;
             textoExplicacao.text = q.explicacao;
 
-            // 2. Atualiza os botıes
+            // --- L√ìGICA APENAS DO QUADRO ---
+            if (q.imagemDaPergunta != null)
+            {
+                // Tem imagem: Liga apenas o quadro e coloca a foto (a doutora continua onde sempre esteve)
+                objetoQuadroImagem.SetActive(true);
+                imagemDentroDoQuadro.sprite = q.imagemDaPergunta;
+            }
+            else
+            {
+                // N√£o tem imagem: Desliga apenas o quadro
+                objetoQuadroImagem.SetActive(false);
+            }
+
             for (int i = 0; i < botoes.Length; i++)
             {
-                // Atualiza o texto do bot„o (verifica se existe alternativa para evitar erro)
                 if (i < q.alternativas.Length)
                     textosBotoes[i].text = q.alternativas[i];
 
-                // Reseta a cor e a interaÁ„o
                 botoes[i].interactable = true;
-                botoes[i].image.color = Color.white; // Ou a cor original dos seus botıes
+                botoes[i].image.color = Color.white;
             }
         }
         else
         {
             Debug.Log("Fim do Quiz!");
-            // Aqui vocÍ pode carregar uma cena de "VitÛria" ou reiniciar
         }
     }
 
     public void VerificarResposta(int indiceClicado)
     {
-        // Pega a resposta correta da pergunta ATUAL
         int respostaCorretaAtual = listaDeQuestoes[indicePerguntaAtual].indiceCorreta;
-
-        // Desativa botıes
         foreach (Button b in botoes) b.interactable = false;
 
         if (indiceClicado == respostaCorretaAtual)
@@ -87,15 +100,26 @@ public class LogicaQuiz : MonoBehaviour
 
     IEnumerator EsperarEMostrarExplicacao()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);
+
+        if (indicePerguntaAtual == listaDeQuestoes.Count - 1)
+        {
+            botaoProxima.SetActive(false);
+            botaoMenu.SetActive(true);
+        }
+        else
+        {
+            botaoProxima.SetActive(true);
+            botaoMenu.SetActive(false);
+        }
+
         painelExplicacao.SetActive(true);
     }
 
-    // --- NOVA FUN«√O: CHAMAR NO BOT√O "PR”XIMA" ---
     public void ProximaPergunta()
     {
-        painelExplicacao.SetActive(false); // Esconde a explicaÁ„o
-        indicePerguntaAtual++;             // Aumenta o Ìndice
-        CarregarPergunta();                // Monta a nova tela
+        painelExplicacao.SetActive(false);
+        indicePerguntaAtual++;
+        CarregarPergunta();
     }
 }

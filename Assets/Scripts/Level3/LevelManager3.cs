@@ -1,12 +1,15 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement; // 1. Adicionamos a biblioteca de Cenas aqui!
 
 public class LevelManager3 : MonoBehaviour
 {
     public float timerLength;
     private float remainingTime;
-
     public TextMeshProUGUI timerText;
+
+    // 2. Trava de segurança para não carregar a cena infinitamente
+    private bool isGameOver = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -18,16 +21,33 @@ public class LevelManager3 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Se o jogo ja acabou, ignoramos o resto do codigo
+        if (isGameOver) return;
+
+        // Atualiza o tempo restante
         if (remainingTime > 0)
             remainingTime = timerLength - TimeManager.instance.elapsedTime;
 
-        if (TimeManager.instance || timerText)
+        if (TimeManager.instance != null && timerText != null)
         {
-            int minutes = Mathf.FloorToInt(remainingTime / 60);
-            int seconds = Mathf.FloorToInt(remainingTime % 60);
+            // Usei Mathf.Max(0, ...) para o texto não mostrar tempo negativo (ex: -00:01)
+            int minutes = Mathf.FloorToInt(Mathf.Max(0, remainingTime) / 60);
+            int seconds = Mathf.FloorToInt(Mathf.Max(0, remainingTime) % 60);
             timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         }
-        else Debug.Log("Falta alguma associacao em algum lugar");
+        // 3. Verifica se o tempo acabou
+        if (remainingTime <= 0)
+        {
+            FimDeJogo();
+        }
+    }
+
+    void FimDeJogo()
+    {
+        isGameOver = true; // Ativamos a trava de segurança
+
+        // Troque "NomeDaSuaCenaDeGameOver" pelo nome EXATO da sua cena!
+        SceneManager.LoadScene("GameOver");
     }
 
     /*
@@ -35,7 +55,7 @@ public class LevelManager3 : MonoBehaviour
 
     1 Coloque o fogo para ferver.
     2 Em seguida coloque as 4 colheres de catchup e mexa.
-    3 Depois quando a �gua estiver fervendo ponhe o miojo.
+    3 Depois quando a água estiver fervendo ponhe o miojo.
     4 Em seguida coloque o tempero e as colheres de pimenta.
     5 Depois rale a mussarela em cima do miojo.
     6 Bom apetite!

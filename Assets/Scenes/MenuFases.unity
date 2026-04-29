@@ -1488,10 +1488,10 @@ MonoBehaviour:
   cenaPosterior: Controle Respiracao
   cenaAnterior: Menu
   cenaBotao1: Cutscene1
-  cenaBotao2: Fase2
+  cenaBotao2: CutsceneFase2C
   cenaBotao3: Fase3 1
   cenaBotao4: Fase4Teste
-  cenaBotao5: QuizScene
+  cenaBotao5: MenuFasesQuizz
 --- !u!1 &1233396535
 GameObject:
   m_ObjectHideFlags: 0
