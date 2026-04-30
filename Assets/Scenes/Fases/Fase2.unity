@@ -2893,6 +2893,7 @@ GameObject:
   - component: {fileID: 319613559}
   - component: {fileID: 319613561}
   - component: {fileID: 319613562}
+  - component: {fileID: 319613563}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: GameController
@@ -2914,8 +2915,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerLength: 300
   timerText: {fileID: 176452801}
-  gameOverScene: GameOver
-  victoryScene: 
+  gameOverScene: GameOver F2
+  victoryScene: Vence F2
+  tempoDelay: 3
 --- !u!4 &319613560
 Transform:
   m_ObjectHideFlags: 0
@@ -2950,6 +2952,7 @@ MonoBehaviour:
   levelManager: {fileID: 319613559}
   hoverNode: {fileID: 0}
   pulledNode: {fileID: 0}
+  nosFinaisConexos: 0
 --- !u!114 &319613562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2966,6 +2969,20 @@ MonoBehaviour:
   ropeRaw: {fileID: 1258331305}
   ropeA: {fileID: 196432320}
   ropeB: {fileID: 2016426692}
+--- !u!114 &319613563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319613558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 585e778222366a1478f1bb4027438b7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myToggle: {fileID: 0}
+  tutorialParentObj: {fileID: 1281177232}
 --- !u!1 &326180485
 GameObject:
   m_ObjectHideFlags: 0
@@ -11580,7 +11597,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3452f7d2375c554ab816f3bdc108848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cenaPosterior: Cutscene F2F
+  cenaPosterior: Vence F2
   cenaAnterior: MenuFases
   cenaBotao1: 
   cenaBotao2: 

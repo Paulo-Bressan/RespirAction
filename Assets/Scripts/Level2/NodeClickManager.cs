@@ -1,6 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using System.Collections;
 
 public class NodeClickManager : MonoBehaviour
 {
@@ -153,13 +151,7 @@ public class NodeClickManager : MonoBehaviour
         scalePulsator.toggleConnection(nosFinaisConexos);
 
         if (nosFinaisConexos >= 2)
-            StartCoroutine(LoadSceneWithDelay());
-    }
-
-    private IEnumerator LoadSceneWithDelay()
-    {
-        yield return new WaitForSeconds(2.0f);
-        SceneManager.LoadScene("Fase2.1");
+            levelManager.Vitoria();
     }
 
     // getter para pullednode

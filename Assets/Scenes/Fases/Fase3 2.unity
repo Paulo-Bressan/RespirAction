@@ -2207,9 +2207,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba72a1c145a65c4e9eaa175e0857fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerLength: 300
+  timerLength: 180
   timerText: {fileID: 176452801}
-  gameOverScene: GameOver
+  gameOverScene: GameOver F4.2
+  victoryScene: 
+  tempoDelay: 2
 --- !u!4 &319613560
 Transform:
   m_ObjectHideFlags: 0
@@ -2244,8 +2246,8 @@ MonoBehaviour:
   - {fileID: 35950801}
   - {fileID: 1111979219}
   - {fileID: 1999156105}
-  _nextSceneName: MenuFases
-  _delayBeforeTransition: 0
+  _nextSceneName: Vence F4
+  _delayBeforeTransition: 1
 --- !u!1 &330770500
 GameObject:
   m_ObjectHideFlags: 0
@@ -3417,7 +3419,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 9.0457, y: -0.10174, z: 20}
-  m_LocalScale: {x: 60, y: 60, z: 1}
+  m_LocalScale: {x: 100, y: 100, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

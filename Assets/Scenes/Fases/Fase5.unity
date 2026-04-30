@@ -9987,7 +9987,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cenaVitoria: 
-  cenaDerrota: 
+  cenaDerrota: GameOver F3
   mark1: {fileID: 297298902}
   mark2: {fileID: 148510692}
   mark3: {fileID: 287225345}

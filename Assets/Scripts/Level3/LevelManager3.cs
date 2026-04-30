@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement; // 1. Adicionamos a biblioteca de Cenas aqui!
+using System.Collections;
 
 public class LevelManager3 : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class LevelManager3 : MonoBehaviour
     [SerializeField] private string gameOverScene;
 
     [SerializeField] private string victoryScene;
+
+    [SerializeField] private float tempoDelay = 2.0f;
 
     // 2. Trava de segurança para não carregar a cena infinitamente
     private bool isGameOver = false;
@@ -59,11 +62,17 @@ public class LevelManager3 : MonoBehaviour
     public void Vitoria()
     {
         if (victoryScene != "")
-            SceneManager.LoadScene(victoryScene);
+            StartCoroutine(loadSceneWithDelay(tempoDelay, victoryScene));
         else
-            SceneManager.LoadScene("Menu");
+            StartCoroutine(loadSceneWithDelay(tempoDelay, "Menu"));
     }
 
+    private IEnumerator loadSceneWithDelay(float time, string name)
+    {
+        Debug.Log("[MANAGER] Carregando próxima cena com delay");
+        yield return new WaitForSeconds(time);
+        SceneManager.LoadScene(name);
+    }
 
     /*
     Receita de miojo para quem nao sabia

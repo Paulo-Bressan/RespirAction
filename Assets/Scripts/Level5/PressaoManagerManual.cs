@@ -135,12 +135,12 @@ public class PressaoManagerManual : MonoBehaviour
         animStatus = 2;
 
         // logica da fase
-        if (valorAnt > 0)
+        if (valorAnt > 0.2)
         {
             Debug.Log("[PRESSAO] Mouse solto cedo, chamando evento RespCedo");
             respCedo.Invoke();
         }
-        else if (diffAbsoluta > 6.0f)
+        else if (diffAbsoluta > 7.0f)
         {
             Debug.Log("[PRESSAO] Mouse solto tarde, chamando evento RespTarde");
             respTarde.Invoke();
