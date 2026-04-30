@@ -31,7 +31,9 @@ public class MusicManager : MonoBehaviour
                     MusicPlayer.GetComponent<MusicPlayerScript>().AdjustVolume(volume);
                 else
                     MusicPlayer.GetComponent<MusicPlayerScript>().AdjustVolume(0.5f);
-            }      
+            }
+            //else
+                //MusicPlayer.GetComponent<MusicPlayerScript>().PlayMusic();
         }
     }
 }

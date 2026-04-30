@@ -8,6 +8,10 @@ public class LevelManager3 : MonoBehaviour
     private float remainingTime;
     public TextMeshProUGUI timerText;
 
+    [SerializeField] private string gameOverScene;
+
+    [SerializeField] private string victoryScene;
+
     // 2. Trava de segurança para não carregar a cena infinitamente
     private bool isGameOver = false;
 
@@ -46,9 +50,20 @@ public class LevelManager3 : MonoBehaviour
     {
         isGameOver = true; // Ativamos a trava de segurança
 
-        // Troque "NomeDaSuaCenaDeGameOver" pelo nome EXATO da sua cena!
-        SceneManager.LoadScene("GameOver");
+        if (gameOverScene != "")
+            SceneManager.LoadScene(gameOverScene);
+        else
+            SceneManager.LoadScene("Menu");
     }
+
+    public void Vitoria()
+    {
+        if (victoryScene != "")
+            SceneManager.LoadScene(victoryScene);
+        else
+            SceneManager.LoadScene("Menu");
+    }
+
 
     /*
     Receita de miojo para quem nao sabia

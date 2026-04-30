@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class NodeClickManager : MonoBehaviour
 {
@@ -21,6 +23,9 @@ public class NodeClickManager : MonoBehaviour
     [Tooltip("Script do movimento do diafragma")]
     [SerializeField] private ScalePulsator scalePulsator = null;
 
+    [Tooltip("Script do controlador de fase")]
+    [SerializeField] private LevelManager3 levelManager = null;
+
     [Header("Interação de nós")]
 
     [Tooltip("Qual nó o mouse está em cima (null se nenhum)")]
@@ -29,7 +34,10 @@ public class NodeClickManager : MonoBehaviour
     [Tooltip("Qual nó está sendo puxado (null se nenhum)")]
     [SerializeField] private GameObject pulledNode = null;
 
-    
+    [Tooltip("Quantidade de nós finais conectados (apenas para visualização)")]
+    [SerializeField] private int nosFinaisConexos = 0;
+
+
 
     void Start()
     {
@@ -94,7 +102,7 @@ public class NodeClickManager : MonoBehaviour
                         audioManagerScene.PlaySound(2);
                         hoverBehavior.handleConnection(pulledBehavior.connectionID);
                         if (hoverBehavior.nodeID == 13) // no final
-                            scalePulsator.toggleConnection();
+                            handleEndConnection();
                     }
                     else
                     {
@@ -135,6 +143,23 @@ public class NodeClickManager : MonoBehaviour
         // se passar nas duas verificacoes, retorna true
         if (isSequence && isAligned) return true;
         return false;
+    }
+
+    private void handleEndConnection()
+    {
+        nosFinaisConexos++;
+        Debug.Log("[MANAGER DE NÓ] Nó final conectado, total: " + nosFinaisConexos);
+
+        scalePulsator.toggleConnection(nosFinaisConexos);
+
+        if (nosFinaisConexos >= 2)
+            StartCoroutine(LoadSceneWithDelay());
+    }
+
+    private IEnumerator LoadSceneWithDelay()
+    {
+        yield return new WaitForSeconds(2.0f);
+        SceneManager.LoadScene("Fase2.1");
     }
 
     // getter para pullednode

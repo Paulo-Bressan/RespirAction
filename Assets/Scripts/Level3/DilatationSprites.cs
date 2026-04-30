@@ -51,17 +51,11 @@ public class ScalePulsator : MonoBehaviour
         }
     }
 
-    public void toggleConnection()
+    public void toggleConnection(int n)
     {
         // é chamado externamente quando uma conexão final é feita
-        // para de reagir quando tem duas conexões para evitar
-        // adições infinitas. O connectioncounter é usado para determinar
-        // a velocidade de movimento do diafragma no Update()
+        // n corresponde ao total de conexoes finais
 
-        if (connectionCounter == 0)
-            connectionCounter = 1;
-        else if (connectionCounter == 1)
-            connectionCounter = 2;
-        else { } // nada
+        connectionCounter = n;
     }
 }

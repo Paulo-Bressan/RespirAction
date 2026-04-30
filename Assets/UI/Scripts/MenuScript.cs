@@ -20,6 +20,8 @@ public class MenuScript : MonoBehaviour
     [SerializeField] private string cenaBotao4;
     [Tooltip("Nome da cena que deve ser carregada ao precionar o botão 5")]
     [SerializeField] private string cenaBotao5;
+    [Tooltip("Nome da cena que deve ser carregada ao precionar o botão 6")]
+    [SerializeField] private string cenaBotao6;
     public void Start()
     {
         audioManagerMenu = FindFirstObjectByType<AudioManagerMenu>();
@@ -89,6 +91,15 @@ public class MenuScript : MonoBehaviour
         Debug.Log("[MENU] Carregando cena " + cenaBotao5);
 
         SceneManager.LoadScene(cenaBotao5);
+    }
+
+    public void Botao6()
+    {
+        audioManagerMenu.PlaySelectSound();
+
+        Debug.Log("[MENU] Carregando cena " + cenaBotao6);
+
+        SceneManager.LoadScene(cenaBotao6);
     }
 
     public void Sair()
