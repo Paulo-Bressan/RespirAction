@@ -10,17 +10,20 @@ public class MenuScript : MonoBehaviour
     [Tooltip("Nome da cena que deve ser carregada ao precionar continuar")]
     [SerializeField] private string cenaAnterior;
 
-    [Tooltip("Nome da cena que deve ser carregada ao precionar o botão 1")]
+    [Tooltip("Nome da cena que deve ser carregada ao precionar o botï¿½o 1")]
     [SerializeField] private string cenaBotao1;
-    [Tooltip("Nome da cena que deve ser carregada ao precionar o botão 2")]
+    [Tooltip("Nome da cena que deve ser carregada ao precionar o botï¿½o 2")]
     [SerializeField] private string cenaBotao2;
-    [Tooltip("Nome da cena que deve ser carregada ao precionar o botão 3")]
+    [Tooltip("Nome da cena que deve ser carregada ao precionar o botï¿½o 3")]
     [SerializeField] private string cenaBotao3;
-    [Tooltip("Nome da cena que deve ser carregada ao precionar o botão 4")]
+    [Tooltip("Nome da cena que deve ser carregada ao precionar o botï¿½o 4")]
     [SerializeField] private string cenaBotao4;
-    [Tooltip("Nome da cena que deve ser carregada ao precionar o botão 5")]
+    [Tooltip("Nome da cena que deve ser carregada ao precionar o botï¿½o 5")]
     [SerializeField] private string cenaBotao5;
-    [Tooltip("Nome da cena que deve ser carregada ao precionar o botão 6")]
+    [Tooltip("Nome da cena que deve ser carregada ao precionar o botï¿½o 5")]
+    [SerializeField] private string cenaBotao51;
+    [Tooltip("Nome da cena que deve ser carregada ao precionar o botï¿½o 6")]
+    
     [SerializeField] private string cenaBotao6;
     public void Start()
     {
@@ -91,6 +94,15 @@ public class MenuScript : MonoBehaviour
         Debug.Log("[MENU] Carregando cena " + cenaBotao5);
 
         SceneManager.LoadScene(cenaBotao5);
+    }
+
+    public void Botao51()
+    {
+        audioManagerMenu.PlaySelectSound();
+
+        Debug.Log("[MENU] Carregando cena " + cenaBotao51);
+
+        SceneManager.LoadScene(cenaBotao51);
     }
 
     public void Botao6()

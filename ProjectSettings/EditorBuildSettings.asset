@@ -75,7 +75,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Quiz/QuizSceneFase5.unity
     guid: 660bc6c602c258143a9cf3faf55d1d38
   - enabled: 0
-    path: Assets/Scenes/Quiz/QuizScene.unity
+    path: Assets/Scenes/QuizScene.unity
     guid: f188f9a46b0332a46aace537a706fd81
   - enabled: 0
     path: Assets/Scenes/Menus/GameOver.unity
