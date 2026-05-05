@@ -69,10 +69,10 @@ public class TooltipManager : MonoBehaviour
                 description = "Trapézio";
                 break;
             case "CostalDir":
-                description = "Costal Direito";
+                description = "Costal Esquerdo";
                 break;
             case "CostalEsq":
-                description = "Costal Esquerdo";
+                description = "Costal Direito";
                 break;
             case "Esternal":
                 description = "Esternal";

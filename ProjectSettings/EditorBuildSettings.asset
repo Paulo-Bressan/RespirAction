@@ -42,6 +42,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Fases/Fase2.unity
     guid: 17f92a5dfd909dc4693717293101fc5a
   - enabled: 1
+    path: Assets/Scenes/Fases/Fase2 Alt.unity
+    guid: ac5d8a34c52f4d647ae7a1e7b5cb00b1
+  - enabled: 0
     path: Assets/Scenes/Fases/Fase2.1.unity
     guid: a3ee0fa1a0b87c34d862733592aea693
   - enabled: 1

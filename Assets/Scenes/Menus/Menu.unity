@@ -1141,7 +1141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MusicPlayer: {fileID: 0}
   track: {fileID: 8300000, guid: 0d7f2bb8dc189974c828d697f448aa03, type: 3}
-  volume: 0.2
+  volume: 0.6
 --- !u!1 &1441304311
 GameObject:
   m_ObjectHideFlags: 0

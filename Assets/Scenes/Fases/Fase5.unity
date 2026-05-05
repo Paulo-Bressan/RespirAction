@@ -9986,7 +9986,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea00fb6c7692f8409499a7f99c0ac21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cenaVitoria: 
+  cenaVitoria: Vence F3
   cenaDerrota: GameOver F3
   mark1: {fileID: 297298902}
   mark2: {fileID: 148510692}

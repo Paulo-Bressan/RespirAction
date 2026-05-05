@@ -4628,8 +4628,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -550, y: 410}
-  m_SizeDelta: {x: 750, y: 200}
+  m_AnchoredPosition: {x: -430, y: 410}
+  m_SizeDelta: {x: 1000, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2147083170
 MonoBehaviour:
@@ -4651,8 +4651,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Elimine a gordura at\xE9 o tempo acabar! Se a gordura acumular, voc\xEA
-    perde!"
+  m_text: "Reduza o volume do tecido adiposo antes que o tempo acabe!\nSe a compress\xE3o
+    abdominal persistir, voc\xEA perde!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d4de230b90c34224bbad3db3116e53c5, type: 2}
   m_sharedMaterial: {fileID: -8662372641220693243, guid: d4de230b90c34224bbad3db3116e53c5, type: 2}

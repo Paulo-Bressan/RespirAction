@@ -35,6 +35,9 @@ public class NodeClickManager : MonoBehaviour
     [Tooltip("Quantidade de nós finais conectados (apenas para visualização)")]
     [SerializeField] private int nosFinaisConexos = 0;
 
+    [Tooltip("Flag se o nó final termina em 13 (f) ou 8 (t), ativar apenas na fase 2 alternativa")]
+    [SerializeField] private bool finalAlternativo = false;
+
 
 
     void Start()
@@ -99,7 +102,9 @@ public class NodeClickManager : MonoBehaviour
                         Debug.Log("[MANAGER DE NÓ] Puxando para nó correto");
                         audioManagerScene.PlaySound(2);
                         hoverBehavior.handleConnection(pulledBehavior.connectionID);
-                        if (hoverBehavior.nodeID == 13) // no final
+                        if (hoverBehavior.nodeID == 13 && !finalAlternativo) // no final
+                            handleEndConnection();
+                        else if (hoverBehavior.nodeID == 8 && finalAlternativo)
                             handleEndConnection();
                     }
                     else
