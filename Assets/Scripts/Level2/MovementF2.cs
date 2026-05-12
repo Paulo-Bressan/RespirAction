@@ -207,9 +207,9 @@ public class PlayerMovementF2 : MonoBehaviour
     {
         if (isInteracting)
         {
-            // 1. BLOQUEIA O MOVIMENTO
-            isMovementLocked = true;
-            rb.linearVelocity = Vector2.zero;
+            // 1. BLOQUEIA O MOVIMENTO (desativado)
+            //isMovementLocked = true;
+            //rb.linearVelocity = Vector2.zero;
             
             // 2. Desativa o Animator e troca para o sprite estático
             if (animator != null) animator.enabled = false; 
@@ -225,7 +225,7 @@ public class PlayerMovementF2 : MonoBehaviour
         else
         {
             // 1. DESBLOQUEIA O MOVIMENTO
-            isMovementLocked = false;
+            //isMovementLocked = false;
             
             // 2. Ativa o Animator e volta para o sprite padrão
             if (animator != null) animator.enabled = true; 

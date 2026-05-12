@@ -593,7 +593,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cenaPosterior: 
   cenaAnterior: 
-  cenaBotao1: Cutscene M1
+  cenaBotao1: MenuFases
   cenaBotao2: Opcoes
   cenaBotao3: 
   cenaBotao4: 
