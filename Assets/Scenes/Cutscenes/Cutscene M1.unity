@@ -522,7 +522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 877972942}
-  nextSceneName: MenuFases
+  nextSceneName: Menu
   botaoPausa: {fileID: 2013238729}
   botaoResumir: {fileID: 1346654722}
 --- !u!1 &1109027191
@@ -1109,8 +1109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3452f7d2375c554ab816f3bdc108848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cenaPosterior: MenuFases
-  cenaAnterior: Menu
+  cenaPosterior: Menu
+  cenaAnterior: 
   cenaBotao1: 
   cenaBotao2: 
   cenaBotao3: 
