@@ -1,7 +1,6 @@
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class NodeBehavior : MonoBehaviour
 {
@@ -34,9 +33,6 @@ public class NodeBehavior : MonoBehaviour
 
     [Tooltip("Lista de sprites, seguir msm padrao para todos")]
     [SerializeField] private Sprite[] nodeSprites;
-
-    [Header("Eventos (Para mensagens e tutoriais)")]
-    public UnityEvent onTurnOn;
 
     // referencias
     private SpriteRenderer spriteRenderer;
@@ -96,16 +92,14 @@ public class NodeBehavior : MonoBehaviour
         // o ultimo nodeSprites deve ser o final para assim seguir a ideia de "enchimento"
     }
 
-    // chamado quando um nó é conectado
     public void handleConnection(int connectionID)
     {
-        // primeiro tenta resolver o caso especifico para nos c4 e c5
-        // o codigo faz mais sentido no caso geral, que fica fora deste if
+        // primeiro resolve o caso especifico para nos c4 e c5
+        // o codigo faz mais sentido no caso geral, que fica fora do if
         if (nodeID == 3 || nodeID == 4)
         {
             Debug.Log("[NÓ] Fazendo conexão em " + name + ", resolvendo caso especial");
             isPositive = true;
-            onTurnOn.Invoke();
             updateCables(0);
             if (!ignoreSprite) updateSprite(1);
             return;
@@ -128,8 +122,6 @@ public class NodeBehavior : MonoBehaviour
         {
             Debug.Log("[NÓ] Com todas conexões ativas, o nó " + name + " agora está ligado");
             isPositive = true;
-            // chama evento externo para mensagens e tutoriais
-            onTurnOn.Invoke();
         }
 
         // updates visuais

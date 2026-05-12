@@ -10137,7 +10137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3452f7d2375c554ab816f3bdc108848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cenaPosterior: QuizSceneFase3
+  cenaPosterior: Vence F3
   cenaAnterior: MenuFases
   cenaBotao1: 
   cenaBotao2: 

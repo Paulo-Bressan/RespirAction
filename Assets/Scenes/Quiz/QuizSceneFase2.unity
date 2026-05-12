@@ -151,10 +151,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 801966820}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.07636842, y: 0.36800003}
+  m_AnchorMax: {x: 0.93700004, y: 0.65500003}
+  m_AnchoredPosition: {x: -2.5, y: -0.5}
+  m_SizeDelta: {x: 53, y: 31}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &48262142
 MonoBehaviour:
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -243,7 +243,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 20.708145, y: 16.409754, z: 21.153168, w: 17.033447}
+  m_margin: {x: 20, y: 20, z: 20, w: 20}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -425,10 +425,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1644814643}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.06573684, y: 0.36758846}
+  m_AnchorMax: {x: 0.9212633, y: 0.67800003}
+  m_AnchoredPosition: {x: 2.5, y: -1}
+  m_SizeDelta: {x: 55, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &181195342
 MonoBehaviour:
@@ -444,7 +444,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -516,7 +516,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 22.544203, y: 18.242132, z: 26.89653, w: 19.650942}
+  m_margin: {x: 20, y: 20, z: 20, w: 20}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -710,7 +710,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 279466402}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.000005722046}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -719,8 +719,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 288, y: -195.2}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 132, y: -133.5}
+  m_SizeDelta: {x: 142.4152, y: 30.61579}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &279466405
 CanvasRenderer:
@@ -834,7 +834,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &346956987
 RectTransform:
   m_ObjectHideFlags: 0
@@ -843,7 +843,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 346956986}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.000005722046}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -852,9 +852,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 288, y: -195.2}
-  m_SizeDelta: {x: 200, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 106, y: -135.1}
+  m_SizeDelta: {x: 142.4152, y: 30.61579}
+  m_Pivot: {x: 0.3267653, y: 0.44354248}
 --- !u!114 &346956988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1033,15 +1033,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1071,7 +1071,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 57.004578, y: 3.747054, z: 32.06338, w: 5.6400776}
+  m_margin: {x: 27.445026, y: 8.36653, z: 32.06338, w: 10.911603}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1150,7 +1150,7 @@ MonoBehaviour:
     reduz a sobrecarga e aumenta a resist\xEAncia \xE0 fadiga.\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0a78af405410efb4080e2e603408c3f2, type: 2}
-  m_sharedMaterial: {fileID: -8662372641220693243, guid: d4de230b90c34224bbad3db3116e53c5, type: 2}
+  m_sharedMaterial: {fileID: -2735774146148563095, guid: 0a78af405410efb4080e2e603408c3f2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1174,8 +1174,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 11
-  m_fontSizeBase: 11
+  m_fontSize: 6
+  m_fontSizeBase: 6
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1212,10 +1212,10 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 21.078156, y: 71.45799, z: 5.9877625, w: 34.5508}
+  m_margin: {x: 6.2998657, y: 41.64591, z: 343.77844, w: 89.99712}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &482164739
@@ -1313,7 +1313,7 @@ GameObject:
   - component: {fileID: 660464723}
   - component: {fileID: 660464722}
   - component: {fileID: 660464721}
-  - component: {fileID: 660464725}
+  - component: {fileID: 660464724}
   m_Layer: 5
   m_Name: PainelExplicacao
   m_TagString: Untagged
@@ -1378,23 +1378,21 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 8, y: 11}
-  m_SizeDelta: {x: -201.4939, y: -184.2428}
+  m_AnchoredPosition: {x: -24, y: 27}
+  m_SizeDelta: {x: -541.8984, y: -267.8877}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &660464725
+--- !u!114 &660464724
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 660464720}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Script: {fileID: 11500000, guid: 5382fef2b3c82f8468371f12da544a7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalFit: 0
-  m_VerticalFit: 2
 --- !u!1 &801966819
 GameObject:
   m_ObjectHideFlags: 0
@@ -1457,10 +1455,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0, g: 0.9411765, b: 1, a: 1}
-    m_HighlightedColor: {r: 0, g: 0.9411765, b: 1, a: 1}
+    m_HighlightedColor: {r: 0, g: 0.9411765, b: 1, a: 0.49019608}
     m_PressedColor: {r: 0, g: 0.9411765, b: 1, a: 0.3137255}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -1506,7 +1504,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0.9411765, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: 25, y: 15, z: 25, w: 15}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1584,10 +1582,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1164085791}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.07089475, y: 0.34500003}
+  m_AnchorMax: {x: 0.94200003, y: 0.632}
+  m_AnchoredPosition: {x: -2.5, y: 0.5}
+  m_SizeDelta: {x: 49, y: 31}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1058849665
 MonoBehaviour:
@@ -1603,7 +1601,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1674,7 +1672,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 20, y: 20, z: 20, w: 20}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1815,10 +1813,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0, g: 0.9411765, b: 1, a: 1}
-    m_HighlightedColor: {r: 0, g: 0.9411765, b: 1, a: 1}
+    m_HighlightedColor: {r: 0, g: 0.9411765, b: 1, a: 0.49019608}
     m_PressedColor: {r: 0, g: 0.9411765, b: 1, a: 0.31764707}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -1864,7 +1862,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0.9411765, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: 25, y: 15, z: 25, w: 15}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1919,10 +1917,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1859295961}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.073631585, y: 0.39030036}
+  m_AnchorMax: {x: 0.9315788, y: 0.632}
+  m_AnchoredPosition: {x: -1, y: -0.5}
+  m_SizeDelta: {x: 54, y: 33}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1177214330
 MonoBehaviour:
@@ -1938,7 +1936,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2011,7 +2009,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 21.74202, y: 15.253006, z: 18.900635, w: 16.434923}
+  m_margin: {x: 20, y: 20, z: 20, w: 20}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2518,6 +2516,7 @@ MonoBehaviour:
   cenaBotao3: 
   cenaBotao4: 
   cenaBotao5: 
+  cenaBotao6: 
 --- !u!1 &1644814642
 GameObject:
   m_ObjectHideFlags: 0
@@ -2530,7 +2529,6 @@ GameObject:
   - component: {fileID: 1644814646}
   - component: {fileID: 1644814645}
   - component: {fileID: 1644814644}
-  - component: {fileID: 1644814647}
   m_Layer: 5
   m_Name: D
   m_TagString: Untagged
@@ -2580,10 +2578,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0, g: 0.9411765, b: 1, a: 1}
-    m_HighlightedColor: {r: 0, g: 0.9411765, b: 1, a: 1}
+    m_HighlightedColor: {r: 0, g: 0.9411765, b: 1, a: 0.49019608}
     m_PressedColor: {r: 0, g: 0.9411765, b: 1, a: 0.3137255}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -2629,7 +2627,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0.9411765, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: 25, y: 15, z: 25, w: 15}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2652,29 +2650,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1644814642}
   m_CullTransparentMesh: 1
---- !u!114 &1644814647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1644814642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c076b3d10c77c44e96941aa5ed2b128, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  listaDeQuestoes: []
-  textoEnunciado: {fileID: 0}
-  textoExplicacao: {fileID: 0}
-  textosBotoes: []
-  botoes:
-  - {fileID: 1644814644}
-  painelExplicacao: {fileID: 660464720}
-  objetoQuadroImagem: {fileID: 0}
-  imagemDentroDoQuadro: {fileID: 0}
-  botaoProxima: {fileID: 0}
-  botaoMenu: {fileID: 0}
 --- !u!1 &1669160671
 GameObject:
   m_ObjectHideFlags: 0
@@ -2701,7 +2676,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1669160671}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 19}
   m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2709,7 +2684,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -4, y: 2.6}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1669160673
@@ -2732,7 +2707,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Pr\xF3xima "
+  m_text: Continuar
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0a78af405410efb4080e2e603408c3f2, type: 2}
   m_sharedMaterial: {fileID: -2735774146148563095, guid: 0a78af405410efb4080e2e603408c3f2, type: 2}
@@ -2759,15 +2734,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -2797,7 +2772,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 42.73091, y: 3.747054, z: 40.89195, w: 5.6400776}
+  m_margin: {x: 40.330734, y: 11.896218, z: 40.89195, w: 8.925451}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2994,10 +2969,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0, g: 0.9411765, b: 1, a: 1}
-    m_HighlightedColor: {r: 0, g: 0.9411765, b: 1, a: 1}
+    m_HighlightedColor: {r: 0, g: 0.9411765, b: 1, a: 0.49019608}
     m_PressedColor: {r: 0, g: 0.9411765, b: 1, a: 0.3137255}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -3043,7 +3018,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0.9411765, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: 25, y: 15, z: 25, w: 15}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3237,9 +3212,8 @@ MonoBehaviour:
       entre C3 e C5, cujos ax\xF4nios se organizam para formar o nervo fr\xEAnico,
       respons\xE1vel por ativar o diafragma\r\n"
     imagemDaPergunta: {fileID: 21300000, guid: cbfffe99faecec24b906cec5f6310021, type: 3}
-  - enunciado: "2-Qual sequ\xEAncia representa corretamente a C\xF3rtex motor \u2192
-      via corticoespinhal \u2192 motoneur\xF4nios fr\xEAnicos \u2192 nervo fr\xEAnico
-      \u2192 diafragma\r\nvia volunt\xE1ria at\xE9 o diafragma?\r\n"
+  - enunciado: "2-Qual sequ\xEAncia representa corretamente a via volunt\xE1ria at\xE9
+      o diafragma?"
     alternativas:
     - "a) C\xF3rtex motor \u2192 nervo fr\xEAnico \u2192 medula espinal \u2192 diafragma"
     - "b) Bulbo \u2192 nervo fr\xEAnico \u2192 c\xF3rtex motor \u2192 diafragma "
@@ -3260,7 +3234,10 @@ MonoBehaviour:
     - "c) C3\u2013C5"
     - "d) T1\u2013T3"
     indiceCorreta: 2
-    explicacao: "Correta : c)\nC3\u2013C5"
+    explicacao: "Correta : c)\nOs motoneur\xF4nios fr\xEAnicos est\xE3o localizados
+      a n\xEDvel de C3, C4 e C5. Seus ax\xF4nios se organizam para formar o nervo
+      fr\xEAnico, que conduz o impulso at\xE9 o diafragma.\r\nLembre-se: \u201CC3,
+      C4 e C5 mant\xEAm o diafragma ativo\u201D"
     imagemDaPergunta: {fileID: 21300000, guid: acd1b1c777cfd4f4e9dcb31a269d50b4, type: 3}
   - enunciado: "4-Um indiv\xEDduo consegue prender a respira\xE7\xE3o voluntariamente,
       mas n\xE3o mant\xE9m ventila\xE7\xE3o adequada durante o sono. Qual explica\xE7\xE3o

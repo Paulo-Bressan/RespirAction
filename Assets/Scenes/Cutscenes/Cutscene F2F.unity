@@ -1374,12 +1374,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cenaPosterior: QuizSceneFase2
-  cenaAnterior: Fase2
+  cenaAnterior: QuizSceneFase2
   cenaBotao1: 
   cenaBotao2: 
   cenaBotao3: 
   cenaBotao4: 
   cenaBotao5: 
+  cenaBotao6: 
 --- !u!4 &1635557751
 Transform:
   m_ObjectHideFlags: 0

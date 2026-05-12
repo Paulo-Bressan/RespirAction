@@ -316,7 +316,7 @@ MonoBehaviour:
   clip2: {fileID: 8300000, guid: d409d43995024064698ac3bf8c85cef6, type: 3}
   clip3: {fileID: 8300000, guid: 16fb81147238e7d4bbc240261ec19a56, type: 3}
   clip4: {fileID: 8300000, guid: 925559a45b2d5a1499a420351a64eccd, type: 3}
-  clip5: {fileID: 8300000, guid: 6e970a3c85dec914692ed02940585b13, type: 3}
+  clip5: {fileID: 0}
 --- !u!4 &95954380
 Transform:
   m_ObjectHideFlags: 0
@@ -447,7 +447,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &101462511
 Transform:
   m_ObjectHideFlags: 0
@@ -1013,9 +1013,6 @@ MonoBehaviour:
   CableList: []
   ignoreSprite: 1
   nodeSprites: []
-  onTurnOn:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!60 &107238203
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1290,9 +1287,6 @@ MonoBehaviour:
   nodeSprites:
   - {fileID: 21300000, guid: f2f0f482f6939e84bbdbc33b7e118e19, type: 3}
   - {fileID: 21300000, guid: 03f50f56dc5c2c94cb3d14a772c3eec6, type: 3}
-  onTurnOn:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!212 &112365653
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1698,9 +1692,6 @@ MonoBehaviour:
   CableList: []
   ignoreSprite: 1
   nodeSprites: []
-  onTurnOn:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!70 &162139900
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2279,9 +2270,6 @@ MonoBehaviour:
   CableList: []
   ignoreSprite: 1
   nodeSprites: []
-  onTurnOn:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &260606602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3309,9 +3297,6 @@ MonoBehaviour:
   CableList: []
   ignoreSprite: 1
   nodeSprites: []
-  onTurnOn:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!60 &369152934
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -3796,8 +3781,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -540, y: 420}
-  m_SizeDelta: {x: 800, y: 200}
+  m_AnchoredPosition: {x: -550, y: 410}
+  m_SizeDelta: {x: 750, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &408252221
 MonoBehaviour:
@@ -3819,12 +3804,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Use o mouse para conectar as vias neurais
-
-    Pontos amarelos: ligados
-
-    Pontos
-    cinzas: desligados'
+  m_text: Use o mouse para conectar vias neurais ligadas (amarelas) as desligadas
+    (cinzas)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d4de230b90c34224bbad3db3116e53c5, type: 2}
   m_sharedMaterial: {fileID: -8662372641220693243, guid: d4de230b90c34224bbad3db3116e53c5, type: 2}
@@ -3851,8 +3832,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4047,9 +4028,6 @@ MonoBehaviour:
   CableList: []
   ignoreSprite: 1
   nodeSprites: []
-  onTurnOn:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!60 &437803738
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -4512,7 +4490,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &486707162
 Transform:
   m_ObjectHideFlags: 0
@@ -4588,9 +4566,6 @@ MonoBehaviour:
   nodeSprites:
   - {fileID: 21300000, guid: f2f0f482f6939e84bbdbc33b7e118e19, type: 3}
   - {fileID: 21300000, guid: 03f50f56dc5c2c94cb3d14a772c3eec6, type: 3}
-  onTurnOn:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!212 &486707165
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6162,7 +6137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &748278347
 Transform:
   m_ObjectHideFlags: 0
@@ -6238,9 +6213,6 @@ MonoBehaviour:
   nodeSprites:
   - {fileID: 21300000, guid: f2f0f482f6939e84bbdbc33b7e118e19, type: 3}
   - {fileID: 21300000, guid: 03f50f56dc5c2c94cb3d14a772c3eec6, type: 3}
-  onTurnOn:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!212 &748278350
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7599,9 +7571,6 @@ MonoBehaviour:
   CableList: []
   ignoreSprite: 1
   nodeSprites: []
-  onTurnOn:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!60 &844743467
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -7801,7 +7770,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &848321689
 Transform:
   m_ObjectHideFlags: 0
@@ -8496,9 +8465,6 @@ MonoBehaviour:
   nodeSprites:
   - {fileID: 21300000, guid: f2f0f482f6939e84bbdbc33b7e118e19, type: 3}
   - {fileID: 21300000, guid: 03f50f56dc5c2c94cb3d14a772c3eec6, type: 3}
-  onTurnOn:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!212 &919692922
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8650,9 +8616,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f2f0f482f6939e84bbdbc33b7e118e19, type: 3}
   - {fileID: 21300000, guid: e8f5fe0ae36da254b842bf2f9723ec7a, type: 3}
   - {fileID: 21300000, guid: 03f50f56dc5c2c94cb3d14a772c3eec6, type: 3}
-  onTurnOn:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!212 &945067162
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9936,7 +9899,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1096455755
 Transform:
   m_ObjectHideFlags: 0
@@ -10333,9 +10296,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8464f104eb74fb345bef1d400bca5590, type: 3}
   - {fileID: 21300000, guid: a10c723eab1359f42b50af5480b4b470, type: 3}
   - {fileID: 21300000, guid: 03f50f56dc5c2c94cb3d14a772c3eec6, type: 3}
-  onTurnOn:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!58 &1144438506
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -11515,9 +11475,6 @@ MonoBehaviour:
   nodeSprites:
   - {fileID: 21300000, guid: f2f0f482f6939e84bbdbc33b7e118e19, type: 3}
   - {fileID: 21300000, guid: 03f50f56dc5c2c94cb3d14a772c3eec6, type: 3}
-  onTurnOn:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!58 &1261774900
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -12593,9 +12550,6 @@ MonoBehaviour:
   nodeSprites:
   - {fileID: 21300000, guid: f2f0f482f6939e84bbdbc33b7e118e19, type: 3}
   - {fileID: 21300000, guid: 03f50f56dc5c2c94cb3d14a772c3eec6, type: 3}
-  onTurnOn:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!58 &1401300074
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -13903,7 +13857,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1591112565
 Transform:
   m_ObjectHideFlags: 0
@@ -14139,9 +14093,6 @@ MonoBehaviour:
   CableList: []
   ignoreSprite: 1
   nodeSprites: []
-  onTurnOn:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!60 &1647167281
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -14411,9 +14362,6 @@ MonoBehaviour:
   CableList: []
   ignoreSprite: 1
   nodeSprites: []
-  onTurnOn:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1716324460
 GameObject:
   m_ObjectHideFlags: 0
@@ -14575,9 +14523,6 @@ MonoBehaviour:
   nodeSprites:
   - {fileID: 21300000, guid: f2f0f482f6939e84bbdbc33b7e118e19, type: 3}
   - {fileID: 21300000, guid: 03f50f56dc5c2c94cb3d14a772c3eec6, type: 3}
-  onTurnOn:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!58 &1722712718
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -14713,7 +14658,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1790362764
 Transform:
   m_ObjectHideFlags: 0
@@ -15617,9 +15562,6 @@ MonoBehaviour:
   CableList: []
   ignoreSprite: 1
   nodeSprites: []
-  onTurnOn:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!60 &1851538931
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -15896,7 +15838,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1862419701
 Transform:
   m_ObjectHideFlags: 0
@@ -15976,21 +15918,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8464f104eb74fb345bef1d400bca5590, type: 3}
   - {fileID: 21300000, guid: a10c723eab1359f42b50af5480b4b470, type: 3}
   - {fileID: 21300000, guid: 03f50f56dc5c2c94cb3d14a772c3eec6, type: 3}
-  onTurnOn:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 95954379}
-        m_TargetAssemblyTypeName: AudioManagerScene, Assembly-CSharp
-        m_MethodName: PlaySound
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 5
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!212 &1862419704
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16187,21 +16114,6 @@ MonoBehaviour:
   nodeSprites:
   - {fileID: 21300000, guid: f2f0f482f6939e84bbdbc33b7e118e19, type: 3}
   - {fileID: 21300000, guid: 03f50f56dc5c2c94cb3d14a772c3eec6, type: 3}
-  onTurnOn:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 95954379}
-        m_TargetAssemblyTypeName: AudioManagerScene, Assembly-CSharp
-        m_MethodName: PlaySound
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 5
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!212 &1883386212
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17285,7 +17197,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1990211018
 Transform:
   m_ObjectHideFlags: 0
@@ -17512,7 +17424,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2039468171
 Transform:
   m_ObjectHideFlags: 0
@@ -17588,9 +17500,6 @@ MonoBehaviour:
   nodeSprites:
   - {fileID: 21300000, guid: f2f0f482f6939e84bbdbc33b7e118e19, type: 3}
   - {fileID: 21300000, guid: 03f50f56dc5c2c94cb3d14a772c3eec6, type: 3}
-  onTurnOn:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!212 &2039468174
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17751,9 +17660,6 @@ MonoBehaviour:
   CableList: []
   ignoreSprite: 1
   nodeSprites: []
-  onTurnOn:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &2084831734
 GameObject:
   m_ObjectHideFlags: 0

@@ -3118,9 +3118,9 @@ MonoBehaviour:
   cenaAnterior: Menu
   cenaBotao1: Cutscene F1
   cenaBotao2: Cutscene F2
-  cenaBotao3: Fase5
-  cenaBotao4: Fase4
-  cenaBotao5: Fase3 1
+  cenaBotao3: Cutscene F3
+  cenaBotao4: Cutscene F4
+  cenaBotao5: Cutscene F5
   cenaBotao6: MenuFasesQuizz
 --- !u!1 &1211009921
 GameObject:

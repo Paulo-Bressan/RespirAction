@@ -203,6 +203,7 @@ GameObject:
   - component: {fileID: 209213181}
   - component: {fileID: 209213183}
   - component: {fileID: 209213182}
+  - component: {fileID: 209213184}
   m_Layer: 5
   m_Name: DialoguePanel2
   m_TagString: Untagged
@@ -268,6 +269,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 209213180}
   m_CullTransparentMesh: 1
+--- !u!114 &209213184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209213180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4504407092743942afedea4f9ec4992, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  campoDeTexto: {fileID: 1772588400}
+  velocidade: 0.05
+  textoParaDigitar: "Agora \xE9 importante lembrar que o diafragma precisa permitir
+    a passagem de estruturas vitais entre o t\xF3rax e o abd\xF4men. Tr\xEAs delas
+    s\xE3o especialmente importantes: o es\xF4fago, respons\xE1vel por conduzir o
+    alimento ao est\xF4mago; a aorta, que distribui o sangue arterial para todo o
+    corpo; e a veia cava inferior, que transporta o sangue venoso de volta ao cora\xE7\xE3o.\nCada
+    uma dessas estruturas atravessa o diafragma por aberturas espec\xEDficas \u2014
+    os chamados hiatos."
 --- !u!1 &258093796
 GameObject:
   m_ObjectHideFlags: 0
@@ -2725,6 +2747,7 @@ GameObject:
   - component: {fileID: 1915593056}
   - component: {fileID: 1915593059}
   - component: {fileID: 1915593058}
+  - component: {fileID: 1915593060}
   m_Layer: 5
   m_Name: DialoguePanel1
   m_TagString: Untagged
@@ -2790,6 +2813,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1915593055}
   m_CullTransparentMesh: 1
+--- !u!114 &1915593060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915593055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4504407092743942afedea4f9ec4992, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  campoDeTexto: {fileID: 2118946178}
+  velocidade: 0.05
+  textoParaDigitar: "Seu conhecimento de anatomia est\xE1 afiado!"
 --- !u!1 &1939743507
 GameObject:
   m_ObjectHideFlags: 0
@@ -2841,6 +2879,7 @@ MonoBehaviour:
   cenaBotao3: 
   cenaBotao4: 
   cenaBotao5: 
+  cenaBotao6: 
 --- !u!1 &1947699507
 GameObject:
   m_ObjectHideFlags: 0
