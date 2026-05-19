@@ -18,6 +18,7 @@ public class LevelManager : MonoBehaviour
 
     public GameObject diafragma;
     public Transform spawnPoint;
+    public string nomeProximaCena;
     //private bool hasReplacedPieces = false;
 
 
@@ -148,6 +149,6 @@ public class LevelManager : MonoBehaviour
     private IEnumerator LoadSceneWithDelay()
     {
         yield return new WaitForSeconds(5.0f);
-        SceneManager.LoadScene("Fase1.1");
+        SceneManager.LoadScene(nomeProximaCena);
     }
 }
