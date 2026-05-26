@@ -3,6 +3,9 @@ using UnityEngine.EventSystems; // Importante para checar UI
 
 public class ObjectRotator : MonoBehaviour
 {
+    [Header("Manager de audio da cena")]
+    public AudioManagerScene audioManager;
+
     [Header("Rotação Manual")]
     [Tooltip("A velocidade com que o objeto rotaciona com o mouse.")]
     public float rotationSpeed = 150f;
@@ -117,6 +120,9 @@ public class ObjectRotator : MonoBehaviour
             {
                 // Acertamos! Mostra o painel com a descrição daquela parte.
                 DescriptionPanelManager.Instance.ShowPanel(part.description);
+
+                // Toca o audio referente a parte
+                audioManager.PlaySound(part.audioNum);
             }
         }
     }

@@ -11,4 +11,7 @@ public class InteractablePart : MonoBehaviour
     [Tooltip("O texto que aparecerá quando o objeto for clicado")]
     [TextArea(5, 10)] // Isso cria uma caixa de texto maior no Inspector
     public string description = "Insira a descrição aqui...";
+
+    [Tooltip("Número de ID do audio a ser tocado no audioManagerScene")]
+    public int audioNum;
 }

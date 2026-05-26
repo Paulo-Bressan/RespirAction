@@ -148,7 +148,7 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator LoadSceneWithDelay()
     {
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(diafragmaDelay);
         SceneManager.LoadScene(nomeProximaCena);
     }
 }

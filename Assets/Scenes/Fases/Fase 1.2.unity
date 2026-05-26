@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 141446652}
   - component: {fileID: 141446653}
   m_Layer: 0
-  m_Name: ToltipManager
+  m_Name: TooltipManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -284,6 +284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TooltipManager2
   mainCamera: {fileID: 1675933960}
+  audioManager: {fileID: 2101935065}
   tooltipObject: {fileID: 890666165}
   tooltipText: {fileID: 890666166}
 --- !u!1 &164240426
@@ -355,8 +356,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tooltipName: "Hiato A\xF3rtico"
-  description: "Aqui se encontra o hiato a\xF3rtico, onde passa a aorta, a maior
-    art\xE9ria do corpo, que distribui sangue oxigenado para os \xF3rg\xE3os abdominais."
+  description: "Por aqui passa a aorta, principal art\xE9ria onde flui sangue oxigenado
+    do cora\xE7\xE3o para o corpo."
+  audioNum: 4
 --- !u!1 &235885384
 GameObject:
   m_ObjectHideFlags: 0
@@ -1055,10 +1057,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractablePart
   tooltipName: "Hiato Esof\xE1gico"
-  description: "Este \xE9 o hiato esof\xE1gico onde o es\xF4fago atravessa o diafragma.
-    Essa abertura \xE9 envolvida por fibras musculares, que auxiliam no controle
-    do refluxo g\xE1strico. Aqui tamb\xE9m passam os nervos vagos, respons\xE1veis
-    pela regula\xE7\xE3o auton\xF4mica da digest\xE3o.\r\n"
+  description: "O hiato esof\xE1gico permite a passagem do es\xF4fago, que conduz
+    o alimento at\xE9 o est\xF4mago."
+  audioNum: 3
 --- !u!135 &786116815
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1097,6 +1098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bdea71434ac344439d76602ca7b08cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectRotator
+  audioManager: {fileID: 2101935065}
   rotationSpeed: 300
   autoRotateSpeed: 100
   mainCamera: {fileID: 1675933960}
@@ -2213,8 +2215,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractablePart
   tooltipName: Hiato da Veia Cava
-  description: "Este \xE9 o hiato da veia cava inferior, permite que sangue venoso
-    volte ao \xE1trio direito do cora\xE7\xE3o."
+  description: "Aqui passa a veia cava inferior, principal veia onde flui sangue
+    desoxigenadodo corpo para o cora\xE7\xE3o."
+  audioNum: 2
 --- !u!135 &1884756922
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2452,9 +2455,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip0: {fileID: 8300000, guid: bb669b3d8d0bfce48b4ed9167f4cb64c, type: 3}
   clip1: {fileID: 8300000, guid: 6d0735e99e4d45545b5b34dfa3785055, type: 3}
-  clip2: {fileID: 0}
-  clip3: {fileID: 0}
-  clip4: {fileID: 0}
+  clip2: {fileID: 8300000, guid: 80d2347a0b50ce745b1dc5ca4947e184, type: 3}
+  clip3: {fileID: 8300000, guid: 29bb17f2a3c710247ad4a01b611f8748, type: 3}
+  clip4: {fileID: 8300000, guid: 22ff30c548df2a94dbb672bb10131d48, type: 3}
   clip5: {fileID: 0}
 --- !u!4 &2101935066
 Transform:

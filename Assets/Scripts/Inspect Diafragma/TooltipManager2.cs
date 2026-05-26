@@ -6,14 +6,18 @@ public class TooltipManager2 : MonoBehaviour
 {
     [Tooltip("A Câmera principal da cena")]
     public Camera mainCamera;
-    
+
+    [Tooltip("O Audio Manager da cena")]
+    public AudioManagerScene audioManager;
+
     [Header("Tooltip UI")]
     [Tooltip("O objeto 'pai' do tooltip (que você desativou)")]
     public GameObject tooltipObject; 
     [Tooltip("O componente de texto do tooltip")]
     public TextMeshProUGUI tooltipText;
 
-    
+    // flags se os audios ja foram tocados alguma vez
+    private bool[] wasPlayed = new bool[6];
 
     void Start()
     {
@@ -22,9 +26,6 @@ public class TooltipManager2 : MonoBehaviour
         {
             mainCamera = Camera.main;
         }
-        
-        // Garante que o tooltip começa desligado
-        tooltipObject.SetActive(false);
     }
 
     void Update()

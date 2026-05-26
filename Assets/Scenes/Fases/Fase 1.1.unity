@@ -283,13 +283,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   campoDeTexto: {fileID: 1772588400}
   velocidade: 0.05
-  textoParaDigitar: "Agora \xE9 importante lembrar que o diafragma precisa permitir
-    a passagem de estruturas vitais entre o t\xF3rax e o abd\xF4men. Tr\xEAs delas
-    s\xE3o especialmente importantes: o es\xF4fago, respons\xE1vel por conduzir o
-    alimento ao est\xF4mago; a aorta, que distribui o sangue arterial para todo o
-    corpo; e a veia cava inferior, que transporta o sangue venoso de volta ao cora\xE7\xE3o.\nCada
-    uma dessas estruturas atravessa o diafragma por aberturas espec\xEDficas \u2014
-    os chamados hiatos."
+  textoParaDigitar: "O diafragma possui aberturas chamadas hiatos.\r\nEssas aberturas
+    s\xE3o essenciais porque permitem a passagem de estruturas entre o t\xF3rax e
+    o abd\xF4men, como o es\xF4fago, a aorta e a veia cava inferior."
 --- !u!1 &258093796
 GameObject:
   m_ObjectHideFlags: 0
@@ -3080,7 +3076,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clip0: {fileID: 8300000, guid: bb669b3d8d0bfce48b4ed9167f4cb64c, type: 3}
-  clip1: {fileID: 8300000, guid: 6d0735e99e4d45545b5b34dfa3785055, type: 3}
+  clip1: {fileID: 8300000, guid: 7642094e5cd14bb4d918eaa000a6b5c4, type: 3}
   clip2: {fileID: 0}
   clip3: {fileID: 0}
   clip4: {fileID: 0}

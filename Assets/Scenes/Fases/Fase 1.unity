@@ -4354,7 +4354,7 @@ MonoBehaviour:
   diafragma: {fileID: 471344677}
   spawnPoint: {fileID: 1737761513}
   nomeProximaCena: Fase 1.1
-  diafragmaDelay: 5
+  diafragmaDelay: 1.5
   gameStatus: 0
 --- !u!114 &1562686151
 MonoBehaviour:
