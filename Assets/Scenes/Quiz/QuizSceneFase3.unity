@@ -2653,9 +2653,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3452f7d2375c554ab816f3bdc108848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cenaPosterior: MenuFases
+  cenaPosterior: MenuFasesQuizNovo
   cenaAnterior: 
-  cenaBotao1: MenuFases
+  cenaBotao1: MenuFasesQuizNovo
   cenaBotao2: 
   cenaBotao3: 
   cenaBotao4: 
@@ -3364,7 +3364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listaDeQuestoes:
-  - enunciado: "1-Por que o ar entra nos pulm\xF5es durante a inspira\xE7\xE3o?\r\n"
+  - enunciado: "1-Por que h\xE1 fluxo de ar para os pulm\xF5es durante a inspira\xE7\xE3o?"
     alternativas:
     - "a) Porque a press\xE3o alveolar fica menor que a press\xE3o atmosf\xE9rica"
     - "b) Porque o diafragma comprime os pulm\xF5es"
@@ -3376,7 +3376,7 @@ MonoBehaviour:
       de press\xE3o que favorece a entrada de ar.\r\n"
     imagemDaPergunta: {fileID: 21300000, guid: 3527b52980c6ef443864ad4ad78577a8, type: 3}
   - enunciado: "2-Na expira\xE7\xE3o tranquila, qual evento \xE9 o principal respons\xE1vel
-      pela sa\xEDda de ar dos pulm\xF5es?"
+      pelo fluxo de ar para fora dos pulm\xF5es?\r\n"
     alternativas:
     - "a) Relaxamento do diafragma e predom\xEDnio do recolhimento el\xE1stico pulmonar"
     - "b) Contra\xE7\xE3o ativa dos intercostais internos "
@@ -3388,21 +3388,7 @@ MonoBehaviour:
       o recolhimento el\xE1stico pulmonar, reduzindo o volume pulmonar e promovendo
       a sa\xEDda de ar.\r\n"
     imagemDaPergunta: {fileID: 0}
-  - enunciado: "3-Qual alternativa descreve melhor a fun\xE7\xE3o das pleuras na
-      mec\xE2nica respirat\xF3ria?"
-    alternativas:
-    - "a) As pleuras substituem a a\xE7\xE3o do diafragma na respira\xE7\xE3o "
-    - "b) As pleuras impedem qualquer varia\xE7\xE3o do volume pulmonar "
-    - "c) As pleuras tornam a press\xE3o alveolar sempre negativa"
-    - "d) As pleuras mant\xEAm o acoplamento mec\xE2nico entre pulm\xF5es e caixa
-      tor\xE1cica durante os movimentos respirat\xF3rios "
-    indiceCorreta: 3
-    explicacao: "Correta: d) \nAs pleuras permitem que os pulm\xF5es acompanhem os
-      movimentos da caixa tor\xE1cica, pois o l\xEDquido pleural mant\xE9m essas
-      estruturas aderidas. Sem esse acoplamento, o pulm\xE3o n\xE3o se expande nem
-      se retrai adequadamente."
-    imagemDaPergunta: {fileID: 21300000, guid: 32d76057f48ced04a9e1bda32bdc4662, type: 3}
-  - enunciado: "4-Qual valor melhor representa a press\xE3o intrapleural em repouso?"
+  - enunciado: "3-Qual valor melhor representa a press\xE3o intrapleural em repouso?"
     alternativas:
     - 'a) 0 cmH2O '
     - 'b) +1 cmH2O '
@@ -3410,16 +3396,15 @@ MonoBehaviour:
     - 'd) -1 cmH2O '
     indiceCorreta: 2
     explicacao: "Correta: c) \nA press\xE3o intrapleural \xE9 normalmente negativa,
-      com valor t\xEDpico em torno de -5 cmH\u2082O.\r\n"
+      pois \xE9 subatmosf\xE9rica, com o valor padr\xE3o em torno de -5 cmH2O.\r\n"
     imagemDaPergunta: {fileID: 21300000, guid: f28923478f546554db0bf1d4e08bae88, type: 3}
-  - enunciado: "5-Em respira\xE7\xE3o tranquila, qual combina\xE7\xE3o \xE9 mais
-      compat\xEDvel com o in\xEDcio da inspira\xE7\xE3o? (Palv= press\xE3o alveolar;
-      Ppl= press\xE3o pleural)"
+  - enunciado: "4-Na inspira\xE7\xE3o tranquila, qual combina\xE7\xE3o \xE9 mais
+      compat\xEDvel? (Palv= press\xE3o alveolar; Ppl= press\xE3o pleural)\r\n"
     alternativas:
-    - "a) Palv = +1 cmH\u2082O e Ppl = 0 cmH\u2082O"
-    - "b) Palv = -1 cmH\u2082O e Ppl = mais negativa que no repouso "
-    - "c) Palv = 0 cmH\u2082O e Ppl = +5 cmH\u2082O"
-    - "d) Palv = +2 cmH\u2082O e Ppl = -1 cmH\u2082O "
+    - a) Palv = +1 cmH2O e Ppl = 0 cmH2O
+    - 'b) Palv = -1 cmH2O e Ppl = mais negativa que no repouso '
+    - c) Palv = 0 cmH2O e Ppl = +5 cmH2O
+    - 'd) Palv = +2 cmH2O e Ppl = -1 cmH2O '
     indiceCorreta: 1
     explicacao: "Correta: b) \nNo in\xEDcio da inspira\xE7\xE3o, a press\xE3o intrapleural
       torna-se mais negativa e a press\xE3o alveolar cai levemente, permitindo a

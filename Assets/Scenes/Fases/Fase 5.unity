@@ -2066,7 +2066,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerLength: 360
   timerText: {fileID: 966219885}
-  gameOverScene: GameOver F4
+  gameOverScene: GameOver F5
   victoryScene: 
   tempoDelay: 2
 --- !u!4 &319613560
@@ -10496,8 +10496,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3452f7d2375c554ab816f3bdc108848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cenaPosterior: Vence F3
-  cenaAnterior: MenuFases
+  cenaPosterior: Vence F5
+  cenaAnterior: MenuFasesNovo
   cenaBotao1: 
   cenaBotao2: 
   cenaBotao3: 
@@ -11051,9 +11051,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 873779218}
   volumeSlider: {fileID: 0}
-  cenaRestart: Fase3 1
-  cenaHome: MenuFases
-  isPaused: 1
+  cenaRestart: Fase5
+  cenaHome: MenuFasesNovo
+  isPaused: 0
 --- !u!4 &1256564503
 Transform:
   m_ObjectHideFlags: 0
@@ -11184,6 +11184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: Diafragma
   description: "Insira a descri\xE7\xE3o aqui..."
+  audioNum: 0
 --- !u!70 &1356181793
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

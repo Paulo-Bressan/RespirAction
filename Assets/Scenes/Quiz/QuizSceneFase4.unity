@@ -2512,9 +2512,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3452f7d2375c554ab816f3bdc108848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cenaPosterior: MenuFases
+  cenaPosterior: MenuFasesQuizNovo
   cenaAnterior: 
-  cenaBotao1: MenuFases
+  cenaBotao1: MenuFasesQuizNovo
   cenaBotao2: 
   cenaBotao3: 
   cenaBotao4: 
@@ -3087,8 +3087,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listaDeQuestoes:
-  - enunciado: "1-Durante a fase, a melhora da ventila\xE7\xE3o ap\xF3s a redu\xE7\xE3o
-      do volume do tecido adiposo ocorre principalmente porque:\r\n"
+  - enunciado: "1-Durante a fase, h\xE1 melhora da ventila\xE7\xE3o ap\xF3s a redu\xE7\xE3o
+      do volume do tecido adiposo, isso ocorre principalmente porque:\r\n"
     alternativas:
     - "a) A press\xE3o alveolar torna-se mais negativa durante a inspira\xE7\xE3o,
       facilitando a entrada de ar independentemente da a\xE7\xE3o diafragm\xE1tica "
@@ -3101,7 +3101,7 @@ MonoBehaviour:
       permite gerar gradientes de press\xE3o adequados, normalizando a ventila\xE7\xE3o.\r\n"
     imagemDaPergunta: {fileID: 21300000, guid: a2010ca3b13aa984e87252ad2faa6c6c, type: 3}
   - enunciado: "2-O aumento da press\xE3o intra-abdominal, decorrente do aumento
-      do tecido adiposo leva abdominal leva a:\r\n"
+      do tecido adiposo leva a:\r\n"
     alternativas:
     - "a) Redu\xE7\xE3o do trabalho respirat\xF3rio devido \xE0 estabiliza\xE7\xE3o
       tor\xE1cica "

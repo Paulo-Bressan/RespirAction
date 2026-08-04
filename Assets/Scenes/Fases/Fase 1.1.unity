@@ -2869,7 +2869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cenaPosterior: Fase 1.2
-  cenaAnterior: MenuFases
+  cenaAnterior: MenuFasesNovo
   cenaBotao1: 
   cenaBotao2: 
   cenaBotao3: 

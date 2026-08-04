@@ -2509,9 +2509,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3452f7d2375c554ab816f3bdc108848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cenaPosterior: MenuFases
+  cenaPosterior: MenuFasesQuizNovo
   cenaAnterior: 
-  cenaBotao1: MenuFases
+  cenaBotao1: MenuFasesQuizNovo
   cenaBotao2: 
   cenaBotao3: 
   cenaBotao4: 
@@ -3239,19 +3239,6 @@ MonoBehaviour:
       fr\xEAnico, que conduz o impulso at\xE9 o diafragma.\r\nLembre-se: \u201CC3,
       C4 e C5 mant\xEAm o diafragma ativo\u201D"
     imagemDaPergunta: {fileID: 21300000, guid: acd1b1c777cfd4f4e9dcb31a269d50b4, type: 3}
-  - enunciado: "4-Um indiv\xEDduo consegue prender a respira\xE7\xE3o voluntariamente,
-      mas n\xE3o mant\xE9m ventila\xE7\xE3o adequada durante o sono. Qual explica\xE7\xE3o
-      \xE9 mais prov\xE1vel?\r\n"
-    alternativas:
-    - "a) Falha do c\xF3rtex motor"
-    - "b) Comprometimento do controle autom\xE1tico no tronco encef\xE1lico"
-    - "c) Les\xE3o dos m\xFAsculos intercostais externos "
-    - "d) Aumento da complac\xEAncia pulmonar "
-    indiceCorreta: 0
-    explicacao: "Correta: a)\nA ventila\xE7\xE3o autom\xE1tica depende do tronco
-      encef\xE1lico (pr\xE9-B\xF6tzinger e redes associadas). O controle volunt\xE1rio
-      pode estar preservado.\r\n"
-    imagemDaPergunta: {fileID: 0}
   textoEnunciado: {fileID: 50407105}
   textoExplicacao: {fileID: 482164738}
   textosBotoes:

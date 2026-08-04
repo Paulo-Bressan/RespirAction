@@ -3839,8 +3839,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3452f7d2375c554ab816f3bdc108848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cenaPosterior: Cutscene F2F
-  cenaAnterior: MenuFases
+  cenaPosterior: Vence F2
+  cenaAnterior: MenuFasesNovo
   cenaBotao1: 
   cenaBotao2: 
   cenaBotao3: 
@@ -5695,6 +5695,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: Diafragma
   description: "Insira a descri\xE7\xE3o aqui..."
+  audioNum: 0
 --- !u!1 &1967980873
 GameObject:
   m_ObjectHideFlags: 0

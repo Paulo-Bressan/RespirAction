@@ -17,12 +17,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menus/Creditos.unity
     guid: cd2962821b5842b4b89a4daa702d5d83
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Menus/MenuFases.unity
     guid: 01f4981811b44e043a00ddc48b58dcc3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Menus/MenuFasesQuizz.unity
     guid: 2065936f2d3f2784dace4d2ba8404b5b
+  - enabled: 1
+    path: Assets/Scenes/Menus/MenuFasesNovo.unity
+    guid: 8f79468dd6596284cbf9d61886e0e04c
+  - enabled: 1
+    path: Assets/Scenes/Menus/MenuFasesQuizNovo.unity
+    guid: 1108a44f2e6990745993dd778e0a951a
   - enabled: 1
     path: Assets/Scenes/Cutscenes/Cutscene F1.unity
     guid: 68099afe2917da24fbb75f18173a2ec9
@@ -38,6 +44,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Cutscenes/Cutscene F5.unity
     guid: 55db84e113541c148ae8c769fb1b3d43
+  - enabled: 1
+    path: Assets/Scenes/Cutscenes/Cutscene Final.unity
+    guid: 95cd53a88fb99ba4b9238eebafaa3bed
   - enabled: 0
     path: Assets/Scenes/Cutscenes/Cutscene F6.unity
     guid: dd4b8aa66cd28e74cba038be547dc8fb
@@ -72,9 +81,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Fases/Fase 6.unity
     guid: 201a190ccc6c378458332bdbd0a18cba
   - enabled: 1
+    path: Assets/Scenes/Fases/Finalizacoes/Vence F1.unity
+    guid: 1ffc902267aaab2438ab7a299b0d8924
+  - enabled: 1
     path: Assets/Scenes/Fases/Finalizacoes/Vence F2.unity
     guid: 0a218c5f6cca712438ea565bb119b56f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Cutscenes/Cutscene F2F.unity
     guid: 47ab847e012a84f4aaa18fbfc1290e44
   - enabled: 1

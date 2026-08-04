@@ -3378,8 +3378,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 480469076}
   volumeSlider: {fileID: 459927241}
-  cenaRestart: Fase5
-  cenaHome: MenuFases
+  cenaRestart: Fase3
+  cenaHome: MenuFasesNovo
   isPaused: 0
 --- !u!4 &645623708
 Transform:
@@ -7900,8 +7900,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3452f7d2375c554ab816f3bdc108848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cenaPosterior: Vence F5
-  cenaAnterior: Menu
+  cenaPosterior: Vence F3
+  cenaAnterior: MenuFasesNovo
   cenaBotao1: 
   cenaBotao2: 
   cenaBotao3: 

@@ -578,6 +578,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: "Motoneur\xF4nios Fr\xEAnicos"
   description: .
+  audioNum: 0
 --- !u!1 &102922482
 GameObject:
   m_ObjectHideFlags: 0
@@ -1199,6 +1200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: Lobo Temporal
   description: "Insira a descri\xE7\xE3o aqui..."
+  audioNum: 0
 --- !u!1 &112365649
 GameObject:
   m_ObjectHideFlags: 0
@@ -1527,6 +1529,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: "Pr\xE9-Motores"
   description: .
+  audioNum: 0
 --- !u!1 &136590169
 GameObject:
   m_ObjectHideFlags: 0
@@ -1707,6 +1710,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: Cerebelo
   description: "Insira a descri\xE7\xE3o aqui..."
+  audioNum: 0
 --- !u!114 &162139899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2469,6 +2473,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: "Complexo Pr\xE9-Botzinger"
   description: "Insira a descri\xE7\xE3o aqui..."
+  audioNum: 0
 --- !u!1 &283024945
 GameObject:
   m_ObjectHideFlags: 0
@@ -3837,6 +3842,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: "C\xF3rtex Somatossensorial"
   description: "Insira a descri\xE7\xE3o aqui..."
+  audioNum: 0
 --- !u!1 &375475360
 GameObject:
   m_ObjectHideFlags: 0
@@ -4656,6 +4662,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: "C\xF3rtex Motor"
   description: "C\xF3rtex Motor"
+  audioNum: 0
 --- !u!1 &441807920
 GameObject:
   m_ObjectHideFlags: 0
@@ -4805,6 +4812,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: "Motoneur\xF4nios Fr\xEAnicos"
   description: .
+  audioNum: 0
 --- !u!1 &460644422
 GameObject:
   m_ObjectHideFlags: 0
@@ -4899,6 +4907,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: "Nervo Fr\xEAnico Esquerdo"
   description: 
+  audioNum: 0
 --- !u!212 &460644426
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5348,6 +5357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: Ponte
   description: "Insira a descri\xE7\xE3o aqui..."
+  audioNum: 0
 --- !u!1 &546008106
 GameObject:
   m_ObjectHideFlags: 0
@@ -6746,6 +6756,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: "Nervo Fr\xEAnico Direito"
   description: .
+  audioNum: 0
 --- !u!1 &730442976
 GameObject:
   m_ObjectHideFlags: 0
@@ -7125,6 +7136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: "Nervo Fr\xEAnico Direito"
   description: 
+  audioNum: 0
 --- !u!1 &756940316
 GameObject:
   m_ObjectHideFlags: 0
@@ -7349,6 +7361,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: "Motoneur\xF4nios Fr\xEAnicos"
   description: .
+  audioNum: 0
 --- !u!1 &774425694
 GameObject:
   m_ObjectHideFlags: 0
@@ -7718,6 +7731,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: "Nervo Fr\xEAnico Esquerdo"
   description: .
+  audioNum: 0
 --- !u!212 &802946564
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7867,6 +7881,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: "Nervo Fr\xEAnico Esquerdo"
   description: 
+  audioNum: 0
 --- !u!212 &807321407
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8310,6 +8325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: "Motoneur\xF4nios Fr\xEAnicos"
   description: .
+  audioNum: 0
 --- !u!1 &840819434
 GameObject:
   m_ObjectHideFlags: 0
@@ -8690,6 +8706,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: Lobo Frontal
   description: "Insira a descri\xE7\xE3o aqui..."
+  audioNum: 0
 --- !u!1 &848321688
 GameObject:
   m_ObjectHideFlags: 0
@@ -8850,6 +8867,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: "Nervo Fr\xEAnico Esquerdo"
   description: 
+  audioNum: 0
 --- !u!212 &864432477
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9257,6 +9275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: "Motoneur\xF4nios Fr\xEAnicos"
   description: .
+  audioNum: 0
 --- !u!1 &898224948
 GameObject:
   m_ObjectHideFlags: 0
@@ -9431,9 +9450,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1513709284}
   volumeSlider: {fileID: 361217190}
-  cenaRestart: Fase2 Alt
-  cenaHome: MenuFases
-  isPaused: 0
+  cenaRestart: Fase2
+  cenaHome: MenuFasesNovo
+  isPaused: 1
 --- !u!4 &906297169
 Transform:
   m_ObjectHideFlags: 0
@@ -10169,6 +10188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: "Nervo Fr\xEAnico Esquerdo"
   description: .
+  audioNum: 0
 --- !u!212 &962384604
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10692,6 +10712,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: Coluna C1
   description: "Insira a descri\xE7\xE3o aqui..."
+  audioNum: 0
 --- !u!1 &1017180060
 GameObject:
   m_ObjectHideFlags: 0
@@ -10955,6 +10976,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: "Nervo Fr\xEAnico Esquerdo"
   description: .
+  audioNum: 0
 --- !u!1 &1052988979
 GameObject:
   m_ObjectHideFlags: 0
@@ -11263,6 +11285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: Bulbo
   description: "Insira a descri\xE7\xE3o aqui..."
+  audioNum: 0
 --- !u!1 &1072610782
 GameObject:
   m_ObjectHideFlags: 0
@@ -11347,6 +11370,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: Medula Espinhal
   description: "Insira a descri\xE7\xE3o aqui..."
+  audioNum: 0
 --- !u!1 &1096455754
 GameObject:
   m_ObjectHideFlags: 0
@@ -11496,6 +11520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: "Motoneur\xF4nios Fr\xEAnicos"
   description: .
+  audioNum: 0
 --- !u!1 &1108756391
 GameObject:
   m_ObjectHideFlags: 0
@@ -11722,6 +11747,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: "Nervo Fr\xEAnico Esquerdo"
   description: .
+  audioNum: 0
 --- !u!212 &1130293441
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12085,6 +12111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: "Motoneur\xF4nios Fr\xEAnicos"
   description: .
+  audioNum: 0
 --- !u!1 &1189380996
 GameObject:
   m_ObjectHideFlags: 0
@@ -12259,7 +12286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cenaPosterior: Vence F2
-  cenaAnterior: MenuFases
+  cenaAnterior: MenuFasesNovo
   cenaBotao1: 
   cenaBotao2: 
   cenaBotao3: 
@@ -12754,6 +12781,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: Coluna C4
   description: "Insira a descri\xE7\xE3o aqui..."
+  audioNum: 0
 --- !u!1 &1249716618
 GameObject:
   m_ObjectHideFlags: 0
@@ -13098,6 +13126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: Coluna C2
   description: "Insira a descri\xE7\xE3o aqui..."
+  audioNum: 0
 --- !u!1 &1261774896
 GameObject:
   m_ObjectHideFlags: 0
@@ -13578,6 +13607,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: Via Corticoespinhal
   description: .
+  audioNum: 0
 --- !u!1 &1324555883
 GameObject:
   m_ObjectHideFlags: 0
@@ -13806,6 +13836,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: Coluna C7
   description: "Insira a descri\xE7\xE3o aqui..."
+  audioNum: 0
 --- !u!1 &1343244804
 GameObject:
   m_ObjectHideFlags: 0
@@ -14033,6 +14064,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: "Nervo Fr\xEAnico Esquerdo"
   description: 
+  audioNum: 0
 --- !u!1 &1357027552
 GameObject:
   m_ObjectHideFlags: 0
@@ -14845,6 +14877,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: "Nervo Fr\xEAnico Esquerdo"
   description: 
+  audioNum: 0
 --- !u!212 &1430803414
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15445,6 +15478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: Coluna C3
   description: "Insira a descri\xE7\xE3o aqui..."
+  audioNum: 0
 --- !u!1 &1471942764
 GameObject:
   m_ObjectHideFlags: 0
@@ -15964,6 +15998,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: Via Corticoespinhal
   description: .
+  audioNum: 0
 --- !u!61 &1566835823
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16431,6 +16466,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: Lobo Parietal
   description: "Insira a descri\xE7\xE3o aqui..."
+  audioNum: 0
 --- !u!1 &1668179173
 GameObject:
   m_ObjectHideFlags: 0
@@ -16616,6 +16652,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: "Grupo Respirat\xF3rio Ventral"
   description: "Insira a descri\xE7\xE3o aqui..."
+  audioNum: 0
 --- !u!70 &1698205709
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -16967,6 +17004,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: Coluna C6
   description: "Insira a descri\xE7\xE3o aqui..."
+  audioNum: 0
 --- !u!1 &1750713944
 GameObject:
   m_ObjectHideFlags: 0
@@ -17603,6 +17641,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: "Nervo Fr\xEAnico Esquerdo"
   description: .
+  audioNum: 0
 --- !u!212 &1821631493
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18155,6 +18194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: Lobo Occipital
   description: "Insira a descri\xE7\xE3o aqui..."
+  audioNum: 0
 --- !u!1 &1857609690
 GameObject:
   m_ObjectHideFlags: 0
@@ -18983,6 +19023,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: Diafragma
   description: "Insira a descri\xE7\xE3o aqui..."
+  audioNum: 0
 --- !u!1 &1909004102
 GameObject:
   m_ObjectHideFlags: 0
@@ -19807,6 +19848,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: "Motoneur\xF4nios Fr\xEAnicos"
   description: .
+  audioNum: 0
 --- !u!1 &2016426691
 GameObject:
   m_ObjectHideFlags: 0
@@ -20088,6 +20130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: Complexo Botzinger
   description: "Insira a descri\xE7\xE3o aqui..."
+  audioNum: 0
 --- !u!58 &2078936376
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -20271,6 +20314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipName: Coluna C5
   description: "Insira a descri\xE7\xE3o aqui..."
+  audioNum: 0
 --- !u!1 &2119184794
 GameObject:
   m_ObjectHideFlags: 0

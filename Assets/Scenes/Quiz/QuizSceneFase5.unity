@@ -2648,9 +2648,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3452f7d2375c554ab816f3bdc108848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cenaPosterior: MenuFases
+  cenaPosterior: MenuFasesQuizNovo
   cenaAnterior: 
-  cenaBotao1: MenuFases
+  cenaBotao1: MenuFasesQuizNovo
   cenaBotao2: 
   cenaBotao3: 
   cenaBotao4: 
@@ -3248,43 +3248,6 @@ MonoBehaviour:
       incluindo o diafragma e os m\xFAsculos intercostais, com impacto importante
       sobre a ventila\xE7\xE3o."
     imagemDaPergunta: {fileID: 21300000, guid: e01da324c543cb9438e5b2e9e1cbb220, type: 3}
-  - enunciado: "3-Em um paciente com DMD, a redu\xE7\xE3o da efici\xEAncia ventilat\xF3ria
-      por comprometimento muscular pode favorecer, ao longo do tempo:\r\n"
-    alternativas:
-    - "a) melhora espont\xE2nea da mec\xE2nica pulmonar "
-    - "b) maior reserva ventilat\xF3ria "
-    - "c) hipoventila\xE7\xE3o e reten\xE7\xE3o de CO2"
-    - "d) aumento da complac\xEAncia da parede tor\xE1cica por adapta\xE7\xE3o aguda"
-    indiceCorreta: 2
-    explicacao: "Correta: c) \nA fraqueza dos m\xFAsculos respirat\xF3rios pode levar
-      \xE0 hipoventila\xE7\xE3o alveolar, com reten\xE7\xE3o de CO2, especialmente
-      em fases mais avan\xE7adas."
-    imagemDaPergunta: {fileID: 21300000, guid: a2dbae39114d5ca4d9ce50d0cf463e3a, type: 3}
-  - enunciado: "4-Qual \xE9 a principal fun\xE7\xE3o fisiol\xF3gica do l\xEDquido
-      pleural em condi\xE7\xF5es normais?\r\n"
-    alternativas:
-    - "a) Aumentar a press\xE3o alveolar durante a inspira\xE7\xE3o "
-    - "b) Facilitar o deslizamento entre as pleuras e manter o acoplamento pulm\xE3o\u2013t\xF3rax "
-    - "c) Promover a troca gasosa entre pulm\xE3o e sangue "
-    - "d) Reduzir a complac\xEAncia pulmonar"
-    indiceCorreta: 1
-    explicacao: "Correta: b)\nO l\xEDquido pleural reduz o atrito entre as pleuras
-      e permite a transmiss\xE3o das for\xE7as geradas pela expans\xE3o da caixa
-      tor\xE1cica para o pulm\xE3o, garantindo o acoplamento mec\xE2nico necess\xE1rio
-      para a ventila\xE7\xE3o \r\n"
-    imagemDaPergunta: {fileID: 21300000, guid: 32d76057f48ced04a9e1bda32bdc4662, type: 3}
-  - enunciado: "5-Em um derrame pleural, a principal consequ\xEAncia mec\xE2nica
-      imediata \xE9:\r\n"
-    alternativas:
-    - "a) aumento da press\xE3o negativa intrapleural"
-    - "b) compress\xE3o do pulm\xE3o e redu\xE7\xE3o de sua expans\xE3o "
-    - "c) aumento da complac\xEAncia pulmonar"
-    - "d) aumento da ventila\xE7\xE3o alveolar "
-    indiceCorreta: 1
-    explicacao: "Correta: b)\nO l\xEDquido acumulado no espa\xE7o pleural exerce
-      efeito compressivo sobre o pulm\xE3o, dificultando sua expans\xE3o durante
-      a inspira\xE7\xE3o. "
-    imagemDaPergunta: {fileID: 21300000, guid: 3fd57382c65c63c48bd434b6315aa2c5, type: 3}
   textoEnunciado: {fileID: 50407105}
   textoExplicacao: {fileID: 2133956883}
   textosBotoes:
