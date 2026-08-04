@@ -3308,7 +3308,7 @@ MonoBehaviour:
   cenaBotao3: Cutscene F3
   cenaBotao4: Cutscene F4
   cenaBotao5: Cutscene F5
-  cenaBotao6: MenuFasesQuizNovo
+  cenaBotao6: QuizGenerico
 --- !u!1 &1211009921
 GameObject:
   m_ObjectHideFlags: 0

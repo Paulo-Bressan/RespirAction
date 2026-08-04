@@ -1,0 +1,136 @@
+{
+  "nome": "Quiz contínuo - 13 perguntas",
+  "quantidade": 13,
+  "questoes": [
+    {
+      "pergunta": "Durante a respiração em repouso, qual alternativa descreve corretamente a origem do ritmo respiratório e sua via até o diafragma?",
+      "imagemAuxiliar": "Imagens/q01_complexo_pre_botzinger.png",
+      "alternativaA": "Origina-se no córtex motor e segue pela via corticoespinhal até o nervo frênico",
+      "alternativaB": "Origina-se no complexo pré-Bötzinger e segue até os motoneurônios frênicos na medula espinal, cujas fibras formam o nervo frênico",
+      "alternativaC": "Origina-se nos pulmões e é conduzido diretamente ao diafragma pelo nervo frênico",
+      "alternativaD": "Origina-se nos intercostais externos e é transmitido ao bulbo",
+      "indiceAlternativaCorreta": 1,
+      "justificativa": "O ritmo inspiratório é gerado no complexo pré-Bötzinger, no bulbo. Esse sinal é transmitido aos motoneurônios frênicos localizados entre C3 e C5, cujos axônios se organizam para formar o nervo frênico, responsável por ativar o diafragma."
+    },
+    {
+      "pergunta": "Qual é a sequência correta da via voluntária até o diafragma?",
+      "imagemAuxiliar": "",
+      "alternativaA": "Córtex motor → nervo frênico → medula espinal → diafragma",
+      "alternativaB": "Bulbo → nervo frênico → córtex motor → diafragma",
+      "alternativaC": "Pulmão → medula espinal → córtex motor → diafragma",
+      "alternativaD": "Córtex motor → via corticoespinhal → motoneurônios frênicos → nervo frênico → diafragma",
+      "indiceAlternativaCorreta": 3,
+      "justificativa": "O comando voluntário inicia-se no córtex motor e desce pela via corticoespinhal até os motoneurônios frênicos (C3–C5). A partir deles, os axônios formam o nervo frênico, que conduz o impulso até o diafragma, promovendo sua contração."
+    },
+    {
+      "pergunta": "A inervação motora do diafragma origina-se, principalmente, de quais segmentos cervicais?",
+      "imagemAuxiliar": "Imagens/q03_segmentos_cervicais_c3_c5.png",
+      "alternativaA": "C1–C2",
+      "alternativaB": "C6–C7",
+      "alternativaC": "C3–C5",
+      "alternativaD": "T1–T3",
+      "indiceAlternativaCorreta": 2,
+      "justificativa": "Os motoneurônios frênicos estão localizados a nível de C3, C4 e C5. Seus axônios se organizam para formar o nervo frênico, que conduz o impulso até o diafragma.\nLembre-se: “C3, C4 e C5 mantêm o diafragma ativo”"
+    },
+    {
+      "pergunta": "Por que há fluxo de ar para os pulmões durante a inspiração?",
+      "imagemAuxiliar": "Imagens/q04_pressao_alveolar.png",
+      "alternativaA": "Porque a pressão alveolar fica menor que a pressão atmosférica",
+      "alternativaB": "Porque o diafragma comprime os pulmões",
+      "alternativaC": "Porque a pressão alveolar fica maior que a pressão atmosférica",
+      "alternativaD": "Porque a intrapleural fica positiva",
+      "indiceAlternativaCorreta": 0,
+      "justificativa": "O fluxo de ar ocorre porque a pressão alveolar fica ligeiramente menor que a pressão atmosférica, criando um gradiente de pressão que favorece a entrada de ar."
+    },
+    {
+      "pergunta": "Na expiração tranquila, qual evento é o principal responsável pelo fluxo de ar para fora dos pulmões?",
+      "imagemAuxiliar": "",
+      "alternativaA": "Contração ativa dos intercostais internos",
+      "alternativaB": "Relaxamento do diafragma e predomínio do recolhimento elástico pulmonar",
+      "alternativaC": "Aumento da pressão intrapleural para valores positivos",
+      "alternativaD": "Contração do diafragma elevando a pressão alveolar",
+      "indiceAlternativaCorreta": 1,
+      "justificativa": "Na expiração basal, o processo é passivo. O relaxamento do diafragma e dos intercostais externos permite que predomine o recolhimento elástico pulmonar, reduzindo o volume pulmonar e promovendo a saída de ar."
+    },
+    {
+      "pergunta": "Qual valor melhor representa a pressão intrapleural em repouso?",
+      "imagemAuxiliar": "Imagens/q06_pressao_intrapleural_repouso.png",
+      "alternativaA": "0 cmH₂O",
+      "alternativaB": "+1 cmH₂O",
+      "alternativaC": "-5 cmH₂O",
+      "alternativaD": "-1 cmH₂O",
+      "indiceAlternativaCorreta": 2,
+      "justificativa": "A pressão intrapleural é normalmente subatmosférica, apresentando um valor de aproximadamente −5 cmH₂O ao final de uma expiração tranquila."
+    },
+    {
+      "pergunta": "Na inspiração tranquila, qual combinação é mais compatível? (Palv = pressão alveolar; Ppl = pressão pleural)",
+      "imagemAuxiliar": "Imagens/q07_pressao_alveolar_e_intrapleural.png",
+      "alternativaA": "Palv = +1 cmH₂O e Ppl = 0 cmH₂O",
+      "alternativaB": "Palv = -1 cmH₂O e Ppl = mais negativa que no repouso",
+      "alternativaC": "Palv = 0 cmH₂O e Ppl = +5 cmH₂O",
+      "alternativaD": "Palv = +2 cmH₂O e Ppl = -1 cmH₂O",
+      "indiceAlternativaCorreta": 1,
+      "justificativa": "No início da inspiração, a pressão intrapleural torna-se mais negativa e a pressão alveolar cai levemente, permitindo a entrada de ar."
+    },
+    {
+      "pergunta": "Durante a fase, há melhora da ventilação após a redução do volume do tecido adiposo, isso ocorre principalmente porque:",
+      "imagemAuxiliar": "Imagens/q08_tecido_adiposo_ventilacao.png",
+      "alternativaA": "A pressão alveolar torna-se mais negativa durante a inspiração, facilitando a entrada de ar independentemente da ação diafragmática",
+      "alternativaB": "O diafragma recupera sua capacidade de gerar variações de pressão, restabelecendo o volume corrente",
+      "alternativaC": "A complacência pulmonar aumenta diretamente",
+      "alternativaD": "A resistência das vias aéreas é eliminada",
+      "indiceAlternativaCorreta": 1,
+      "justificativa": "A restauração do movimento diafragmático permite gerar gradientes de pressão adequados, normalizando a ventilação."
+    },
+    {
+      "pergunta": "O aumento da pressão intra-abdominal, decorrente do aumento do tecido adiposo leva a:",
+      "imagemAuxiliar": "Imagens/q09_gordura_visceral_subcutanea.png",
+      "alternativaA": "Redução do trabalho respiratório devido à estabilização torácica",
+      "alternativaB": "Redução da resistência das vias aéreas por aumento do volume pulmonar",
+      "alternativaC": "Aumento do trabalho respiratório por elevação da carga elástica do sistema respiratório",
+      "alternativaD": "Aumento da eficiência ventilatória devido ao melhor acoplamento toracoabdominal",
+      "indiceAlternativaCorreta": 2,
+      "justificativa": "O aumento da pressão intra-abdominal impõe uma restrição mecânica ao sistema respiratório, elevando a elastância (carga elástica) da parede torácica. Isso reduz a complacência e exige maior esforço dos músculos respiratórios para gerar volumes ventilatórios adequados, aumentando o trabalho respiratório."
+    },
+    {
+      "pergunta": "Durante a inspiração em repouso, os músculos intercostais externos contribuem principalmente para:",
+      "imagemAuxiliar": "Imagens/q10_intercostais_externos.png",
+      "alternativaA": "reduzir o volume torácico e favorecer a expiração ativa",
+      "alternativaB": "comprimir os pulmões e aumentar a pressão pleural",
+      "alternativaC": "relaxar o diafragma para facilitar a entrada de ar",
+      "alternativaD": "elevar as costelas e ampliar os diâmetros torácicos",
+      "indiceAlternativaCorreta": 3,
+      "justificativa": "Os intercostais externos elevam as costelas e contribuem para o aumento dos diâmetros ântero-posterior e látero-lateral do tórax, auxiliando a inspiração."
+    },
+    {
+      "pergunta": "Em pacientes com Distrofia Muscular de Duchenne, o comprometimento respiratório ocorre porque a doença:",
+      "imagemAuxiliar": "Imagens/q11_distrofia_muscular_duchenne.png",
+      "alternativaA": "afeta exclusivamente os neurônios bulbares",
+      "alternativaB": "provoca obstrução brônquica primária",
+      "alternativaC": "leva à degeneração progressiva da musculatura esquelética, incluindo músculos respiratórios",
+      "alternativaD": "impede a difusão de gases na membrana alvéolo-capilar",
+      "indiceAlternativaCorreta": 2,
+      "justificativa": "A DMD compromete progressivamente a musculatura esquelética, incluindo o diafragma e os músculos intercostais, com impacto importante sobre a ventilação."
+    },
+    {
+      "pergunta": "Qual é a principal função fisiológica do líquido pleural em condições normais?",
+      "imagemAuxiliar": "Imagens/q12_pleuras_liquido_pleural.png",
+      "alternativaA": "Aumentar a pressão alveolar durante a inspiração",
+      "alternativaB": "Facilitar o deslizamento entre as pleuras e manter o acoplamento pulmão–tórax",
+      "alternativaC": "Promover a troca gasosa entre pulmão e sangue",
+      "alternativaD": "Reduzir a complacência pulmonar",
+      "indiceAlternativaCorreta": 1,
+      "justificativa": "O líquido pleural reduz o atrito entre as pleuras e permite a transmissão das forças geradas pela expansão da caixa torácica para o pulmão, garantindo o acoplamento mecânico necessário para a ventilação."
+    },
+    {
+      "pergunta": "Em um derrame pleural, a principal consequência mecânica imediata é:",
+      "imagemAuxiliar": "Imagens/q13_derrame_pleural.png",
+      "alternativaA": "aumento da pressão negativa intrapleural",
+      "alternativaB": "compressão do pulmão e redução de sua expansão",
+      "alternativaC": "aumento da complacência pulmonar",
+      "alternativaD": "aumento da ventilação alveolar",
+      "indiceAlternativaCorreta": 1,
+      "justificativa": "O líquido acumulado no espaço pleural exerce efeito compressivo sobre o pulmão, dificultando sua expansão durante a inspiração."
+    }
+  ]
+}

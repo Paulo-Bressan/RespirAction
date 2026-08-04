@@ -1,0 +1,175 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5cda1789bcd7a1428f58c2027205a00, type: 3}
+  m_Name: BancoPerguntasQuiz
+  m_EditorClassIdentifier: 
+  questoes:
+  - pergunta: "Durante a respira\xE7\xE3o em repouso, qual alternativa descreve corretamente
+      a origem do ritmo respirat\xF3rio e sua via at\xE9 o diafragma?"
+    imagemAuxiliar: {fileID: 21300000, guid: 7c8b1424e2128744cad909cdc5daed23, type: 3}
+    alternativaA: "Origina-se no c\xF3rtex motor e segue pela via corticoespinhal
+      at\xE9 o nervo fr\xEAnico"
+    alternativaB: "Origina-se no complexo pr\xE9-B\xF6tzinger e segue at\xE9 os motoneur\xF4nios
+      fr\xEAnicos na medula espinal, cujas fibras formam o nervo fr\xEAnico"
+    alternativaC: "Origina-se nos pulm\xF5es e \xE9 conduzido diretamente ao diafragma
+      pelo nervo fr\xEAnico"
+    alternativaD: "Origina-se nos intercostais externos e \xE9 transmitido ao bulbo"
+    indiceAlternativaCorreta: 1
+    justificativa: "O ritmo inspirat\xF3rio \xE9 gerado no complexo pr\xE9-B\xF6tzinger,
+      no bulbo. Esse sinal \xE9 transmitido aos motoneur\xF4nios fr\xEAnicos localizados
+      entre C3 e C5, cujos ax\xF4nios se organizam para formar o nervo fr\xEAnico,
+      respons\xE1vel por ativar o diafragma."
+  - pergunta: "Qual \xE9 a sequ\xEAncia correta da via volunt\xE1ria at\xE9 o diafragma?"
+    imagemAuxiliar: {fileID: 0}
+    alternativaA: "C\xF3rtex motor \u2192 nervo fr\xEAnico \u2192 medula espinal
+      \u2192 diafragma"
+    alternativaB: "Bulbo \u2192 nervo fr\xEAnico \u2192 c\xF3rtex motor \u2192 diafragma"
+    alternativaC: "Pulm\xE3o \u2192 medula espinal \u2192 c\xF3rtex motor \u2192
+      diafragma"
+    alternativaD: "C\xF3rtex motor \u2192 via corticoespinhal \u2192 motoneur\xF4nios
+      fr\xEAnicos \u2192 nervo fr\xEAnico \u2192 diafragma"
+    indiceAlternativaCorreta: 3
+    justificativa: "O comando volunt\xE1rio inicia-se no c\xF3rtex motor e desce
+      pela via corticoespinhal at\xE9 os motoneur\xF4nios fr\xEAnicos (C3\u2013C5).
+      A partir deles, os ax\xF4nios formam o nervo fr\xEAnico, que conduz o impulso
+      at\xE9 o diafragma, promovendo sua contra\xE7\xE3o."
+  - pergunta: "A inerva\xE7\xE3o motora do diafragma origina-se, principalmente,
+      de quais segmentos cervicais?"
+    imagemAuxiliar: {fileID: 21300000, guid: b52e1f06edd98514fb2c6493f5717325, type: 3}
+    alternativaA: "C1\u2013C2"
+    alternativaB: "C6\u2013C7"
+    alternativaC: "C3\u2013C5"
+    alternativaD: "T1\u2013T3"
+    indiceAlternativaCorreta: 2
+    justificativa: "Os motoneur\xF4nios fr\xEAnicos est\xE3o localizados a n\xEDvel
+      de C3, C4 e C5. Seus ax\xF4nios se organizam para formar o nervo fr\xEAnico,
+      que conduz o impulso at\xE9 o diafragma.\nLembre-se: \u201CC3, C4 e C5 mant\xEAm
+      o diafragma ativo\u201D"
+  - pergunta: "Por que h\xE1 fluxo de ar para os pulm\xF5es durante a inspira\xE7\xE3o?"
+    imagemAuxiliar: {fileID: 21300000, guid: d3ae3c881d3b75142b0738229186a163, type: 3}
+    alternativaA: "Porque a press\xE3o alveolar fica menor que a press\xE3o atmosf\xE9rica"
+    alternativaB: "Porque o diafragma comprime os pulm\xF5es"
+    alternativaC: "Porque a press\xE3o alveolar fica maior que a press\xE3o atmosf\xE9rica"
+    alternativaD: Porque a intrapleural fica positiva
+    indiceAlternativaCorreta: 0
+    justificativa: "O fluxo de ar ocorre porque a press\xE3o alveolar fica ligeiramente
+      menor que a press\xE3o atmosf\xE9rica, criando um gradiente de press\xE3o que
+      favorece a entrada de ar."
+  - pergunta: "Na expira\xE7\xE3o tranquila, qual evento \xE9 o principal respons\xE1vel
+      pelo fluxo de ar para fora dos pulm\xF5es?"
+    imagemAuxiliar: {fileID: 0}
+    alternativaA: "Contra\xE7\xE3o ativa dos intercostais internos"
+    alternativaB: "Relaxamento do diafragma e predom\xEDnio do recolhimento el\xE1stico
+      pulmonar"
+    alternativaC: "Aumento da press\xE3o intrapleural para valores positivos"
+    alternativaD: "Contra\xE7\xE3o do diafragma elevando a press\xE3o alveolar"
+    indiceAlternativaCorreta: 1
+    justificativa: "Na expira\xE7\xE3o basal, o processo \xE9 passivo. O relaxamento
+      do diafragma e dos intercostais externos permite que predomine o recolhimento
+      el\xE1stico pulmonar, reduzindo o volume pulmonar e promovendo a sa\xEDda de
+      ar."
+  - pergunta: "Qual valor melhor representa a press\xE3o intrapleural em repouso?"
+    imagemAuxiliar: {fileID: 21300000, guid: 7b549ab064f78cc45a84d823d71ee949, type: 3}
+    alternativaA: "0 cmH\u2082O"
+    alternativaB: "+1 cmH\u2082O"
+    alternativaC: "-5 cmH\u2082O"
+    alternativaD: "-1 cmH\u2082O"
+    indiceAlternativaCorreta: 2
+    justificativa: "A press\xE3o intrapleural \xE9 normalmente subatmosf\xE9rica,
+      apresentando um valor de aproximadamente \u22125 cmH\u2082O ao final de uma
+      expira\xE7\xE3o tranquila."
+  - pergunta: "Na inspira\xE7\xE3o tranquila, qual combina\xE7\xE3o \xE9 mais compat\xEDvel?
+      (Palv = press\xE3o alveolar; Ppl = press\xE3o pleural)"
+    imagemAuxiliar: {fileID: 21300000, guid: cd58d0c2b16326f4dbc9613130c259ae, type: 3}
+    alternativaA: "Palv = +1 cmH\u2082O e Ppl = 0 cmH\u2082O"
+    alternativaB: "Palv = -1 cmH\u2082O e Ppl = mais negativa que no repouso"
+    alternativaC: "Palv = 0 cmH\u2082O e Ppl = +5 cmH\u2082O"
+    alternativaD: "Palv = +2 cmH\u2082O e Ppl = -1 cmH\u2082O"
+    indiceAlternativaCorreta: 1
+    justificativa: "No in\xEDcio da inspira\xE7\xE3o, a press\xE3o intrapleural torna-se
+      mais negativa e a press\xE3o alveolar cai levemente, permitindo a entrada de
+      ar."
+  - pergunta: "Durante a fase, h\xE1 melhora da ventila\xE7\xE3o ap\xF3s a redu\xE7\xE3o
+      do volume do tecido adiposo, isso ocorre principalmente porque:"
+    imagemAuxiliar: {fileID: 21300000, guid: 51300b3f5187c6b43b2b89585478a634, type: 3}
+    alternativaA: "A press\xE3o alveolar torna-se mais negativa durante a inspira\xE7\xE3o,
+      facilitando a entrada de ar independentemente da a\xE7\xE3o diafragm\xE1tica"
+    alternativaB: "O diafragma recupera sua capacidade de gerar varia\xE7\xF5es de
+      press\xE3o, restabelecendo o volume corrente"
+    alternativaC: "A complac\xEAncia pulmonar aumenta diretamente"
+    alternativaD: "A resist\xEAncia das vias a\xE9reas \xE9 eliminada"
+    indiceAlternativaCorreta: 1
+    justificativa: "A restaura\xE7\xE3o do movimento diafragm\xE1tico permite gerar
+      gradientes de press\xE3o adequados, normalizando a ventila\xE7\xE3o."
+  - pergunta: "O aumento da press\xE3o intra-abdominal, decorrente do aumento do
+      tecido adiposo leva a:"
+    imagemAuxiliar: {fileID: 21300000, guid: b41f5498a80adac4f83e68d4aa9d9fea, type: 3}
+    alternativaA: "Redu\xE7\xE3o do trabalho respirat\xF3rio devido \xE0 estabiliza\xE7\xE3o
+      tor\xE1cica"
+    alternativaB: "Redu\xE7\xE3o da resist\xEAncia das vias a\xE9reas por aumento
+      do volume pulmonar"
+    alternativaC: "Aumento do trabalho respirat\xF3rio por eleva\xE7\xE3o da carga
+      el\xE1stica do sistema respirat\xF3rio"
+    alternativaD: "Aumento da efici\xEAncia ventilat\xF3ria devido ao melhor acoplamento
+      toracoabdominal"
+    indiceAlternativaCorreta: 2
+    justificativa: "O aumento da press\xE3o intra-abdominal imp\xF5e uma restri\xE7\xE3o
+      mec\xE2nica ao sistema respirat\xF3rio, elevando a elast\xE2ncia (carga el\xE1stica)
+      da parede tor\xE1cica. Isso reduz a complac\xEAncia e exige maior esfor\xE7o
+      dos m\xFAsculos respirat\xF3rios para gerar volumes ventilat\xF3rios adequados,
+      aumentando o trabalho respirat\xF3rio."
+  - pergunta: "Durante a inspira\xE7\xE3o em repouso, os m\xFAsculos intercostais
+      externos contribuem principalmente para:"
+    imagemAuxiliar: {fileID: 21300000, guid: 7403c27cdf0435642a585e775f1c19c3, type: 3}
+    alternativaA: "reduzir o volume tor\xE1cico e favorecer a expira\xE7\xE3o ativa"
+    alternativaB: "comprimir os pulm\xF5es e aumentar a press\xE3o pleural"
+    alternativaC: relaxar o diafragma para facilitar a entrada de ar
+    alternativaD: "elevar as costelas e ampliar os di\xE2metros tor\xE1cicos"
+    indiceAlternativaCorreta: 3
+    justificativa: "Os intercostais externos elevam as costelas e contribuem para
+      o aumento dos di\xE2metros \xE2ntero-posterior e l\xE1tero-lateral do t\xF3rax,
+      auxiliando a inspira\xE7\xE3o."
+  - pergunta: "Em pacientes com Distrofia Muscular de Duchenne, o comprometimento
+      respirat\xF3rio ocorre porque a doen\xE7a:"
+    imagemAuxiliar: {fileID: 21300000, guid: 272a7ac0ca24ee2439d96c311eb199a3, type: 3}
+    alternativaA: "afeta exclusivamente os neur\xF4nios bulbares"
+    alternativaB: "provoca obstru\xE7\xE3o br\xF4nquica prim\xE1ria"
+    alternativaC: "leva \xE0 degenera\xE7\xE3o progressiva da musculatura esquel\xE9tica,
+      incluindo m\xFAsculos respirat\xF3rios"
+    alternativaD: "impede a difus\xE3o de gases na membrana alv\xE9olo-capilar"
+    indiceAlternativaCorreta: 2
+    justificativa: "A DMD compromete progressivamente a musculatura esquel\xE9tica,
+      incluindo o diafragma e os m\xFAsculos intercostais, com impacto importante
+      sobre a ventila\xE7\xE3o."
+  - pergunta: "Qual \xE9 a principal fun\xE7\xE3o fisiol\xF3gica do l\xEDquido pleural
+      em condi\xE7\xF5es normais?"
+    imagemAuxiliar: {fileID: 21300000, guid: 098270dcc4e22cc46accec0eacd48044, type: 3}
+    alternativaA: "Aumentar a press\xE3o alveolar durante a inspira\xE7\xE3o"
+    alternativaB: "Facilitar o deslizamento entre as pleuras e manter o acoplamento
+      pulm\xE3o\u2013t\xF3rax"
+    alternativaC: "Promover a troca gasosa entre pulm\xE3o e sangue"
+    alternativaD: "Reduzir a complac\xEAncia pulmonar"
+    indiceAlternativaCorreta: 1
+    justificativa: "O l\xEDquido pleural reduz o atrito entre as pleuras e permite
+      a transmiss\xE3o das for\xE7as geradas pela expans\xE3o da caixa tor\xE1cica
+      para o pulm\xE3o, garantindo o acoplamento mec\xE2nico necess\xE1rio para a
+      ventila\xE7\xE3o."
+  - pergunta: "Em um derrame pleural, a principal consequ\xEAncia mec\xE2nica imediata
+      \xE9:"
+    imagemAuxiliar: {fileID: 21300000, guid: de6f4de82a0f72c4dbab6cbe2b7e2175, type: 3}
+    alternativaA: "aumento da press\xE3o negativa intrapleural"
+    alternativaB: "compress\xE3o do pulm\xE3o e redu\xE7\xE3o de sua expans\xE3o"
+    alternativaC: "aumento da complac\xEAncia pulmonar"
+    alternativaD: "aumento da ventila\xE7\xE3o alveolar"
+    indiceAlternativaCorreta: 1
+    justificativa: "O l\xEDquido acumulado no espa\xE7o pleural exerce efeito compressivo
+      sobre o pulm\xE3o, dificultando sua expans\xE3o durante a inspira\xE7\xE3o."

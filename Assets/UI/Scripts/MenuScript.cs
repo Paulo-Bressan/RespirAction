@@ -25,6 +25,8 @@ public class MenuScript : MonoBehaviour
     public void Start()
     {
         audioManagerMenu = FindFirstObjectByType<AudioManagerMenu>();
+        if (!audioManagerMenu)
+            Debug.LogError("[MENU] Audio Manager não encontrado");
     }
     
     public void Continuar()
